@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Registro Evento Networking</title>
+    </head>
+    <body>
+        <form action="/register" method="post" id="event-form" class="event-form">
+            <label for="name">Nombre:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="password">Contraseña:</label>
+            <input type="password" id="password" name="password" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="phone">Teléfono:</label>
+            <input type="tel" id="phone" name="phone">
+
+            <label for="website">Sitio web:</label>
+            <input type="url" id="website" name="website">
+
+            <label for="age">Edad:</label>
+            <input type="number" id="age" name="age" min="18" max="100">
+
+            <label for="dob">Fecha de Nacimiento:</label>
+            <input type="date" id="dob" name="dob">
+
+            <label for="time">Hora de llegada:</label>
+            <input type="time" id="time" name="time">
+
+            <fieldset id="session-field">
+                <legend>Sesión preferida:</legend>
+                <label for="session-a">
+                    <input type="radio" id="session-a" name="session" value="A">
+                    Sesión A
+                </label>
+                <label for="session-b">
+                    <input type="radio" id="session-b" name="session" value="B">
+                    Sesión B
+                </label>
+            </fieldset>
+
+            <label for="subscribe">
+                <input type="checkbox" id="subscribe" name="subscribe">
+                Suscribirme al boletín
+            </label>
+
+            <label for="experience">Años de experiencia:</label>
+            <input type="range" id="experience" name="experience" min="0" max="30">
+
+            <label for="color">Color favorito:</label>
+            <input type="color" id="color" name="color">
+
+            <label for="photo">Foto de perfil:</label>
+            <input type="file" id="photo" name="photo" accept="image/*">
+
+            <input type="submit" value="Enviar Registro">
+        </form>
+    </body>
+</html>

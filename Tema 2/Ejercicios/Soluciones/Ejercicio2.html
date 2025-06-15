@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calendario Semanal Escolar</title>
+    </head>
+    <body>
+        <table id="school-calendar" class="calendar">
+            <caption>Horario Semanal - Escuela Primaria</caption>
+            <colgroup>
+                <col class="col-time">
+                <col class="col-day">
+                <col class="col-day">
+                <col class="col-day">
+                <col class="col-day">
+                <col class="col-day">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">Hora</th>
+                    <th scope="col">Lunes</th>
+                    <th scope="col">Martes</th>
+                    <th scope="col">Miércoles</th>
+                    <th scope="col">Jueves</th>
+                    <th scope="col">Viernes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th scope="row">09:00–10:00</th>
+                    <td>Matemáticas</td>
+                    <td>Lengua</td>
+                    <td>Inglés</td>
+                    <td>Ciencias</td>
+                    <td>Historia</td>
+                </tr>
+                <tr>
+                    <th scope="row">10:00–11:00</th>
+                    <td rowspan="2">Educación Física</td>
+                    <td>Arte</td>
+                    <td>Matemáticas</td>
+                    <td>Lengua</td>
+                    <td>Inglés</td>
+                </tr>
+                <tr>
+                    <th scope="row">11:00–12:00</th>
+                    <td>Informática</td>
+                    <td>Ciencias</td>
+                    <td>Historia</td>
+                    <td>Arte</td>
+                </tr>
+                <tr>
+                    <th scope="row">12:00–13:00</th>
+                    <td colspan="5">Asamblea General</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="6">Todas las clases comienzan puntualmente y la asamblea es obligatoria.</td>
+                </tr>
+            </tfoot>
+        </table>
+    </body>
+</html>

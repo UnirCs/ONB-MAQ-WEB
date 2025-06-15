@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tablas HTML</title>
+    </head>
+
+    <body>
+
+        <!-- Ejemplo 1 -->
+        <table id="employee-table" class="table table-striped">
+            <caption>Directorio de Empleados</caption>
+            <thead>
+                <tr>
+                    <th id="col-name" scope="col">Nombre</th>
+                    <th id="col-role" scope="col">Rol</th>
+                    <th id="col-dept" scope="col">Departamento</th>
+                    <th id="col-salary" scope="col">Salario</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="even-row">
+                    <td headers="col-name">Laura Gómez</td>
+                    <td headers="col-role">Desarrolladora</td>
+                    <td headers="col-dept">IT</td>
+                    <td headers="col-salary">€45.000</td>
+                </tr>
+                <tr class="odd-row">
+                    <td headers="col-name">Carlos Ruiz</td>
+                    <td headers="col-role">Diseñador</td>
+                    <td headers="col-dept">UX/UI</td>
+                    <td headers="col-salary">€38.000</td>
+                </tr>
+                <tr class="even-row">
+                    <td headers="col-name">Marta León</td>
+                    <td headers="col-role">Project Manager</td>
+                    <td headers="col-dept">Operaciones</td>
+                    <td headers="col-salary">€52.000</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3" class="text-right">Total empleados</td>
+                    <td>3</td>
+                </tr>
+            </tfoot>
+        </table>
+
+        <!-- Ejemplo 2 -->
+
+        <table id="booking-table" class="booking" style="border-collapse: collapse;" title="Tabla de reservas de salas">
+            <colgroup>
+                <col class="col-date">
+                <col class="col-room">
+                <col class="col-user">
+                <col class="col-status">
+            </colgroup>
+            <thead>
+                <tr>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">Sala</th>
+                    <th scope="col">Usuario</th>
+                    <th scope="col">Estado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td rowspan="2" data-date="2025-06-15">15 Jun 2025</td>
+                    <td>Ágora</td>
+                    <td>Ana Martínez</td>
+                    <td data-status="confirmada" title="Confirmada">✔️</td>
+                </tr>
+                <tr>
+                    <td>Coliseo</td>
+                    <td>Javier Soto</td>
+                    <td data-status="pendiente" title="Pendiente">⌛</td>
+                </tr>
+                <tr>
+                    <td>16 Jun 2025</td>
+                    <td>Foro</td>
+                    <td>Lucía Peña</td>
+                    <td data-status="cancelada" title="Cancelada">❌</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </body>
+</html>

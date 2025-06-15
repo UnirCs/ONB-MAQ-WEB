@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ejemplos de Listas</title>
+    </head>
+
+    <body>
+        <!-- Ejemplo 1 -->
+        <ul>
+            <li>Elemento A</li>
+            <li>Elemento B</li>
+            <li>Elemento C</li>
+        </ul>
+
+        <!-- Ejemplo 2 -->
+        <ul type="circle">
+            <li>Círculo</li>
+            <li>Otro ítem</li>
+        </ul>
+
+        <!-- Ejemplo 3 -->
+        <style>
+            /* Cambia el estilo de marcador: circle, square, none, etc. */
+            ul.custom-markers {
+                list-style-type: square;
+                list-style-position: inside; /* inside o outside */
+            }
+        </style>
+        <ul class="custom-markers">
+            <li>Cuadrado dentro</li>
+            <li>Otro elemento</li>
+        </ul>
+
+        <!-- Ejemplo 4 -->
+        <style>
+            ul.image-markers {
+                list-style-image: url('estrella.png');
+            }
+        </style>
+        <ul class="image-markers">
+            <li>Ítem con estrella</li>
+            <li>Segundo ítem</li>
+        </ul>
+
+        <!-- Ejemplo 5 -->
+        <ul>
+            <li>Fruta
+                <ul>
+                    <li>Manzana</li>
+                    <li>Plátano</li>
+                </ul>
+            </li>
+            <li>Verdura
+                <ul>
+                    <li>Lechuga</li>
+                    <li>Zanahoria</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Ejemplo 6 -->
+
+        <ol>
+            <li>Paso 1</li>
+            <li>Paso 2</li>
+            <li>Paso 3</li>
+        </ol>
+
+
+        <!-- Ejemplo 7 -->
+
+        <ol type="A">  <!-- Letras mayúsculas -->
+            <li>Item A</li>
+            <li>Item B</li>
+        </ol>
+
+        <ol type="a">  <!-- Letras minúsculas -->
+            <li>item a</li>
+            <li>item b</li>
+        </ol>
+
+        <ol type="I">  <!-- Romanos mayúsculos -->
+            <li>I</li>
+            <li>II</li>
+        </ol>
+
+        <ol type="i">  <!-- Romanos minúsculos -->
+            <li>i</li>
+            <li>ii</li>
+        </ol>
+
+
+        <!-- Ejemplo 8 -->
+
+        <ol start="5">
+            <li>Comienza en 5</li>
+            <li>6</li>
+        </ol>
+
+        <ol reversed>
+            <li>Inicio en el último</li>
+            <li>… hasta 1</li>
+        </ol>
+
+
+        <!-- Ejemplo 9 -->
+
+        <style>
+            ol.custom {
+                list-style-type: lower-greek;     /* alpha griego */
+                list-style-position: inside;
+                margin-left: 2em;
+            }
+        </style>
+        <ol class="custom">
+            <li>Alfa</li>
+            <li>Beta</li>
+        </ol>
+
+
+        <!-- Ejemplo 10 -->
+
+        <dl>
+            <dt>HTML</dt>
+            <dd>Lenguaje de marcado para estructurar páginas web.</dd>
+            <dt>CSS</dt>
+            <dd>Hojas de estilo en cascada para el diseño visual.</dd>
+        </dl>
+
+
+    </body>
+</html>
