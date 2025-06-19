@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <title>Ejemplo de Selectores Combinados</title>
+    <link rel="stylesheet" href="selectores-combinados.css">
+  </head>
+  <body>
+
+    <!-- Selector: form label (descendiente) -->
+    <form>
+      <div>
+        <label>
+          Label dentro de un div en form (descendiente)
+          <input type="text" placeholder="Campo de texto en form"/>
+        </label>
+      </div>
+
+      <!-- Selector: form > label (hijo directo) -->
+      <label>Label hijo directo de form</label>
+    </form>
+
+    <!-- Selector: form ~ label (hermano general) -->
+    <label>Label hermano general posterior a form</label>
+
+    <!-- Selector: h1 + p (hermano adyacente) -->
+    <h1>Encabezado H1</h1>
+    <p>Párrafo adyacente a h1</p>
+
+    <!-- No afectado por h1 + p -->
+    <p>Segundo párrafo, no adyacente a h1</p>
+
+  </body>
+</html>

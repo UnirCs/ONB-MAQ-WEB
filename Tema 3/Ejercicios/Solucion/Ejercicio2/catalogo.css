@@ -1,0 +1,76 @@
+/* Estilos generales */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f7f9fa;
+    color: #333;
+    margin: 0;
+}
+
+/* Header */
+header {
+    background-color: #003366;
+    color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 2em;
+    margin-bottom: 10px;
+}
+
+header h2.subtitle {
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+/* Sección principal */
+section.section {
+    padding: 30px;
+}
+
+/* Tabla */
+section > table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+#rooms-table td {
+    border: 1px solid #ccc;
+    padding: 15px;
+    vertical-align: top;
+}
+
+/* Celdas */
+.room-cell {
+    text-align: center;
+}
+
+/* Imágenes y listas */
+.room-cell img {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+img + ul {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px;
+}
+
+/* Botones */
+.btn-reserve {
+    background-color: #0066cc;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+/* Esto es un selector de pseudoclase para el botón. Selecciona los botones con la clase btn-reserve cuando el ratón está sobre ellos */
+.btn-reserve:hover {
+    background-color: #004a99;
+}

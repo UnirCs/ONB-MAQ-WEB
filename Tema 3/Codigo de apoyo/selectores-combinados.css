@@ -1,0 +1,16 @@
+form label {
+    background-color: greenyellow;
+}
+
+form > label {
+    background-color: beige;
+}
+
+h1 + p {
+    background-color: lightseagreen;
+}
+
+form ~ label {
+    background-color: lightsalmon;
+}
+
