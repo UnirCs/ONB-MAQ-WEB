@@ -8,16 +8,16 @@
     </head>
     <body>
 
-        <header class="header">
+        <header class="reservation__header">
             <h1>Formulario de Reserva</h1>
         </header>
 
-        <section class="reservation-form-section">
+        <section class="reservation__section">
             <form
                     action="/enviar-reserva"
                     method="post"
                     id="reservation-form"
-                    class="reservation-form"
+                    class="reservation__form"
             >
                 <!-- Sala (prefill opcional) -->
                 <label for="room">Sala (ID o nombre):</label>
@@ -72,7 +72,7 @@
                 <input
                         type="submit"
                         id="submit-btn"
-                        class="btn-submit"
+                        class="reservation__submit-btn"
                         value="Enviar Solicitud"
                 >
             </form>

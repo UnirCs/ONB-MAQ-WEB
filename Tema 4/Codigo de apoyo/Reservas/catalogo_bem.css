@@ -7,25 +7,25 @@ body {
 }
 
 /* Header */
-header {
+.catalog__header {
     background-color: #003366;
     color: white;
     padding: 20px;
     text-align: center;
 }
 
-header h1 {
+.catalog__header .catalog__title {
     font-size: 2em;
     margin-bottom: 10px;
 }
 
-header h2.subtitle {
+.catalog__header .catalog__subtitle {
     font-size: 1.2em;
     font-weight: normal;
 }
 
 /* Sección principal */
-section.section {
+.catalog__section {
     padding: 30px;
 }
 
@@ -37,19 +37,19 @@ section > table {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
 }
 
-#rooms-table td {
+.catalog__table td {
     border: 1px solid #ccc;
     padding: 15px;
     vertical-align: top;
 }
 
 /* Celdas */
-.room-cell {
+.catalog__cell {
     text-align: center;
 }
 
 /* Imágenes y listas */
-.room-cell img {
+.catalog__cell img {
     display: block;
     margin: 0 auto 10px;
 }
@@ -61,7 +61,7 @@ img + ul {
 }
 
 /* Botones */
-.btn-reserve {
+.catalog__reserve-btn {
     background-color: #0066cc;
     color: white;
     padding: 10px 15px;
@@ -71,6 +71,31 @@ img + ul {
 }
 
 /* Esto es un selector de pseudoclase para el botón. Selecciona los botones con la clase btn-reserve cuando el ratón está sobre ellos */
-.btn-reserve:hover {
+.catalog__reserve-btn:hover {
+    background-color: #004a99;
+}
+
+.catalog__image {
+    display: block;
+    margin: 0 auto 10px;
+}
+
+.catalog__features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 10px;
+}
+
+
+.catalog__reserve-btn {
+    background-color: #0066cc;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.catalog__reserve-btn:hover {
     background-color: #004a99;
 }

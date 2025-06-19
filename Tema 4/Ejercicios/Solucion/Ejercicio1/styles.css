@@ -1,0 +1,90 @@
+/* Bloque principal */
+.gallery {
+    background: none;
+}
+
+.gallery__header {
+    font-family: Georgia, serif;
+    color: #333;
+    font-style: italic;
+    text-align: center;
+    border-bottom: 2px solid #003366;
+    padding-bottom: 10px;
+}
+
+.gallery__description {
+    font-family: Georgia, serif;
+    color: #333;
+    background-color: #fffbe6;
+    padding: 10px;
+    border-left: 4px solid #ffc107;
+    line-height: 1.6;
+}
+
+.gallery__subtitle {
+    font-family: Georgia, serif;
+    color: #333;
+    font-style: italic;
+    text-align: center;
+}
+
+body {
+    background-color: #f4f4f4;
+    margin: 20px;
+    line-height: 1.6;
+}
+
+.gallery__table {
+    width: 95%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.gallery__table, .gallery__table-header, .gallery__cell {
+    border: 1px solid #666;
+    text-align: center;
+    padding: 10px;
+}
+
+.gallery__table-head tr {
+    background-color: #003366;
+    color: white;
+}
+
+.gallery__table-body .gallery__table-row:nth-child(even) {
+    background-color: #00eb7d;
+}
+
+.gallery__cell--impresionista:hover {
+    background-color: #cce;
+}
+
+.gallery__cell--cubista:hover {
+    background-color: #cfc;
+}
+
+.gallery__cell--abstracto:hover {
+    background-color: #fdd;
+}
+
+.gallery__cell--impresionista > .gallery__image {
+    border: 5px solid darkblue;
+}
+
+.gallery__cell--cubista > .gallery__image {
+    border: 5px solid darkmagenta;
+}
+
+.gallery__cell--abstracto > .gallery__image {
+    border: 5px solid darkorange;
+}
+
+.gallery__image {
+    max-width: 250px;
+    max-height: 250px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 4px;
+}

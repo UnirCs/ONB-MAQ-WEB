@@ -1,0 +1,89 @@
+/* Selectores simples */
+.unir-text {
+    font-family: Georgia, serif;
+    color: #333;
+}
+
+.unir-header {
+    font-style: italic;
+    text-align: center;
+}
+
+/* Selectores combinados */
+td > img {
+    max-width: 250px;
+    max-height: 250px;
+    display: block;
+    margin: 10px auto;
+    border-radius: 4px;
+}
+
+/* Estética general */
+body {
+    background-color: #f4f4f4;
+    margin: 20px;
+    line-height: 1.6;
+}
+
+/* Tabla */
+table {
+    width: 95%;
+    margin: 0 auto;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+table, th, td {
+    border: 1px solid #666;
+    text-align: center;
+    padding: 10px;
+}
+
+thead tr {
+    background-color: #003366;
+    color: white;
+}
+
+/* Filas pares con pseudoclase */
+tbody tr:nth-child(even) {
+    background-color: #00eb7d;
+}
+
+/* Selectores de atributo */
+td[data-estilo="impresionista"]:hover {
+    background-color: #cce;
+}
+
+td[data-estilo="cubista"]:hover {
+    background-color: #cfc;
+}
+
+td[data-estilo="abstracto"]:hover {
+    background-color: #fdd;
+}
+
+/* Estilos según tipo de obra */
+td[data-estilo="impresionista"] > img {
+    border: 5px solid darkblue;
+}
+
+td[data-estilo="cubista"] > img {
+    border: 5px solid darkmagenta;
+}
+
+td[data-estilo="abstracto"] > img {
+    border: 5px solid darkorange;
+}
+
+/* Selectores de pseudoclase */
+h1:first-child {
+    border-bottom: 2px solid #003366;
+    padding-bottom: 10px;
+}
+
+p:not(.unir-header) {
+    background-color: #fffbe6;
+    padding: 10px;
+    border-left: 4px solid #ffc107;
+}
