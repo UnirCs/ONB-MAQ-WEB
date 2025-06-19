@@ -1,0 +1,30 @@
+/* 1. Cambia el color de fondo de los botones que estén deshabilitados */
+button:disabled {
+    background-color: #ccc;
+}
+
+/* 2. Haz que los enlaces con la clase 'especial' cambien de color al pasar el ratón por encima */
+a.especial:hover {
+    color: #e67e22;
+}
+
+/* 3. Aplica un borde a los inputs de tipo 'email' */
+input[type="email"] {
+    border: 2px solid #3498db;
+}
+
+/* 4. Cambia el color del texto de los elementos con el atributo 'data-tipo="importante"' cuando el usuario pase el ratón sobre ellos */
+[data-tipo="importante"]:hover {
+    color: #c0392b;
+}
+
+/* 5. Haz que los elementos con la clase 'parrafo' que estén dentro del footer tengan el texto en cursiva */
+footer .parrafo {
+    font-style: italic;
+}
+
+/* 6. Resalta con un color de fondo los checkboxes que estén marcados */
+input[type="checkbox"]:checked {
+    background-color: #f9e79f;
+}
+
