@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Ejemplos de Display, Flexbox y Grid</title>
+        <style>
+
+            /* Contenedor Flexbox:
+   - Activa el modelo flexbox
+   - Coloca los hijos en una sola fila
+   - Espacio uniforme entre elementos */
+            .flex-container {
+                display: flex;
+                gap: 1rem;
+                background: #f8d7da;
+                padding: 1rem;
+                flex-direction: row-reverse;
+            }
+
+            /* Ítems del Flexbox:
+   - Crecen en proporción igual (flex: 1)
+   - Fondo blanco, padding y borde para separarlos */
+            .flex-container .item {
+                background: #fff;
+                padding: 0.5rem;
+                border: 1px solid #0047e6;
+                flex: 1;
+                text-align: center;
+                margin: 0.5rem;
+            }
+
+            /* Contenedor CSS Grid:
+   - Activa el modelo de cuadrícula
+   - Tres columnas de igual tamaño
+   - Espacio uniforme entre celdas */
+            .grid-container {
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+                background: #fff3cd;
+                padding: 1rem;
+            }
+
+            /* Ítems del Grid:
+   - Fondo blanco, padding y borde
+   - Texto centrado dentro de cada celda */
+            .grid-container .item {
+                background: #fff;
+                padding: 0.5rem;
+                border: 1px solid #ccc;
+                text-align: center;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Tipos de Display</h1>
+
+        <h2>Display: block</h2>
+        <div class="block-example">
+            <div>Elemento DIV 1</div>
+            <div>Elemento DIV 2</div>
+            <div>Elemento DIV 3</div>
+            <p>Esto es un ejemplo</p>
+            <p>Esto es un ejemplo</p>
+            <p>Esto es un ejemplo</p>
+        </div>
+
+        <h2>Display: inline</h2>
+        <div class="inline-example">
+            <span>Texto <b>A</b></span>
+            <span>Texto B</span>
+            <span>Texto C</span>
+        </div>
+
+        <h1>Introducción a Flexbox</h1>
+        <div class="flex-container">
+            <div class="item">Elemento 1</div>
+            <div class="item">Elemento 2</div>
+            <div class="item">Elemento 3</div>
+            <div class="item">Elemento 4</div>
+            <div class="item">Elemento 5</div>
+            <div class="item">Elemento 6</div>
+            <div class="item">Elemento 6</div>
+            <div class="item">Elemento 6</div>
+            <div class="item">Elemento 6</div>
+            <div class="item">Elemento 6</div>
+            <div class="item">Elemento 6</div>
+        </div>
+
+        <h1>Introducción a CSS Grid</h1>
+        <div class="grid-container">
+            <div class="item">Celda A</div>
+            <div class="item">Celda B</div>
+            <div class="item">Celda C</div>
+            <div class="item">Celda D</div>
+            <div class="item">Celda E</div>
+            <div class="item">Celda F</div>
+            <div class="item">Celda F</div>
+            <div class="item">Celda F</div>
+
+        </div>
+    </body>
+</html>
