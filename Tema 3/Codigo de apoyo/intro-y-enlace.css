@@ -1,0 +1,5 @@
+/* Selector de elemento: aplica a todos los <h1> */
+h1 {
+    color: #581290;
+    text-align: center;
+}
