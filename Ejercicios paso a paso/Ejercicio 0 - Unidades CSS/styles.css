@@ -1,0 +1,480 @@
+/* ========================================
+   CONFIGURACIÓN BASE - EL ROOT
+   ======================================== */
+
+/*
+   El font-size del elemento html (o :root) es la BASE para rem.
+   Por defecto en navegadores es 16px.
+   Puedes cambiarlo aquí y ver cómo afecta a todos los rem.
+*/
+:root {
+    font-size: 16px; /* Cambia este valor y observa el efecto */
+
+    /* Variables de color para el ejercicio */
+    --color-primario: #3b82f6;
+    --color-secundario: #8b5cf6;
+    --color-fondo: #f8fafc;
+    --color-texto: #1e293b;
+    --color-borde: #e2e8f0;
+}
+
+/* ========================================
+   RESET Y ESTILOS BASE
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.6;
+    /* Usando rem para el padding del body */
+    padding: 2rem;
+}
+
+/* ========================================
+   CABECERA
+   ======================================== */
+
+.cabecera {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, var(--color-primario), var(--color-secundario));
+    color: white;
+    border-radius: 1rem;
+}
+
+.cabecera h1 {
+    /* Usando rem - relativo al root (html) */
+    font-size: 2.5rem; /* 2.5 × 16px = 40px */
+    margin-bottom: 0.5rem;
+}
+
+.cabecera p {
+    font-size: 1.125rem; /* 1.125 × 16px = 18px */
+    opacity: 0.9;
+}
+
+/* ========================================
+   CONTENIDO PRINCIPAL
+   ======================================== */
+
+.contenido {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   SECCIONES
+   ======================================== */
+
+.seccion {
+    margin-bottom: 3rem;
+}
+
+.seccion h2 {
+    font-size: 1.5rem;
+    color: var(--color-primario);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--color-primario);
+}
+
+.seccion h2 code {
+    background-color: #dbeafe;
+    padding: 0.125rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 1.25rem;
+}
+
+.explicacion {
+    background-color: #fef3c7;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+    border-left: 4px solid #f59e0b;
+}
+
+/* ========================================
+   CAJAS DE DEMOSTRACIÓN
+   ======================================== */
+
+.demo-caja {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-borde);
+    margin-bottom: 1.5rem;
+}
+
+.demo-caja h3 {
+    font-size: 1.1rem;
+    margin-bottom: 1rem;
+    color: #475569;
+}
+
+code {
+    background-color: #f1f5f9;
+    padding: 0.125rem 0.375rem;
+    border-radius: 0.25rem;
+    font-family: 'Consolas', 'Monaco', monospace;
+    font-size: 0.875em;
+    color: #e11d48;
+}
+
+.nota {
+    font-size: 0.875rem;
+    color: #64748b;
+    font-style: italic;
+    margin-top: 1rem;
+}
+
+/* ========================================
+   SECCIÓN 1: TAMAÑOS DE TEXTO
+   ======================================== */
+
+/* Texto con px - tamaño FIJO */
+.texto-px {
+    font-size: 16px;
+    margin-bottom: 0.5rem;
+}
+
+/* Texto con em - relativo al PADRE */
+.texto-em {
+    font-size: 1em; /* 1 × font-size del padre */
+    margin-bottom: 0.5rem;
+}
+
+/* Texto con rem - relativo al ROOT */
+.texto-rem {
+    font-size: 1rem; /* 1 × font-size del html (16px) */
+    margin-bottom: 0.5rem;
+}
+
+/* Texto con % - relativo al PADRE */
+.texto-percent {
+    font-size: 100%; /* 100% del font-size del padre */
+    margin-bottom: 0.5rem;
+}
+
+/* Texto em más grande */
+.texto-em-grande {
+    font-size: 1.5em; /* 1.5 × font-size del padre */
+    margin-bottom: 0.5rem;
+}
+
+/* Padre con font-size diferente */
+.padre-grande {
+    font-size: 20px;
+}
+
+.padre-grande .hijo {
+    background-color: #f0fdf4;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 1rem;
+    border: 1px dashed #22c55e;
+}
+
+/* ========================================
+   SECCIÓN 2: EFECTO COMPUESTO DE EM
+   ======================================== */
+
+.nivel {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+/* Cada nivel con em multiplica el tamaño */
+.nivel-1 {
+    font-size: 1.2em; /* 16px × 1.2 = 19.2px */
+    background-color: #dbeafe;
+    border: 2px solid #3b82f6;
+}
+
+.nivel-2 {
+    font-size: 1.2em; /* 19.2px × 1.2 = 23px */
+    background-color: #c7d2fe;
+    border: 2px solid #6366f1;
+}
+
+.nivel-3 {
+    font-size: 1.2em; /* 23px × 1.2 = 27.6px */
+    background-color: #e9d5ff;
+    border: 2px solid #a855f7;
+}
+
+.valor-calculado {
+    font-size: 0.75em; /* Más pequeño para el texto explicativo */
+    color: #64748b;
+}
+
+/* Niveles con REM - siempre el mismo tamaño */
+.nivel-rem {
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.nivel-1-rem,
+.nivel-2-rem,
+.nivel-3-rem {
+    font-size: 1.2rem; /* Siempre 16px × 1.2 = 19.2px */
+    background-color: #d1fae5;
+    border: 2px solid #10b981;
+}
+
+/* ========================================
+   SECCIÓN 3: ANCHOS
+   ======================================== */
+
+.caja-ancho {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    font-weight: 500;
+}
+
+/* Ancho en px - FIJO */
+.caja-px {
+    width: 300px;
+    background-color: #ef4444;
+}
+
+/* Ancho en % - relativo al CONTENEDOR PADRE */
+.caja-percent {
+    width: 50%;
+    background-color: #3b82f6;
+}
+
+/* Ancho en vw - relativo al VIEWPORT (ventana) */
+.caja-vw {
+    width: 80vw;
+    background-color: #8b5cf6;
+}
+
+/* Contenedor estrecho para demostrar diferencias */
+.contenedor-estrecho {
+    width: 400px;
+    max-width: 100%;
+    background-color: #fef2f2;
+    overflow: hidden;
+}
+
+/* ========================================
+   SECCIÓN 4: ALTURAS
+   ======================================== */
+
+.contenedor-alturas {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-end;
+    height: 200px; /* Necesario para que % funcione */
+    background-color: #f8fafc;
+    padding: 1rem;
+    border-radius: 0.5rem;
+}
+
+.caja-altura {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    color: white;
+    text-align: center;
+    min-width: 120px;
+}
+
+.caja-altura code {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 0.75rem;
+    margin-bottom: 0.5rem;
+}
+
+/* Altura en px - FIJA */
+.altura-px {
+    height: 100px;
+    background-color: #f97316;
+}
+
+/* Altura en vh - relativo al VIEWPORT */
+.altura-vh {
+    height: 20vh;
+    background-color: #14b8a6;
+}
+
+/* Altura en % - relativo al PADRE (que debe tener altura definida) */
+.altura-percent {
+    height: 50%;
+    background-color: #ec4899;
+}
+
+/* ========================================
+   SECCIÓN 5: ESPACIADO CON EM
+   ======================================== */
+
+.caja-espaciado {
+    background-color: white;
+    border: 2px solid var(--color-primario);
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.caja-espaciado code {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+/* Espaciado pequeño */
+.espaciado-pequeno {
+    font-size: 14px;
+    padding: 1em; /* 1em = 14px cuando font-size es 14px */
+}
+
+/* Espaciado mediano */
+.espaciado-mediano {
+    font-size: 18px;
+    padding: 1em; /* 1em = 18px cuando font-size es 18px */
+}
+
+/* Espaciado grande */
+.espaciado-grande {
+    font-size: 24px;
+    padding: 1em; /* 1em = 24px cuando font-size es 24px */
+}
+
+/* ========================================
+   SECCIÓN 6: CALC()
+   ======================================== */
+
+.caja-calc {
+    background-color: #1e293b;
+    color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.caja-calc code {
+    color: #fcd34d;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Ejemplo 1: 100% menos margen fijo */
+.calc-ejemplo-1 {
+    width: calc(100% - 40px);
+    margin-left: 20px;
+}
+
+/* Ejemplo 2: mitad del viewport menos rem */
+.calc-ejemplo-2 {
+    width: calc(50vw - 2rem);
+}
+
+/* Ejemplo 3: texto fluido */
+.calc-ejemplo-3 {
+    font-size: calc(1rem + 0.5vw);
+}
+
+/* ========================================
+   SECCIÓN 7: TABLA RESUMEN
+   ======================================== */
+
+.seccion-resumen {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 2px solid var(--color-primario);
+}
+
+.tabla-resumen {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.fila-resumen {
+    display: grid;
+    grid-template-columns: 100px 200px 1fr;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0.5rem;
+    align-items: center;
+}
+
+.cabecera-resumen {
+    background-color: var(--color-primario);
+    color: white;
+    font-weight: 600;
+}
+
+.fila-resumen:not(.cabecera-resumen) {
+    background-color: #f8fafc;
+}
+
+.fila-resumen:not(.cabecera-resumen):nth-child(even) {
+    background-color: #f1f5f9;
+}
+
+/* ========================================
+   PIE DE PÁGINA
+   ======================================== */
+
+.pie {
+    text-align: center;
+    padding: 2rem;
+    margin-top: 3rem;
+    color: #64748b;
+    border-top: 1px solid var(--color-borde);
+}
+
+/* ========================================
+   RESPONSIVE - Usando em en media queries
+   ======================================== */
+
+/*
+   Usar em en media queries es una buena práctica
+   porque respeta el zoom del navegador del usuario.
+   48em ≈ 768px cuando el font-size base es 16px
+*/
+@media (max-width: 48em) {
+    body {
+        padding: 1rem;
+    }
+
+    .cabecera h1 {
+        font-size: 1.75rem;
+    }
+
+    .fila-resumen {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .contenedor-alturas {
+        flex-direction: column;
+        height: auto;
+        align-items: stretch;
+    }
+
+    .caja-altura {
+        height: auto;
+        min-height: 80px;
+    }
+
+    .altura-vh {
+        height: 15vh;
+    }
+}
+

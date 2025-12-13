@@ -1,0 +1,417 @@
+/* ========================================
+   VARIABLES CSS
+   ======================================== */
+
+:root {
+    --color-fondo: #f5f7fa;
+    --color-tarjeta: #ffffff;
+    --color-texto: #2d3748;
+    --color-texto-secundario: #718096;
+    --color-borde: #e2e8f0;
+    --color-primario: #4f46e5;
+    --color-primario-hover: #4338ca;
+
+    /* Colores de prioridad */
+    --color-alta: #ef4444;
+    --color-media: #f59e0b;
+    --color-baja: #10b981;
+
+    --radio-borde: 12px;
+    --sombra: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================
+   RESET Y BASE
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+    line-height: 1.5;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+/* ========================================
+   CONTENEDOR DE LA APP
+   ======================================== */
+
+.app-contenedor {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.app-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+
+.header-titulo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.header-titulo .icono {
+    font-size: 1.5rem;
+}
+
+.header-titulo h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+}
+
+.contador-tareas {
+    background-color: var(--color-primario);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ========================================
+   FORMULARIO
+   ======================================== */
+
+.formulario-tarea {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.input-tarea {
+    flex: 1;
+    padding: 14px 18px;
+    border: 2px solid var(--color-borde);
+    border-radius: var(--radio-borde);
+    font-size: 1rem;
+    font-family: inherit;
+    background-color: var(--color-tarjeta);
+    transition: border-color 0.2s ease;
+}
+
+.input-tarea:focus {
+    outline: none;
+    border-color: var(--color-primario);
+}
+
+.input-tarea::placeholder {
+    color: var(--color-texto-secundario);
+}
+
+.btn-anadir {
+    padding: 14px 24px;
+    background-color: var(--color-primario);
+    color: white;
+    border: none;
+    border-radius: var(--radio-borde);
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-anadir:hover {
+    background-color: var(--color-primario-hover);
+}
+
+/* ========================================
+   SECCIONES DE TAREAS
+   ======================================== */
+
+.seccion-tareas {
+    margin-bottom: 25px;
+}
+
+.seccion-titulo {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--color-texto-secundario);
+    margin-bottom: 12px;
+    font-weight: 600;
+}
+
+.completadas-contador {
+    font-weight: normal;
+}
+
+/* ========================================
+   LISTA DE TAREAS
+   ======================================== */
+
+.lista-tareas {
+    list-style: none;
+    background-color: var(--color-tarjeta);
+    border-radius: var(--radio-borde);
+    box-shadow: var(--sombra);
+    overflow: hidden;
+}
+
+/* ========================================
+   TAREA INDIVIDUAL
+   ======================================== */
+
+.tarea {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    border-bottom: 1px solid var(--color-borde);
+    transition: background-color 0.2s ease;
+}
+
+.tarea:last-child {
+    border-bottom: none;
+}
+
+.tarea:hover {
+    background-color: #f8fafc;
+}
+
+/* Contenido de la tarea (checkbox + texto) */
+.tarea-contenido {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    flex: 1;
+}
+
+/* ========================================
+   CHECKBOX PERSONALIZADO
+   ======================================== */
+
+/* Ocultar checkbox nativo */
+.tarea-checkbox {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Checkbox visual personalizado */
+.checkbox-custom {
+    width: 22px;
+    height: 22px;
+    border: 2px solid var(--color-borde);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+    flex-shrink: 0;
+}
+
+/* Icono de check (oculto por defecto) */
+.checkbox-custom::after {
+    content: "✓";
+    font-size: 12px;
+    color: white;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.2s ease;
+}
+
+/* Hover en checkbox */
+.tarea-contenido:hover .checkbox-custom {
+    border-color: var(--color-primario);
+}
+
+/* Checkbox marcado */
+.tarea-checkbox:checked + .checkbox-custom {
+    background-color: var(--color-primario);
+    border-color: var(--color-primario);
+}
+
+.tarea-checkbox:checked + .checkbox-custom::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* ========================================
+   INDICADOR DE PRIORIDAD
+   ======================================== */
+
+.prioridad-indicador {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+/* Colores por prioridad usando selectores de atributo */
+[data-prioridad="alta"] .prioridad-indicador {
+    background-color: var(--color-alta);
+}
+
+[data-prioridad="media"] .prioridad-indicador {
+    background-color: var(--color-media);
+}
+
+[data-prioridad="baja"] .prioridad-indicador {
+    background-color: var(--color-baja);
+}
+
+/* ========================================
+   TEXTO DE LA TAREA
+   ======================================== */
+
+.tarea-texto {
+    font-size: 0.95rem;
+    color: var(--color-texto);
+    transition: all 0.3s ease;
+}
+
+/* Texto tachado cuando está completado */
+.tarea-checkbox:checked ~ .tarea-texto {
+    text-decoration: line-through;
+    color: var(--color-texto-secundario);
+}
+
+/* ========================================
+   METADATOS Y BOTÓN ELIMINAR
+   ======================================== */
+
+.tarea-meta {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.tarea-fecha {
+    font-size: 0.85rem;
+    color: var(--color-texto-secundario);
+}
+
+.btn-eliminar {
+    width: 28px;
+    height: 28px;
+    border: none;
+    background-color: transparent;
+    color: var(--color-texto-secundario);
+    font-size: 1.2rem;
+    cursor: pointer;
+    border-radius: 6px;
+    opacity: 0;
+    transition: all 0.2s ease;
+}
+
+/* Mostrar botón eliminar solo en hover de la tarea */
+.tarea:hover .btn-eliminar {
+    opacity: 1;
+}
+
+.btn-eliminar:hover {
+    background-color: #fee2e2;
+    color: var(--color-alta);
+}
+
+/* ========================================
+   SELECTOR :has() - ESTILO DEL CONTENEDOR
+   ======================================== */
+
+/* Estilizar la tarea completa cuando está marcada */
+.tarea:has(.tarea-checkbox:checked) {
+    opacity: 0.7;
+}
+
+/* Cambiar el borde de prioridad cuando está completada */
+.tarea:has(.tarea-checkbox:checked) .prioridad-indicador {
+    opacity: 0.5;
+}
+
+/* ========================================
+   SECCIÓN COMPLETADAS
+   ======================================== */
+
+.seccion-completadas .lista-tareas {
+    background-color: #f8fafc;
+}
+
+.seccion-completadas .tarea {
+    opacity: 0.8;
+}
+
+/* ========================================
+   ANIMACIÓN DE CHECK
+   ======================================== */
+
+@keyframes checkBounce {
+    0% {
+        transform: scale(0);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+.tarea-checkbox:checked + .checkbox-custom::after {
+    animation: checkBounce 0.3s ease;
+}
+
+/* ========================================
+   FOCUS VISIBLE PARA ACCESIBILIDAD
+   ======================================== */
+
+.tarea-checkbox:focus-visible + .checkbox-custom {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 2px;
+}
+
+.input-tarea:focus-visible,
+.btn-anadir:focus-visible,
+.btn-eliminar:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 2px;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 500px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    .app-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    .formulario-tarea {
+        flex-direction: column;
+    }
+
+    .btn-anadir {
+        width: 100%;
+    }
+
+    .tarea-fecha {
+        display: none;
+    }
+
+    .btn-eliminar {
+        opacity: 1;
+    }
+}
+

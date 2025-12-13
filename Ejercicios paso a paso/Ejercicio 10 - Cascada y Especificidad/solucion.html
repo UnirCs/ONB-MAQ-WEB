@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Cascada CSS y Especificidad</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="cabecera">
+        <h1>La Cascada CSS y Especificidad</h1>
+        <p>Entiende cómo CSS decide qué estilos aplicar</p>
+    </header>
+
+    <main class="contenido">
+
+        <!-- ========================================
+             SECCIÓN 1: ORDEN DE APARICIÓN
+             ======================================== -->
+        <section class="seccion">
+            <h2>1. Orden de Aparición</h2>
+            <p class="explicacion">Cuando dos reglas tienen la <strong>misma especificidad</strong>, la que aparece <strong>última</strong> en el CSS gana.</p>
+
+            <div class="demo-caja">
+                <h3>Ejemplo: Última regla gana</h3>
+
+                <p class="demo-orden">Este texto es <strong>AZUL</strong> porque la última regla gana</p>
+
+                <div class="codigo-ejemplo">
+                    <pre><code>/* En el CSS: */
+.demo-orden { color: red; }     /* Primera */
+.demo-orden { color: green; }   /* Segunda */
+.demo-orden { color: blue; }    /* Tercera ← GANA */</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-caja">
+                <h3>Mismo selector, diferentes archivos</h3>
+                <p class="nota">Si tienes varios archivos CSS, el orden de los <code>&lt;link&gt;</code> importa. El último archivo cargado tiene prioridad.</p>
+
+                <div class="codigo-ejemplo">
+                    <pre><code>&lt;link rel="stylesheet" href="base.css"&gt;
+&lt;link rel="stylesheet" href="theme.css"&gt;  &lt;!-- Este gana --&gt;</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN 2: ESPECIFICIDAD
+             ======================================== -->
+        <section class="seccion">
+            <h2>2. Especificidad</h2>
+            <p class="explicacion">La especificidad determina qué regla gana cuando hay conflicto. Se calcula sumando puntos según el tipo de selector.</p>
+
+            <div class="demo-caja">
+                <h3>Jerarquía de Especificidad</h3>
+
+                <div class="jerarquia-visual">
+                    <div class="nivel-especificidad nivel-elemento">
+                        <span class="etiqueta">Elemento</span>
+                        <span class="ejemplo">p, div, span</span>
+                        <span class="puntos">= 1 punto</span>
+                    </div>
+                    <div class="nivel-especificidad nivel-clase">
+                        <span class="etiqueta">Clase / Atributo / Pseudo-clase</span>
+                        <span class="ejemplo">.card, [type], :hover</span>
+                        <span class="puntos">= 10 puntos</span>
+                    </div>
+                    <div class="nivel-especificidad nivel-id">
+                        <span class="etiqueta">ID</span>
+                        <span class="ejemplo">#header, #main</span>
+                        <span class="puntos">= 100 puntos</span>
+                    </div>
+                    <div class="nivel-especificidad nivel-inline">
+                        <span class="etiqueta">Inline Style</span>
+                        <span class="ejemplo">style="..."</span>
+                        <span class="puntos">= 1000 puntos</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-caja">
+                <h3>Demostración en vivo</h3>
+
+                <!-- Este elemento tiene id, clase y es un párrafo -->
+                <p id="demo-especificidad" class="texto-demo otro-clase">
+                    Este texto es <strong>VERDE</strong> porque #id (100) > .clase (10) > p (1)
+                </p>
+
+                <div class="codigo-ejemplo">
+                    <pre><code>/* Las 3 reglas aplican al mismo elemento: */
+p { color: red; }                    /* 0,0,0,1 = 1 punto */
+.texto-demo { color: blue; }         /* 0,0,1,0 = 10 puntos */
+#demo-especificidad { color: green; } /* 0,1,0,0 = 100 puntos ← GANA */</code></pre>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN 3: CALCULADORA DE ESPECIFICIDAD
+             ======================================== -->
+        <section class="seccion">
+            <h2>3. Calculadora de Especificidad</h2>
+
+            <div class="demo-caja">
+                <h3>Cómo calcular la especificidad</h3>
+                <p>Cuenta los selectores de cada tipo: (inline, ID, clase, elemento)</p>
+
+                <table class="tabla-especificidad">
+                    <thead>
+                        <tr>
+                            <th>Selector</th>
+                            <th>Inline</th>
+                            <th>ID</th>
+                            <th>Clase</th>
+                            <th>Elem</th>
+                            <th>Total</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>p</code></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td class="total">1</td>
+                        </tr>
+                        <tr>
+                            <td><code>.card</code></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td class="total">10</td>
+                        </tr>
+                        <tr>
+                            <td><code>#header</code></td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td class="total">100</td>
+                        </tr>
+                        <tr>
+                            <td><code>div.card</code></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td class="total">11</td>
+                        </tr>
+                        <tr>
+                            <td><code>ul li a</code></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>3</td>
+                            <td class="total">3</td>
+                        </tr>
+                        <tr>
+                            <td><code>.nav .menu .item</code></td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>3</td>
+                            <td>0</td>
+                            <td class="total">30</td>
+                        </tr>
+                        <tr>
+                            <td><code>#nav ul.menu li a:hover</code></td>
+                            <td>0</td>
+                            <td>1</td>
+                            <td>2</td>
+                            <td>3</td>
+                            <td class="total">123</td>
+                        </tr>
+                        <tr class="fila-importante">
+                            <td><code>style="color:red"</code></td>
+                            <td>1</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td>0</td>
+                            <td class="total">1000</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="demo-caja">
+                <h3>Duelo de Selectores</h3>
+
+                <div class="duelo">
+                    <div class="contendiente">
+                        <code>div.card.active</code>
+                        <span class="puntuacion">0,0,2,1 = 21</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="contendiente ganador">
+                        <code>#sidebar .widget</code>
+                        <span class="puntuacion">0,1,1,0 = 110 ✓</span>
+                    </div>
+                </div>
+
+                <div class="duelo">
+                    <div class="contendiente ganador">
+                        <code>html body div.container p.text</code>
+                        <span class="puntuacion">0,0,2,4 = 24 ✓</span>
+                    </div>
+                    <div class="vs">VS</div>
+                    <div class="contendiente">
+                        <code>.text</code>
+                        <span class="puntuacion">0,0,1,0 = 10</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN 4: !IMPORTANT
+             ======================================== -->
+        <section class="seccion">
+            <h2>4. La Regla <code>!important</code></h2>
+            <p class="explicacion warning">⚠️ <code>!important</code> rompe el flujo natural de la cascada. Úsalo con mucho cuidado.</p>
+
+            <div class="demo-caja">
+                <h3>!important supera toda especificidad</h3>
+
+                <p id="demo-important" class="texto-important">
+                    Este texto es <strong>ROJO</strong> por !important, aunque #id normalmente ganaría
+                </p>
+
+                <div class="codigo-ejemplo">
+                    <pre><code>#demo-important { color: blue; }         /* 100 puntos */
+.texto-important { color: red !important; } /* ← GANA por !important */</code></pre>
+                </div>
+            </div>
+
+            <div class="demo-caja">
+                <h3>Cómo sobrescribir un !important</h3>
+
+                <p class="texto-override">
+                    Este texto es <strong>VERDE</strong>: un !important más específico gana
+                </p>
+
+                <div class="codigo-ejemplo">
+                    <pre><code>.texto-override { color: red !important; }
+p.texto-override { color: green !important; } /* ← Más específico + !important */</code></pre>
+                </div>
+
+                <div class="nota-importante">
+                    <h4>⚠️ Cuándo usar !important:</h4>
+                    <ul>
+                        <li>✅ Clases utility (como Tailwind: <code>.hidden { display: none !important; }</code>)</li>
+                        <li>✅ Sobrescribir estilos de librerías externas que no puedes modificar</li>
+                        <li>❌ NO para "arreglar" problemas de especificidad en tu propio código</li>
+                        <li>❌ NO como primera solución cuando algo "no funciona"</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN 5: HERENCIA
+             ======================================== -->
+        <section class="seccion">
+            <h2>5. Herencia CSS</h2>
+            <p class="explicacion">Algunas propiedades se heredan de padres a hijos automáticamente, otras no.</p>
+
+            <div class="demo-caja">
+                <h3>Propiedades que SÍ se heredan</h3>
+
+                <div class="padre-herencia" style="color: purple; font-family: Georgia, serif;">
+                    <p>Padre con <code>color: purple</code> y <code>font-family: Georgia</code></p>
+                    <div class="hijo-herencia">
+                        <p>Hijo: hereda color y font-family automáticamente</p>
+                        <div class="nieto-herencia">
+                            <p>Nieto: también hereda (la herencia es recursiva)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p class="lista-herencia"><strong>Se heredan:</strong> color, font-*, text-*, line-height, visibility, cursor, letter-spacing, word-spacing</p>
+            </div>
+
+            <div class="demo-caja">
+                <h3>Propiedades que NO se heredan</h3>
+
+                <div class="padre-no-herencia">
+                    <p>Padre con borde, padding y background</p>
+                    <div class="hijo-no-herencia">
+                        <p>Hijo: NO hereda borde, padding ni background</p>
+                    </div>
+                </div>
+
+                <p class="lista-herencia"><strong>NO se heredan:</strong> margin, padding, border, background, width, height, display, position</p>
+            </div>
+
+            <div class="demo-caja">
+                <h3>Valores especiales: inherit, initial, unset</h3>
+
+                <div class="demo-valores-especiales">
+                    <div class="caja-inherit">
+                        <code>border: inherit</code>
+                        <p>Fuerza la herencia</p>
+                    </div>
+                    <div class="caja-initial">
+                        <code>color: initial</code>
+                        <p>Valor inicial (negro)</p>
+                    </div>
+                    <div class="caja-unset">
+                        <code>all: unset</code>
+                        <p>Resetea todo</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN 6: RESUMEN VISUAL
+             ======================================== -->
+        <section class="seccion seccion-resumen">
+            <h2>6. Resumen: El Algoritmo de la Cascada</h2>
+
+            <div class="demo-caja">
+                <h3>Orden de prioridad (de mayor a menor)</h3>
+
+                <ol class="lista-prioridad">
+                    <li class="prioridad-1">
+                        <span class="numero">1</span>
+                        <div class="contenido-prioridad">
+                            <strong>Transiciones CSS</strong>
+                            <span>Las animaciones activas tienen máxima prioridad</span>
+                        </div>
+                    </li>
+                    <li class="prioridad-2">
+                        <span class="numero">2</span>
+                        <div class="contenido-prioridad">
+                            <strong>!important del usuario</strong>
+                            <span>Estilos del usuario con !important (accesibilidad)</span>
+                        </div>
+                    </li>
+                    <li class="prioridad-3">
+                        <span class="numero">3</span>
+                        <div class="contenido-prioridad">
+                            <strong>!important del autor</strong>
+                            <span>Tu CSS con !important</span>
+                        </div>
+                    </li>
+                    <li class="prioridad-4">
+                        <span class="numero">4</span>
+                        <div class="contenido-prioridad">
+                            <strong>Estilos inline</strong>
+                            <span>style="" en el HTML</span>
+                        </div>
+                    </li>
+                    <li class="prioridad-5">
+                        <span class="numero">5</span>
+                        <div class="contenido-prioridad">
+                            <strong>Estilos del autor (por especificidad)</strong>
+                            <span>Tu CSS, ordenado por ID > Clase > Elemento</span>
+                        </div>
+                    </li>
+                    <li class="prioridad-6">
+                        <span class="numero">6</span>
+                        <div class="contenido-prioridad">
+                            <strong>Estilos del navegador</strong>
+                            <span>User Agent Stylesheet (los estilos por defecto)</span>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+
+            <div class="demo-caja">
+                <h3>Mejores Prácticas</h3>
+
+                <div class="mejores-practicas">
+                    <div class="practica buena">
+                        <span class="icono">✅</span>
+                        <p>Usa clases para estilizar</p>
+                    </div>
+                    <div class="practica buena">
+                        <span class="icono">✅</span>
+                        <p>Mantén la especificidad baja</p>
+                    </div>
+                    <div class="practica buena">
+                        <span class="icono">✅</span>
+                        <p>Evita IDs para CSS (úsalos para JS)</p>
+                    </div>
+                    <div class="practica mala">
+                        <span class="icono">❌</span>
+                        <p>Evita !important</p>
+                    </div>
+                    <div class="practica mala">
+                        <span class="icono">❌</span>
+                        <p>Evita selectores muy largos</p>
+                    </div>
+                    <div class="practica mala">
+                        <span class="icono">❌</span>
+                        <p>Evita estilos inline</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="pie">
+        <p>Ejercicio 10 - La Cascada CSS y Especificidad</p>
+    </footer>
+
+</body>
+</html>
+

@@ -1,0 +1,333 @@
+/* ========================================
+   VARIABLES CSS
+   ======================================== */
+
+:root {
+    --color-fondo-footer: #1a1a2e;
+    --color-fondo-inferior: #16213e;
+    --color-texto: #a0a0a0;
+    --color-texto-claro: #ffffff;
+    --color-acento: #e94560;
+    --color-enlace-hover: #4ecca3;
+    --fuente-principal: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ========================================
+   RESET Y ESTILOS BASE
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    background-color: #f5f5f5;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Contenido de ejemplo */
+.contenido-ejemplo {
+    flex: 1;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.contenido-ejemplo h1 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* ========================================
+   FOOTER PRINCIPAL
+   ======================================== */
+
+.footer {
+    background-color: var(--color-fondo-footer);
+    color: var(--color-texto);
+}
+
+/* ========================================
+   CONTENIDO DEL FOOTER
+   ======================================== */
+
+.footer-contenido {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px 40px;
+}
+
+/* ========================================
+   SECCIONES DEL FOOTER
+   ======================================== */
+
+.footer-seccion {
+    /* Estilos comunes para todas las secciones */
+}
+
+/* Logo y descripción */
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--color-texto-claro);
+    margin-bottom: 15px;
+}
+
+.footer-descripcion {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* Títulos de sección */
+.footer-titulo {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--color-texto-claro);
+    margin-bottom: 20px;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+/* Línea decorativa bajo el título */
+.footer-titulo::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background-color: var(--color-acento);
+}
+
+/* ========================================
+   LISTAS DE ENLACES
+   ======================================== */
+
+.footer-lista {
+    list-style: none;
+}
+
+.footer-lista li {
+    margin-bottom: 12px;
+}
+
+.footer-lista a {
+    color: var(--color-texto);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease, padding-left 0.3s ease;
+    display: inline-block;
+}
+
+.footer-lista a:hover {
+    color: var(--color-enlace-hover);
+    padding-left: 5px;
+}
+
+/* ========================================
+   LISTA DE CONTACTO
+   ======================================== */
+
+.footer-lista-contacto li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+}
+
+.footer-lista-contacto .icono {
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.footer-lista-contacto span:not(.icono),
+.footer-lista-contacto a {
+    font-size: 0.95rem;
+}
+
+/* ========================================
+   REDES SOCIALES
+   ======================================== */
+
+.redes-sociales {
+    display: flex;
+    gap: 12px;
+}
+
+.red-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--color-texto-claro);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.red-social:hover {
+    transform: translateY(-3px);
+    background-color: var(--color-acento);
+}
+
+/* Colores específicos por red social usando selectores de atributo */
+[data-red="facebook"]:hover {
+    background-color: #1877f2;
+}
+
+[data-red="twitter"]:hover {
+    background-color: #000;
+}
+
+[data-red="linkedin"]:hover {
+    background-color: #0a66c2;
+}
+
+[data-red="instagram"]:hover {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+}
+
+/* ========================================
+   FOOTER INFERIOR
+   ======================================== */
+
+.footer-inferior {
+    background-color: var(--color-fondo-inferior);
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    max-width: 100%;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.copyright {
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.copyright strong {
+    color: var(--color-texto-claro);
+}
+
+.footer-legal {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.footer-legal a {
+    color: var(--color-texto);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: var(--color-enlace-hover);
+}
+
+.separador {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+/* ========================================
+   PSEUDO-ELEMENTOS DECORATIVOS
+   ======================================== */
+
+/* Efecto en enlaces de lista */
+.footer-lista a::before {
+    content: "→";
+    opacity: 0;
+    margin-right: 0;
+    transition: all 0.3s ease;
+}
+
+.footer-lista a:hover::before {
+    opacity: 1;
+    margin-right: 5px;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+/* Tablets */
+@media (max-width: 992px) {
+    .footer-contenido {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+
+    .footer-sobre {
+        grid-column: span 2;
+    }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+    .footer-contenido {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 40px 20px 30px;
+    }
+
+    .footer-sobre {
+        grid-column: span 1;
+        text-align: center;
+    }
+
+    .redes-sociales {
+        justify-content: center;
+    }
+
+    .footer-titulo::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .footer-seccion {
+        text-align: center;
+    }
+
+    .footer-lista-contacto li {
+        justify-content: center;
+    }
+
+    .footer-inferior {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-legal {
+        justify-content: center;
+    }
+}
+
+/* ========================================
+   ACCESIBILIDAD
+   ======================================== */
+
+.red-social:focus,
+.footer-lista a:focus,
+.footer-legal a:focus {
+    outline: 2px solid var(--color-acento);
+    outline-offset: 2px;
+}
+

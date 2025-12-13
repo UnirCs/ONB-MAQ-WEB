@@ -60,3 +60,13 @@ label + input {
 .reservation__submit-btn:hover {
     background-color: #002f5f;
 }
+
+.reservation__text {
+    font-size:0.8rem;
+    color: gray;
+}
+
+.reservation__text--warning {
+    font-size:0.8rem;
+    color: orange;
+}

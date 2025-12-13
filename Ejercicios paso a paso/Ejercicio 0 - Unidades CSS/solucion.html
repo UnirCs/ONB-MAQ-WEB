@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unidades y Valores CSS</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header class="cabecera">
+        <h1>Unidades y Valores CSS</h1>
+        <p>Guía visual de las diferentes unidades de medida</p>
+    </header>
+
+    <main class="contenido">
+
+        <!-- ========================================
+             SECCIÓN 1: TAMAÑOS DE TEXTO
+             ======================================== -->
+        <section class="seccion">
+            <h2>1. Tamaños de Texto</h2>
+
+            <div class="demo-caja">
+                <h3>Comparación de unidades (padre con font-size por defecto: 16px)</h3>
+
+                <p class="texto-px">Este texto usa <code>font-size: 16px</code> — Tamaño fijo en píxeles</p>
+                <p class="texto-em">Este texto usa <code>font-size: 1em</code> — 1× el tamaño del padre = 16px</p>
+                <p class="texto-rem">Este texto usa <code>font-size: 1rem</code> — 1× el tamaño del root = 16px</p>
+                <p class="texto-percent">Este texto usa <code>font-size: 100%</code> — 100% del padre = 16px</p>
+            </div>
+
+            <div class="demo-caja padre-grande">
+                <h3>Padre con font-size: 20px</h3>
+                <p>Este es el texto del padre (20px)</p>
+
+                <div class="hijo">
+                    <p class="texto-em">Hijo con <code>1em</code> = 20px (hereda del padre)</p>
+                    <p class="texto-rem">Hijo con <code>1rem</code> = 16px (siempre del root)</p>
+                    <p class="texto-em-grande">Hijo con <code>1.5em</code> = 30px (1.5 × 20)</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN 2: EFECTO COMPUESTO DE EM
+             ======================================== -->
+        <section class="seccion">
+            <h2>2. Efecto Compuesto de <code>em</code></h2>
+            <p class="explicacion">Cuando usas <code>em</code> en elementos anidados, el tamaño se multiplica en cada nivel. Esto puede causar efectos no deseados.</p>
+
+            <div class="demo-caja">
+                <div class="nivel nivel-1">
+                    <p>Nivel 1: <code>font-size: 1.2em</code></p>
+                    <p class="valor-calculado">Calculado: 16px × 1.2 = <strong>19.2px</strong></p>
+
+                    <div class="nivel nivel-2">
+                        <p>Nivel 2: <code>font-size: 1.2em</code></p>
+                        <p class="valor-calculado">Calculado: 19.2px × 1.2 = <strong>23px</strong></p>
+
+                        <div class="nivel nivel-3">
+                            <p>Nivel 3: <code>font-size: 1.2em</code></p>
+                            <p class="valor-calculado">Calculado: 23px × 1.2 = <strong>27.6px</strong></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-caja">
+                <h3>Solución: Usar <code>rem</code></h3>
+                <div class="nivel-rem nivel-1-rem">
+                    <p>Nivel 1: <code>font-size: 1.2rem</code> = <strong>19.2px</strong></p>
+
+                    <div class="nivel-rem nivel-2-rem">
+                        <p>Nivel 2: <code>font-size: 1.2rem</code> = <strong>19.2px</strong> (mismo tamaño)</p>
+
+                        <div class="nivel-rem nivel-3-rem">
+                            <p>Nivel 3: <code>font-size: 1.2rem</code> = <strong>19.2px</strong> (consistente)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN 3: ANCHOS
+             ======================================== -->
+        <section class="seccion">
+            <h2>3. Anchos (width)</h2>
+
+            <div class="demo-caja">
+                <h3>Unidades de ancho</h3>
+
+                <div class="caja-ancho caja-px">
+                    <code>width: 300px</code> — Siempre 300 píxeles
+                </div>
+
+                <div class="caja-ancho caja-percent">
+                    <code>width: 50%</code> — 50% del contenedor padre
+                </div>
+
+                <div class="caja-ancho caja-vw">
+                    <code>width: 80vw</code> — 80% del ancho de la ventana
+                </div>
+
+                <p class="nota">↑ Redimensiona la ventana para ver cómo cambian % y vw</p>
+            </div>
+
+            <div class="demo-caja contenedor-estrecho">
+                <h3>Mismo CSS en contenedor más estrecho (400px)</h3>
+
+                <div class="caja-ancho caja-px">
+                    <code>width: 300px</code> — Sigue siendo 300px (¡se sale!)
+                </div>
+
+                <div class="caja-ancho caja-percent">
+                    <code>width: 50%</code> — Ahora es 200px (50% de 400)
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN 4: ALTURAS Y VIEWPORT
+             ======================================== -->
+        <section class="seccion">
+            <h2>4. Alturas y Unidades de Viewport</h2>
+
+            <div class="demo-caja">
+                <h3>Comparación de alturas</h3>
+
+                <div class="contenedor-alturas">
+                    <div class="caja-altura altura-px">
+                        <code>height: 100px</code>
+                        <span>Fijo</span>
+                    </div>
+
+                    <div class="caja-altura altura-vh">
+                        <code>height: 20vh</code>
+                        <span>20% ventana</span>
+                    </div>
+
+                    <div class="caja-altura altura-percent">
+                        <code>height: 50%</code>
+                        <span>50% padre*</span>
+                    </div>
+                </div>
+
+                <p class="nota">* Para que % funcione en height, el padre debe tener altura definida</p>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN 5: PADDING Y MARGIN CON EM
+             ======================================== -->
+        <section class="seccion">
+            <h2>5. Espaciado con <code>em</code></h2>
+            <p class="explicacion">Usar <code>em</code> en padding/margin hace que el espaciado sea proporcional al tamaño de texto del elemento.</p>
+
+            <div class="demo-caja">
+                <h3>Padding proporcional al font-size</h3>
+
+                <div class="caja-espaciado espaciado-pequeno">
+                    <code>font-size: 14px; padding: 1em;</code>
+                    <p>Padding = 14px</p>
+                </div>
+
+                <div class="caja-espaciado espaciado-mediano">
+                    <code>font-size: 18px; padding: 1em;</code>
+                    <p>Padding = 18px</p>
+                </div>
+
+                <div class="caja-espaciado espaciado-grande">
+                    <code>font-size: 24px; padding: 1em;</code>
+                    <p>Padding = 24px</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN 6: CALC() Y COMBINACIONES
+             ======================================== -->
+        <section class="seccion">
+            <h2>6. Combinando Unidades con <code>calc()</code></h2>
+
+            <div class="demo-caja">
+                <h3>La función calc() permite mezclar unidades</h3>
+
+                <div class="caja-calc calc-ejemplo-1">
+                    <code>width: calc(100% - 40px)</code>
+                    <p>Ancho completo menos márgenes fijos</p>
+                </div>
+
+                <div class="caja-calc calc-ejemplo-2">
+                    <code>width: calc(50vw - 2rem)</code>
+                    <p>Mitad de la ventana menos espaciado</p>
+                </div>
+
+                <div class="caja-calc calc-ejemplo-3">
+                    <code>font-size: calc(1rem + 0.5vw)</code>
+                    <p>Texto fluido que crece con la ventana</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================
+             SECCIÓN 7: RESUMEN VISUAL
+             ======================================== -->
+        <section class="seccion seccion-resumen">
+            <h2>7. Resumen: Cuándo Usar Cada Unidad</h2>
+
+            <div class="tabla-resumen">
+                <div class="fila-resumen cabecera-resumen">
+                    <span>Unidad</span>
+                    <span>Relativa a</span>
+                    <span>Usar para</span>
+                </div>
+                <div class="fila-resumen">
+                    <span><code>px</code></span>
+                    <span>Nada (absoluto)</span>
+                    <span>Bordes, sombras, detalles pequeños</span>
+                </div>
+                <div class="fila-resumen">
+                    <span><code>rem</code></span>
+                    <span>Font-size del &lt;html&gt;</span>
+                    <span>Font-sizes, espaciados, ¡casi todo!</span>
+                </div>
+                <div class="fila-resumen">
+                    <span><code>em</code></span>
+                    <span>Font-size del padre</span>
+                    <span>Padding/margin proporcional al texto</span>
+                </div>
+                <div class="fila-resumen">
+                    <span><code>%</code></span>
+                    <span>Valor del padre</span>
+                    <span>Anchos flexibles, layouts</span>
+                </div>
+                <div class="fila-resumen">
+                    <span><code>vw/vh</code></span>
+                    <span>Viewport (ventana)</span>
+                    <span>Secciones full-screen, texto fluido</span>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="pie">
+        <p>Ejercicio 0 - Fundamentos de CSS: Unidades y Valores</p>
+    </footer>
+
+</body>
+</html>
+

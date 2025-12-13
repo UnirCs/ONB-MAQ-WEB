@@ -1,0 +1,358 @@
+/* ========================================
+   RESET Y ESTILOS BASE
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    line-height: 1.6;
+    padding: 40px 20px;
+}
+
+/* ========================================
+   ENCABEZADO DE LA SECCIÓN
+   ======================================== */
+
+.seccion-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titulo-principal {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+    color: #7f8c8d;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   CONTENEDOR DE LA TABLA
+   ======================================== */
+
+.contenedor-tabla {
+    max-width: 1000px;
+    margin: 0 auto;
+    overflow-x: auto; /* Scroll horizontal en móviles */
+}
+
+/* ========================================
+   LA TABLA
+   ======================================== */
+
+.tabla-precios {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Bordes redondeados en las esquinas de la tabla */
+.tabla-precios thead tr:first-child th:first-child {
+    border-top-left-radius: 10px;
+}
+
+.tabla-precios thead tr:first-child th:last-child {
+    border-top-right-radius: 10px;
+}
+
+.tabla-precios tfoot tr:last-child td:first-child {
+    border-bottom-left-radius: 10px;
+}
+
+.tabla-precios tfoot tr:last-child td:last-child {
+    border-bottom-right-radius: 10px;
+}
+
+/* ========================================
+   ENCABEZADOS DE COLUMNA (THEAD)
+   ======================================== */
+
+.tabla-precios thead {
+    background-color: #2c3e50;
+}
+
+.tabla-precios th {
+    padding: 25px 15px;
+    color: white;
+    font-weight: 600;
+}
+
+/* Columna de características */
+.col-caracteristicas {
+    text-align: left;
+    width: 25%;
+    background-color: #34495e;
+}
+
+/* Columnas de planes */
+.col-plan {
+    text-align: center;
+    width: 25%;
+    position: relative;
+}
+
+/* Nombre y precio del plan */
+.nombre-plan {
+    display: block;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 5px;
+}
+
+.precio-plan {
+    display: block;
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.precio-plan small {
+    font-size: 0.9rem;
+    font-weight: normal;
+    opacity: 0.8;
+}
+
+/* ========================================
+   COLUMNA DESTACADA (PLAN PRO)
+   ======================================== */
+
+/* Encabezado destacado */
+th.destacado {
+    background-color: #3498db;
+}
+
+/* Celdas destacadas en tbody */
+td.destacado {
+    background-color: #ebf5fb;
+}
+
+/* Pseudo-elemento para etiqueta "Recomendado" */
+th.destacado::before {
+    content: "★ Recomendado";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #e74c3c;
+    color: white;
+    padding: 5px 15px;
+    font-size: 0.75rem;
+    border-radius: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Ajuste para que se vea el pseudo-elemento */
+.tabla-precios {
+    margin-top: 40px;
+}
+
+/* ========================================
+   CUERPO DE LA TABLA (TBODY)
+   ======================================== */
+
+.tabla-precios tbody td,
+.tabla-precios tbody th {
+    padding: 18px 15px;
+    border-bottom: 1px solid #ecf0f1;
+}
+
+/* Nombre de característica (primera columna) */
+.nombre-caracteristica {
+    text-align: left;
+    font-weight: 500;
+    color: #2c3e50 !important;
+    background-color: #f8f9fa;
+}
+
+/* Celdas de datos centradas */
+.tabla-precios tbody td {
+    text-align: center;
+    color: #555;
+}
+
+/* ========================================
+   FILAS ALTERNADAS CON :nth-child
+   ======================================== */
+
+/* Filas impares */
+.tabla-precios tbody tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+/* Filas pares */
+.tabla-precios tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+/* Mantener el fondo destacado en la columna Pro */
+.tabla-precios tbody tr:nth-child(odd) td.destacado,
+.tabla-precios tbody tr:nth-child(even) td.destacado {
+    background-color: #ebf5fb;
+}
+
+/* ========================================
+   HOVER EN FILAS
+   ======================================== */
+
+.tabla-precios tbody tr:hover {
+    background-color: #eaf2f8;
+}
+
+/* La celda destacada mantiene su color en hover */
+.tabla-precios tbody tr:hover td.destacado {
+    background-color: #d4e6f1;
+}
+
+/* ========================================
+   ICONOS DE INCLUIDO/NO INCLUIDO
+   ======================================== */
+
+.incluido {
+    color: #27ae60;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.no-incluido {
+    color: #e74c3c;
+    font-size: 1.3rem;
+}
+
+/* ========================================
+   PIE DE TABLA (TFOOT) - BOTONES
+   ======================================== */
+
+.tabla-precios tfoot td {
+    padding: 25px 15px;
+    background-color: #f8f9fa;
+    border-top: 2px solid #ecf0f1;
+}
+
+.celda-vacia {
+    background-color: #f1f2f6;
+}
+
+/* Estilo base de los botones */
+.boton-plan {
+    display: inline-block;
+    padding: 12px 25px;
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+
+    /* Estilo por defecto (no destacado) */
+    background-color: white;
+    color: #3498db;
+    border: 2px solid #3498db;
+}
+
+.boton-plan:hover {
+    background-color: #3498db;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(52, 152, 219, 0.3);
+}
+
+/* Botón del plan destacado */
+.boton-destacado {
+    background-color: #3498db;
+    color: white;
+    border-color: #3498db;
+}
+
+.boton-destacado:hover {
+    background-color: #2980b9;
+    border-color: #2980b9;
+}
+
+/* ========================================
+   SELECTORES DE ATRIBUTO
+   ======================================== */
+
+/* Todos los elementos con data-plan */
+[data-plan] {
+    transition: background-color 0.2s ease;
+}
+
+/* Estilos específicos por plan usando selectores de atributo */
+[data-plan="basico"]:hover {
+    cursor: default;
+}
+
+[data-plan="enterprise"] {
+    font-weight: 500;
+}
+
+/* ========================================
+   NOTA AL PIE
+   ======================================== */
+
+.nota-pie {
+    text-align: center;
+    margin-top: 30px;
+    color: #95a5a6;
+    font-size: 0.9rem;
+}
+
+/* ========================================
+   PRIMERA Y ÚLTIMA FILA ESPECIALES
+   ======================================== */
+
+/* Primera fila del tbody */
+.tabla-precios tbody tr:first-child td,
+.tabla-precios tbody tr:first-child th {
+    padding-top: 25px;
+}
+
+/* Última fila del tbody */
+.tabla-precios tbody tr:last-child td,
+.tabla-precios tbody tr:last-child th {
+    border-bottom: none;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .titulo-principal {
+        font-size: 1.8rem;
+    }
+
+    .nombre-plan {
+        font-size: 1rem;
+    }
+
+    .precio-plan {
+        font-size: 1.5rem;
+    }
+
+    .tabla-precios th,
+    .tabla-precios td {
+        padding: 12px 8px;
+        font-size: 0.9rem;
+    }
+
+    .boton-plan {
+        padding: 10px 15px;
+        font-size: 0.85rem;
+    }
+}
+

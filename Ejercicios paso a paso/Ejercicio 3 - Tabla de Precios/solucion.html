@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes y Precios - CloudService</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- Encabezado de la sección -->
+    <header class="seccion-header">
+        <h1 class="titulo-principal">Elige tu Plan</h1>
+        <p class="subtitulo">Selecciona el plan que mejor se adapte a tus necesidades. Cancela cuando quieras.</p>
+    </header>
+
+    <!-- Contenedor de la tabla -->
+    <main class="contenedor-tabla">
+        <table class="tabla-precios">
+
+            <!-- Encabezado de la tabla -->
+            <thead>
+                <tr>
+                    <th scope="col" class="col-caracteristicas">Características</th>
+                    <th scope="col" class="col-plan" data-plan="basico">
+                        <span class="nombre-plan">Básico</span>
+                        <span class="precio-plan">9€<small>/mes</small></span>
+                    </th>
+                    <th scope="col" class="col-plan destacado" data-plan="pro">
+                        <span class="nombre-plan">Pro</span>
+                        <span class="precio-plan">29€<small>/mes</small></span>
+                    </th>
+                    <th scope="col" class="col-plan" data-plan="enterprise">
+                        <span class="nombre-plan">Enterprise</span>
+                        <span class="precio-plan">99€<small>/mes</small></span>
+                    </th>
+                </tr>
+            </thead>
+
+            <!-- Cuerpo de la tabla -->
+            <tbody>
+                <tr>
+                    <th scope="row" class="nombre-caracteristica">Usuarios incluidos</th>
+                    <td data-plan="basico">1 usuario</td>
+                    <td data-plan="pro" class="destacado">5 usuarios</td>
+                    <td data-plan="enterprise">Ilimitados</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="nombre-caracteristica">Almacenamiento</th>
+                    <td data-plan="basico">5 GB</td>
+                    <td data-plan="pro" class="destacado">50 GB</td>
+                    <td data-plan="enterprise">500 GB</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="nombre-caracteristica">Soporte técnico</th>
+                    <td data-plan="basico">Email</td>
+                    <td data-plan="pro" class="destacado">Prioritario</td>
+                    <td data-plan="enterprise">24/7 dedicado</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="nombre-caracteristica">Acceso API</th>
+                    <td data-plan="basico" class="no-incluido">✗</td>
+                    <td data-plan="pro" class="destacado incluido">✓</td>
+                    <td data-plan="enterprise" class="incluido">✓</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="nombre-caracteristica">Personalización</th>
+                    <td data-plan="basico" class="no-incluido">✗</td>
+                    <td data-plan="pro" class="destacado">Básica</td>
+                    <td data-plan="enterprise">Completa</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="nombre-caracteristica">Copias de seguridad</th>
+                    <td data-plan="basico">Semanales</td>
+                    <td data-plan="pro" class="destacado">Diarias</td>
+                    <td data-plan="enterprise">Tiempo real</td>
+                </tr>
+                <tr>
+                    <th scope="row" class="nombre-caracteristica">Integraciones</th>
+                    <td data-plan="basico">3 apps</td>
+                    <td data-plan="pro" class="destacado">15 apps</td>
+                    <td data-plan="enterprise">Ilimitadas</td>
+                </tr>
+            </tbody>
+
+            <!-- Pie de la tabla con botones -->
+            <tfoot>
+                <tr>
+                    <td class="celda-vacia"></td>
+                    <td data-plan="basico">
+                        <a href="#" class="boton-plan">Empezar gratis</a>
+                    </td>
+                    <td data-plan="pro" class="destacado">
+                        <a href="#" class="boton-plan boton-destacado">Elegir Pro</a>
+                    </td>
+                    <td data-plan="enterprise">
+                        <a href="#" class="boton-plan">Contactar ventas</a>
+                    </td>
+                </tr>
+            </tfoot>
+
+        </table>
+    </main>
+
+    <!-- Nota al pie -->
+    <footer class="nota-pie">
+        <p>Todos los precios son sin IVA. Los planes anuales tienen un 20% de descuento.</p>
+    </footer>
+
+</body>
+</html>
+

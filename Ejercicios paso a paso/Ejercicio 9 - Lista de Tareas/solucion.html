@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis Tareas - To-Do List</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <div class="app-contenedor">
+
+        <!-- Header -->
+        <header class="app-header">
+            <div class="header-titulo">
+                <span class="icono">📋</span>
+                <h1>Mis Tareas</h1>
+            </div>
+            <span class="contador-tareas">3 pendientes</span>
+        </header>
+
+        <!-- Formulario para añadir tareas (solo visual) -->
+        <form class="formulario-tarea">
+            <input type="text" placeholder="➕ Añadir nueva tarea..." class="input-tarea">
+            <button type="button" class="btn-anadir">Añadir</button>
+        </form>
+
+        <!-- Sección: Hoy -->
+        <section class="seccion-tareas">
+            <h2 class="seccion-titulo">Hoy</h2>
+
+            <ul class="lista-tareas">
+                <!-- Tarea 1 - Prioridad Alta -->
+                <li class="tarea" data-prioridad="alta">
+                    <label class="tarea-contenido">
+                        <input type="checkbox" class="tarea-checkbox">
+                        <span class="checkbox-custom"></span>
+                        <span class="prioridad-indicador"></span>
+                        <span class="tarea-texto">Entregar proyecto final</span>
+                    </label>
+                    <div class="tarea-meta">
+                        <span class="tarea-fecha">Hoy, 18:00</span>
+                        <button class="btn-eliminar" aria-label="Eliminar tarea">×</button>
+                    </div>
+                </li>
+
+                <!-- Tarea 2 - Prioridad Media -->
+                <li class="tarea" data-prioridad="media">
+                    <label class="tarea-contenido">
+                        <input type="checkbox" class="tarea-checkbox">
+                        <span class="checkbox-custom"></span>
+                        <span class="prioridad-indicador"></span>
+                        <span class="tarea-texto">Llamar al cliente</span>
+                    </label>
+                    <div class="tarea-meta">
+                        <span class="tarea-fecha">Hoy, 12:00</span>
+                        <button class="btn-eliminar" aria-label="Eliminar tarea">×</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Sección: Esta semana -->
+        <section class="seccion-tareas">
+            <h2 class="seccion-titulo">Esta semana</h2>
+
+            <ul class="lista-tareas">
+                <!-- Tarea 3 - Prioridad Baja -->
+                <li class="tarea" data-prioridad="baja">
+                    <label class="tarea-contenido">
+                        <input type="checkbox" class="tarea-checkbox">
+                        <span class="checkbox-custom"></span>
+                        <span class="prioridad-indicador"></span>
+                        <span class="tarea-texto">Revisar documentación</span>
+                    </label>
+                    <div class="tarea-meta">
+                        <span class="tarea-fecha">Vie, 10:00</span>
+                        <button class="btn-eliminar" aria-label="Eliminar tarea">×</button>
+                    </div>
+                </li>
+
+                <!-- Tarea 4 - Prioridad Media -->
+                <li class="tarea" data-prioridad="media">
+                    <label class="tarea-contenido">
+                        <input type="checkbox" class="tarea-checkbox">
+                        <span class="checkbox-custom"></span>
+                        <span class="prioridad-indicador"></span>
+                        <span class="tarea-texto">Preparar presentación</span>
+                    </label>
+                    <div class="tarea-meta">
+                        <span class="tarea-fecha">Jue, 15:00</span>
+                        <button class="btn-eliminar" aria-label="Eliminar tarea">×</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Sección: Completadas -->
+        <section class="seccion-tareas seccion-completadas">
+            <h2 class="seccion-titulo">
+                Completadas
+                <span class="completadas-contador">(2)</span>
+            </h2>
+
+            <ul class="lista-tareas">
+                <!-- Tarea completada 1 -->
+                <li class="tarea" data-prioridad="media">
+                    <label class="tarea-contenido">
+                        <input type="checkbox" class="tarea-checkbox" checked>
+                        <span class="checkbox-custom"></span>
+                        <span class="prioridad-indicador"></span>
+                        <span class="tarea-texto">Comprar materiales de oficina</span>
+                    </label>
+                    <div class="tarea-meta">
+                        <span class="tarea-fecha">Ayer</span>
+                        <button class="btn-eliminar" aria-label="Eliminar tarea">×</button>
+                    </div>
+                </li>
+
+                <!-- Tarea completada 2 -->
+                <li class="tarea" data-prioridad="baja">
+                    <label class="tarea-contenido">
+                        <input type="checkbox" class="tarea-checkbox" checked>
+                        <span class="checkbox-custom"></span>
+                        <span class="prioridad-indicador"></span>
+                        <span class="tarea-texto">Enviar email de seguimiento</span>
+                    </label>
+                    <div class="tarea-meta">
+                        <span class="tarea-fecha">Lunes</span>
+                        <button class="btn-eliminar" aria-label="Eliminar tarea">×</button>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+    </div>
+
+</body>
+</html>
+

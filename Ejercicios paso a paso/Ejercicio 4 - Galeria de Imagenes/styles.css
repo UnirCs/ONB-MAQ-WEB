@@ -1,0 +1,325 @@
+/* ========================================
+   RESET Y ESTILOS BASE
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a2e;
+    color: #eee;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* ========================================
+   CABECERA
+   ======================================== */
+
+.cabecera {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+}
+
+.titulo-galeria {
+    font-size: 2.8rem;
+    font-weight: 300;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.descripcion-galeria {
+    font-size: 1.1rem;
+    color: #a0a0a0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   CONTENIDO PRINCIPAL
+   ======================================== */
+
+.contenido-principal {
+    padding: 40px 20px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   LA GALERÍA - CSS GRID
+   ======================================== */
+
+.galeria {
+    display: grid;
+
+    /* Columnas responsivas automáticas */
+    /* auto-fill: crea tantas columnas como quepan */
+    /* minmax(280px, 1fr): mínimo 280px, máximo 1 fracción */
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+
+    /* Filas con altura automática, mínimo 250px */
+    grid-auto-rows: 250px;
+
+    /* Espacio entre elementos */
+    gap: 20px;
+
+    /* Rellena huecos automáticamente */
+    grid-auto-flow: dense;
+}
+
+/* ========================================
+   TARJETAS DE IMAGEN
+   ======================================== */
+
+.tarjeta-imagen {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+
+    /* Sombra suave */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* La imagen dentro de la tarjeta */
+.tarjeta-imagen img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    /* Transición para el efecto zoom */
+    transition: transform 0.5s ease;
+}
+
+/* Efecto zoom en la imagen al hover */
+.tarjeta-imagen:hover img {
+    transform: scale(1.1);
+}
+
+/* ========================================
+   OVERLAY (CAPA SUPERPUESTA)
+   ======================================== */
+
+.overlay {
+    /* Posicionamiento absoluto para cubrir toda la tarjeta */
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    /* Fondo oscuro semitransparente */
+    background: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0%,
+        rgba(0, 0, 0, 0.4) 50%,
+        rgba(0, 0, 0, 0) 100%
+    );
+
+    /* Flexbox para centrar contenido */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 25px;
+
+    /* Oculto por defecto */
+    opacity: 0;
+
+    /* Transición suave */
+    transition: opacity 0.3s ease;
+}
+
+/* Mostrar overlay al hover */
+.tarjeta-imagen:hover .overlay {
+    opacity: 1;
+}
+
+/* Título dentro del overlay */
+.overlay h3 {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 5px;
+
+    /* Animación de entrada */
+    transform: translateY(20px);
+    transition: transform 0.3s ease 0.1s;
+}
+
+/* Animación del título al hover */
+.tarjeta-imagen:hover .overlay h3 {
+    transform: translateY(0);
+}
+
+/* Categoría dentro del overlay */
+.overlay p {
+    font-size: 0.9rem;
+    color: #e94560;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+
+    /* Animación de entrada (con delay) */
+    transform: translateY(20px);
+    transition: transform 0.3s ease 0.2s;
+}
+
+/* Animación de la categoría al hover */
+.tarjeta-imagen:hover .overlay p {
+    transform: translateY(0);
+}
+
+/* ========================================
+   TARJETAS ESPECIALES - GRID PLACEMENT
+   ======================================== */
+
+/* Tarjeta destacada: ocupa 2 columnas */
+.tarjeta-imagen.destacada {
+    grid-column: span 2;
+}
+
+/* Tarjeta vertical: ocupa 2 filas */
+.tarjeta-imagen.vertical {
+    grid-row: span 2;
+}
+
+/* ========================================
+   SELECTORES DE ATRIBUTO
+   ======================================== */
+
+/* Todos los elementos con data-categoria */
+[data-categoria] {
+    /* Borde inferior coloreado según categoría */
+    border-bottom: 3px solid transparent;
+}
+
+/* Categoría específica: paisaje */
+[data-categoria="paisaje"] {
+    border-bottom-color: #4ecca3;
+}
+
+/* Categoría específica: arquitectura */
+[data-categoria="arquitectura"] {
+    border-bottom-color: #e94560;
+}
+
+/* Categoría específica: retrato */
+[data-categoria="retrato"] {
+    border-bottom-color: #ffc107;
+}
+
+/* Categoría específica: naturaleza */
+[data-categoria="naturaleza"] {
+    border-bottom-color: #00d9ff;
+}
+
+/* Categoría específica: urbano */
+[data-categoria="urbano"] {
+    border-bottom-color: #9c27b0;
+}
+
+/* ========================================
+   PIE DE PÁGINA
+   ======================================== */
+
+.pie-pagina {
+    text-align: center;
+    padding: 30px 20px;
+    background-color: #16213e;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.pie-pagina a {
+    color: #e94560;
+    text-decoration: none;
+}
+
+.pie-pagina a:hover {
+    text-decoration: underline;
+}
+
+/* ========================================
+   RESPONSIVE - MEDIA QUERIES
+   ======================================== */
+
+/* Tablets y pantallas medianas */
+@media (max-width: 900px) {
+    .titulo-galeria {
+        font-size: 2.2rem;
+    }
+
+    .galeria {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        grid-auto-rows: 220px;
+    }
+}
+
+/* Móviles */
+@media (max-width: 600px) {
+    .cabecera {
+        padding: 40px 15px 30px;
+    }
+
+    .titulo-galeria {
+        font-size: 1.8rem;
+        letter-spacing: 1px;
+    }
+
+    .descripcion-galeria {
+        font-size: 1rem;
+    }
+
+    .contenido-principal {
+        padding: 20px 15px;
+    }
+
+    .galeria {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 200px;
+        gap: 15px;
+    }
+
+    /* En móviles, las tarjetas destacadas ocupan solo 1 columna */
+    .tarjeta-imagen.destacada {
+        grid-column: span 1;
+    }
+
+    /* Las verticales siguen ocupando 2 filas */
+    .tarjeta-imagen.vertical {
+        grid-row: span 2;
+    }
+
+    .overlay {
+        padding: 15px;
+    }
+
+    .overlay h3 {
+        font-size: 1.2rem;
+    }
+}
+
+/* ========================================
+   ACCESIBILIDAD - FOCUS
+   ======================================== */
+
+.tarjeta-imagen:focus {
+    outline: 3px solid #e94560;
+    outline-offset: 3px;
+}
+
+.tarjeta-imagen:focus .overlay {
+    opacity: 1;
+}
+
+.tarjeta-imagen:focus .overlay h3,
+.tarjeta-imagen:focus .overlay p {
+    transform: translateY(0);
+}
+

@@ -1,0 +1,362 @@
+/* ========================================
+   VARIABLES CSS
+   ======================================== */
+
+:root {
+    --color-primario: #6366f1;
+    --color-primario-hover: #4f46e5;
+    --color-fondo-oscuro: #0f172a;
+    --color-texto: #ffffff;
+    --color-texto-secundario: rgba(255, 255, 255, 0.8);
+    --fuente-principal: 'Segoe UI', system-ui, sans-serif;
+}
+
+/* ========================================
+   RESET Y BASE
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--fuente-principal);
+    color: var(--color-texto);
+    line-height: 1.6;
+}
+
+/* ========================================
+   NAVEGACIÓN FIJA
+   ======================================== */
+
+.navegacion {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 20px 0;
+    background: transparent;
+    transition: background-color 0.3s ease;
+}
+
+.nav-contenido {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-texto);
+    text-decoration: none;
+}
+
+.nav-enlaces {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+.nav-enlace {
+    color: var(--color-texto-secundario);
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.nav-enlace:hover,
+.nav-enlace.activo {
+    color: var(--color-texto);
+}
+
+/* Línea bajo enlace activo */
+.nav-enlace.activo::after {
+    content: "";
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background-color: var(--color-primario);
+}
+
+.nav-boton {
+    padding: 10px 20px;
+    background-color: var(--color-primario);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.nav-boton:hover {
+    background-color: var(--color-primario-hover);
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+
+.hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    /* Imagen de fondo */
+    background-image: url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1920');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+/* Overlay oscuro */
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(
+        135deg,
+        rgba(15, 23, 42, 0.9) 0%,
+        rgba(30, 41, 59, 0.8) 100%
+    );
+}
+
+/* ========================================
+   CONTENIDO DEL HERO
+   ======================================== */
+
+.hero-contenido {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+/* Badge */
+.hero-badge {
+    display: inline-block;
+    padding: 8px 20px;
+    background: rgba(99, 102, 241, 0.2);
+    border: 1px solid rgba(99, 102, 241, 0.5);
+    border-radius: 30px;
+    font-size: 0.9rem;
+    color: #a5b4fc;
+    margin-bottom: 25px;
+}
+
+/* Título */
+.hero-titulo {
+    font-size: 3.5rem;
+    font-weight: 700;
+    line-height: 1.1;
+    margin-bottom: 25px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.texto-destacado {
+    color: var(--color-primario);
+    background: linear-gradient(90deg, #6366f1, #a855f7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Subtítulo */
+.hero-subtitulo {
+    font-size: 1.25rem;
+    color: var(--color-texto-secundario);
+    max-width: 600px;
+    margin: 0 auto 35px;
+    line-height: 1.7;
+}
+
+/* ========================================
+   BOTONES
+   ======================================== */
+
+.hero-botones {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.boton {
+    display: inline-block;
+    padding: 15px 35px;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+/* Botón primario (sólido) */
+.boton-primario {
+    background: linear-gradient(135deg, #6366f1, #8b5cf6);
+    color: white;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+}
+
+.boton-primario:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(99, 102, 241, 0.5);
+}
+
+/* Botón secundario (outline) */
+.boton-secundario {
+    background: transparent;
+    color: white;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.boton-secundario:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+}
+
+/* Nota bajo los botones */
+.hero-nota {
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* ========================================
+   INDICADOR DE SCROLL
+   ======================================== */
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    z-index: 1;
+}
+
+.scroll-texto {
+    display: block;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.5);
+    margin-bottom: 10px;
+}
+
+.scroll-flecha {
+    width: 30px;
+    height: 50px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    margin: 0 auto;
+    position: relative;
+}
+
+.scroll-flecha::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    width: 6px;
+    height: 6px;
+    background-color: white;
+    border-radius: 50%;
+    transform: translateX(-50%);
+    animation: scrollBounce 2s infinite;
+}
+
+/* Animación del indicador */
+@keyframes scrollBounce {
+    0%, 100% {
+        top: 8px;
+        opacity: 1;
+    }
+    50% {
+        top: 25px;
+        opacity: 0.3;
+    }
+}
+
+/* ========================================
+   SECCIÓN SIGUIENTE
+   ======================================== */
+
+.seccion-siguiente {
+    min-height: 50vh;
+    padding: 80px 20px;
+    background-color: #f8fafc;
+    color: #333;
+    text-align: center;
+}
+
+.seccion-siguiente h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 768px) {
+    .nav-enlaces {
+        display: none;
+    }
+
+    .hero-titulo {
+        font-size: 2.2rem;
+    }
+
+    .hero-subtitulo {
+        font-size: 1.1rem;
+    }
+
+    .boton {
+        padding: 12px 25px;
+        font-size: 0.95rem;
+    }
+
+    .hero-botones {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .boton {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* ========================================
+   EFECTOS ADICIONALES
+   ======================================== */
+
+/* Efecto parallax en la imagen */
+@media (min-width: 769px) {
+    .hero {
+        background-attachment: fixed;
+    }
+}
+
+/* Focus visible para accesibilidad */
+.nav-enlace:focus-visible,
+.boton:focus-visible {
+    outline: 2px solid var(--color-primario);
+    outline-offset: 3px;
+}
+

@@ -1,0 +1,149 @@
+/* ========================================
+   ESTILOS GENERALES
+   ======================================== */
+
+/* Aplicamos estilos al body: fondo gris claro y fuente sans-serif */
+body {
+    background-color: #f0f2f5;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 20px;
+    /* Centramos la tarjeta vertical y horizontalmente */
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ========================================
+   LA TARJETA (contenedor principal)
+   ======================================== */
+
+.tarjeta {
+    background-color: white;
+    width: 350px;
+    padding: 30px;
+    border-radius: 15px;
+    /* Sombra suave para dar profundidad */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    /* Centramos el contenido dentro de la tarjeta */
+    text-align: center;
+}
+
+/* ========================================
+   IMAGEN DE PERFIL
+   ======================================== */
+
+.foto-perfil {
+    width: 150px;
+    height: 150px;
+    /* border-radius al 50% hace la imagen circular */
+    border-radius: 50%;
+    /* Borde decorativo */
+    border: 4px solid #3498db;
+    /* Aseguramos que la imagen no se deforme */
+    object-fit: cover;
+}
+
+/* ========================================
+   TEXTOS
+   ======================================== */
+
+/* Nombre - selector de clase */
+.nombre {
+    color: #2c3e50;
+    font-size: 1.8rem;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
+/* Cargo - selector de clase */
+.cargo {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+    font-weight: normal;
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+/* Descripción - selector de clase */
+.descripcion {
+    color: #555;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    padding: 0 10px;
+}
+
+/* ========================================
+   LISTA DE HABILIDADES
+   ======================================== */
+
+/* Quitamos los estilos por defecto de la lista */
+.habilidades {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    /* Usamos flexbox para poner las habilidades en línea */
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* Cada habilidad como una etiqueta */
+.habilidad {
+    background-color: #e8f4fc;
+    color: #3498db;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ========================================
+   BOTÓN DE CONTACTO
+   ======================================== */
+
+.boton-contacto {
+    display: inline-block;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-top: 10px;
+    /* Transición suave para el hover */
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Pseudo-clase :hover para el efecto al pasar el ratón */
+.boton-contacto:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* ========================================
+   FOOTER - REDES SOCIALES (bonus)
+   ======================================== */
+
+.redes-sociales {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px solid #eee;
+}
+
+.enlace-red {
+    color: #7f8c8d;
+    text-decoration: none;
+    margin: 0 10px;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+}
+
+/* Hover en los enlaces de redes sociales */
+.enlace-red:hover {
+    color: #3498db;
+}
+

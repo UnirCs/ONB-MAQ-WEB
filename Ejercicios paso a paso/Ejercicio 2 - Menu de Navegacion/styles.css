@@ -1,0 +1,198 @@
+/* ========================================
+   RESET Y ESTILOS BASE
+   ======================================== */
+
+/* Reset: selector universal para todos los elementos */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilos base del body */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    background-color: #f5f5f5;
+    color: #333;
+}
+
+/* ========================================
+   HEADER Y NAVEGACIÓN
+   ======================================== */
+
+/* Header principal - posición fija */
+.header-principal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    background-color: #2c3e50;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Elemento nav para semántica */
+.navegacion {
+    width: 100%;
+}
+
+/* Contenedor interno - limita el ancho y centra */
+.nav-contenedor {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
+}
+
+/* ========================================
+   LOGO
+   ======================================== */
+
+.logo {
+    color: #ecf0f1;
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-decoration: none;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.logo:hover {
+    color: #3498db;
+}
+
+/* ========================================
+   MENÚ DE NAVEGACIÓN
+   ======================================== */
+
+/* Lista sin estilos de lista */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 5px;
+}
+
+/* Cada item del menú */
+.menu-item {
+    position: relative;
+}
+
+/* Enlaces del menú */
+.menu-enlace {
+    color: #bdc3c7;
+    text-decoration: none;
+    padding: 10px 18px;
+    display: block;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+/* ========================================
+   ESTADOS DE LOS ENLACES
+   ======================================== */
+
+/* Hover: al pasar el ratón */
+.menu-enlace:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* Focus: para navegación con teclado (accesibilidad) */
+.menu-enlace:focus {
+    outline: 2px solid #3498db;
+    outline-offset: 2px;
+}
+
+/* Enlace activo: página actual */
+.menu-enlace.activo {
+    color: #fff;
+    background-color: #3498db;
+}
+
+/* ========================================
+   SELECTORES DE ATRIBUTO
+   ======================================== */
+
+/* Selector de atributo: todos los enlaces con data-section */
+[data-section] {
+    text-transform: capitalize;
+}
+
+/* Selector de atributo con valor específico */
+[data-section="contacto"] {
+    border: 1px solid #3498db;
+}
+
+/* ========================================
+   PSEUDO-CLASES ADICIONALES
+   ======================================== */
+
+/* Primer elemento del menú */
+.menu-item:first-child .menu-enlace {
+    padding-left: 18px;
+}
+
+/* Último elemento del menú */
+.menu-item:last-child .menu-enlace {
+    padding-right: 18px;
+}
+
+/* ========================================
+   CONTENIDO PRINCIPAL
+   ======================================== */
+
+/* Margen superior para compensar el header fijo */
+.contenido-principal {
+    margin-top: 70px;
+    padding: 20px;
+}
+
+/* Secciones de contenido */
+.seccion {
+    max-width: 800px;
+    margin: 0 auto 40px;
+    padding: 40px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    min-height: 300px;
+}
+
+.seccion h1,
+.seccion h2 {
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.seccion p {
+    margin-bottom: 15px;
+    color: #555;
+}
+
+.seccion ul {
+    margin-left: 20px;
+    color: #555;
+}
+
+.seccion li {
+    margin-bottom: 8px;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.footer {
+    background-color: #2c3e50;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+

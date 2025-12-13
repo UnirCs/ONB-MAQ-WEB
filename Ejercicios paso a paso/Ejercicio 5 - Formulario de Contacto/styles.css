@@ -1,0 +1,429 @@
+/* ========================================
+   RESET Y ESTILOS BASE
+   ======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    line-height: 1.6;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+/* ========================================
+   CONTENEDOR DEL FORMULARIO
+   ======================================== */
+
+.contenedor-formulario {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+/* ========================================
+   ENCABEZADO DEL FORMULARIO
+   ======================================== */
+
+.form-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    text-align: center;
+}
+
+.form-header h1 {
+    font-size: 1.8rem;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+
+.form-header p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* ========================================
+   EL FORMULARIO
+   ======================================== */
+
+.formulario {
+    padding: 30px;
+}
+
+/* ========================================
+   FIELDSET Y LEGEND
+   ======================================== */
+
+.grupo-campos {
+    border: none;
+    margin-bottom: 25px;
+    padding: 0;
+}
+
+.grupo-campos legend {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #667eea;
+    display: block;
+    width: 100%;
+}
+
+/* ========================================
+   CAMPOS INDIVIDUALES
+   ======================================== */
+
+.campo {
+    margin-bottom: 20px;
+}
+
+/* Labels */
+.campo label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+    color: #444;
+    font-size: 0.95rem;
+}
+
+/* Indicador de campo requerido */
+.requerido::after {
+    content: " *";
+    color: #e74c3c;
+}
+
+/* Inputs, selects y textareas */
+.campo input[type="text"],
+.campo input[type="email"],
+.campo input[type="tel"],
+.campo select,
+.campo textarea {
+    width: 100%;
+    padding: 12px 15px;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #fafafa;
+    transition: all 0.3s ease;
+}
+
+/* Estilo del placeholder */
+.campo input::placeholder,
+.campo textarea::placeholder {
+    color: #999;
+    font-style: italic;
+}
+
+/* ========================================
+   ESTADOS DE LOS CAMPOS
+   ======================================== */
+
+/* Focus */
+.campo input:focus,
+.campo select:focus,
+.campo textarea:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: white;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
+}
+
+/* Campo válido */
+.campo input:valid:not(:placeholder-shown),
+.campo select:valid,
+.campo textarea:valid:not(:placeholder-shown) {
+    border-color: #27ae60;
+}
+
+/* Campo inválido (después de interacción) */
+.campo input:invalid:not(:placeholder-shown):not(:focus),
+.campo textarea:invalid:not(:placeholder-shown):not(:focus) {
+    border-color: #e74c3c;
+}
+
+/* Select con opción deshabilitada seleccionada */
+.campo select:invalid {
+    color: #999;
+}
+
+.campo select:valid {
+    color: #333;
+}
+
+/* ========================================
+   TEXTO DE AYUDA
+   ======================================== */
+
+.texto-ayuda {
+    display: block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+    color: #777;
+}
+
+/* ========================================
+   TEXTAREA
+   ======================================== */
+
+.campo textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+/* ========================================
+   SELECT
+   ======================================== */
+
+.campo select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    padding-right: 40px;
+}
+
+/* ========================================
+   RADIO BUTTONS
+   ======================================== */
+
+.grupo-opciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.opcion-radio {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.opcion-radio:hover {
+    background-color: #e9ecef;
+}
+
+.opcion-radio input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+    accent-color: #667eea;
+}
+
+.opcion-radio label {
+    cursor: pointer;
+    font-size: 0.95rem;
+    margin: 0;
+}
+
+/* Radio seleccionado */
+.opcion-radio:has(input:checked) {
+    background-color: #e8eaff;
+    border: 1px solid #667eea;
+}
+
+/* ========================================
+   CHECKBOXES
+   ======================================== */
+
+.grupo-checkboxes {
+    margin-bottom: 25px;
+}
+
+.opcion-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 12px;
+    padding: 12px 15px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+}
+
+.opcion-checkbox input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    accent-color: #667eea;
+    margin-top: 2px;
+    flex-shrink: 0;
+}
+
+.opcion-checkbox label {
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.opcion-checkbox label a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.opcion-checkbox label a:hover {
+    text-decoration: underline;
+}
+
+/* Checkbox seleccionado */
+.opcion-checkbox:has(input:checked) {
+    background-color: #e8eaff;
+}
+
+/* ========================================
+   BOTONES
+   ======================================== */
+
+.grupo-botones {
+    display: flex;
+    gap: 15px;
+    margin-top: 10px;
+}
+
+.boton {
+    flex: 1;
+    padding: 14px 25px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Botón de enviar */
+.boton-enviar {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.boton-enviar:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.boton-enviar:active {
+    transform: translateY(0);
+}
+
+/* Botón de limpiar */
+.boton-limpiar {
+    background-color: #f8f9fa;
+    color: #666;
+    border: 2px solid #ddd;
+}
+
+.boton-limpiar:hover {
+    background-color: #e9ecef;
+    border-color: #ccc;
+}
+
+/* ========================================
+   SELECTORES DE ATRIBUTO
+   ======================================== */
+
+/* Todos los campos requeridos */
+[required] {
+    border-left: 3px solid #e74c3c;
+}
+
+[required]:valid {
+    border-left-color: #27ae60;
+}
+
+/* Campos con placeholder */
+[placeholder] {
+    font-style: normal;
+}
+
+/* Campos de tipo email */
+input[type="email"] {
+    text-transform: lowercase;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 600px) {
+    body {
+        padding: 20px 15px;
+    }
+
+    .contenedor-formulario {
+        border-radius: 8px;
+    }
+
+    .form-header {
+        padding: 25px 20px;
+    }
+
+    .form-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .formulario {
+        padding: 25px 20px;
+    }
+
+    .grupo-opciones {
+        flex-direction: column;
+    }
+
+    .grupo-botones {
+        flex-direction: column;
+    }
+
+    .boton {
+        width: 100%;
+    }
+}
+
+/* ========================================
+   ACCESIBILIDAD - FOCUS VISIBLE
+   ======================================== */
+
+/* Focus visible para navegación por teclado */
+.boton:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* ========================================
+   ESTADOS DESHABILITADOS
+   ======================================== */
+
+input:disabled,
+select:disabled,
+textarea:disabled,
+button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.boton-enviar:disabled {
+    background: #ccc;
+    transform: none;
+    box-shadow: none;
+}
+
