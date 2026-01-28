@@ -1,0 +1,1422 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Didáctica: HTML Básico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            scroll-margin-top: 20px;
+        }
+
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        p, li {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+
+        .code-block code {
+            color: #d63384;
+            font-size: 0.95em;
+        }
+
+        .example-box {
+            background: #e8f4f8;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .example-box h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .highlight strong {
+            color: #856404;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        table tr:hover {
+            background: #f0f0f0;
+        }
+
+        .tip {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .tip::before {
+            content: "💡 Consejo: ";
+            font-weight: bold;
+            color: #155724;
+        }
+
+        .warning {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .warning::before {
+            content: "⚠️ Importante: ";
+            font-weight: bold;
+            color: #721c24;
+        }
+
+        .nav-menu {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .nav-menu h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-menu li {
+            margin-bottom: 8px;
+        }
+
+        .nav-menu a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+
+        .elemento {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .elemento-titulo {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .elemento-desc {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .elemento code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #d63384;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+            align-items: start;
+        }
+
+        .comparison-item {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-label {
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .comparison-content {
+            padding: 15px;
+        }
+
+        .comparison-code {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            color: #d63384;
+            border-left: 3px solid #667eea;
+        }
+
+        .comparison-result {
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 5px;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .concept-explanation {
+            background: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .concept-explanation strong {
+            color: #0c5460;
+        }
+
+        .concept-title {
+            color: #0c5460;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .section-estructura {
+            display: flex;
+            gap: 40px;
+        }
+
+        .estructura-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .estructura-sidebar {
+            flex: 0 0 420px;
+            position: sticky;
+            top: 20px;
+            height: fit-content;
+        }
+
+        .estructura-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            padding: 25px;
+            color: white;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.8;
+            overflow-x: hidden;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            min-height: 500px;
+        }
+
+        .estructura-box code {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .estructura-box strong {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .estructura-titulo {
+            font-size: 1.3em;
+            margin-bottom: 20px;
+            font-weight: bold;
+            text-align: center;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.4);
+            padding-bottom: 15px;
+        }
+
+        @media (max-width: 1200px) {
+            .section-estructura {
+                gap: 30px;
+            }
+
+            .estructura-sidebar {
+                flex: 0 0 380px;
+            }
+        }
+
+        @media (max-width: 1024px) {
+            .section-estructura {
+                flex-direction: column;
+            }
+
+            .estructura-sidebar {
+                flex: 0 0 auto;
+                align-self: auto;
+            }
+
+            .estructura-box {
+                overflow-y: visible;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌐 HTML Básico</h1>
+            <p>Aprende los conceptos fundamentales de HTML desde cero</p>
+        </header>
+
+        <main>
+            <nav class="nav-menu">
+                <h3>📋 Contenidos</h3>
+                <ul>
+                    <li><a href="#intro">1. ¿Qué es HTML?</a></li>
+                    <li><a href="#estructura">2. Estructura Básica</a></li>
+                    <li><a href="#elementos">3. Elementos HTML</a></li>
+                    <li><a href="#atributos">4. Atributos</a></li>
+                    <li><a href="#semantica">5. Elementos Semánticos</a></li>
+                    <li><a href="#practica">6. Ejercicio Práctico</a></li>
+                </ul>
+            </nav>
+
+            <!-- SECCIÓN 1: ¿QUÉ ES HTML? -->
+            <section id="intro">
+                <h2>1. ¿Qué es HTML?</h2>
+
+                <p><strong>HTML</strong> significa <strong>"HyperText Markup Language"</strong> (Lenguaje de Marcado de Hipertexto).</p>
+
+                <h3>Desglosemos el término:</h3>
+                <div class="concept-explanation">
+                    <div class="concept-title">🔗 HyperText (Hipertexto)</div>
+                    <p>Es texto con "super-poderes". No es solo texto plano, sino texto que puede contener <strong>enlaces a otros documentos</strong>. Por ejemplo, cuando haces clic en un enlace azul y te lleva a otra página, eso es hipertexto. Es lo que hace que la web sea una "red" de documentos interconectados.</p>
+                </div>
+
+                <div class="concept-explanation">
+                    <div class="concept-title">🏷️ Markup (Marcado)</div>
+                    <p>Imagina un libro de texto con notas al margen. El "markup" son esas anotaciones que indican qué es cada cosa. Por ejemplo, en HTML no solo escribimos el texto, sino que lo "marcamos" para decir "esto es un título", "esto es un párrafo", "esto es importante". Las marcas son las etiquetas. HTML no cambia el contenido, solo lo organiza y da estructura.</p>
+                </div>
+
+                <div class="concept-explanation">
+                    <div class="concept-title">💻 Language (Lenguaje)</div>
+                    <p>Es un conjunto de reglas que todos entienden. Igual que el español tiene reglas de gramática, HTML tiene sus propias reglas. Si sigues esas reglas, los navegadores web de todo el mundo entenderán tu página exactamente igual.</p>
+                </div>
+
+                <p>HTML es el lenguaje que se utiliza para crear páginas web. <strong>No es un lenguaje de programación</strong> (no hace cálculos ni decisiones), sino un lenguaje de <strong>marcado</strong>. Utiliza etiquetas para indicar al navegador cómo debe estructurar y mostrar el contenido.</p>
+
+                <h3>¿Por qué es importante?</h3>
+                <ul>
+                    <li>Es la <strong>base de toda página web</strong> - sin HTML no hay página web</li>
+                    <li>Proporciona la <strong>estructura</strong> del contenido</li>
+                    <li>Es <strong>fácil de aprender</strong> para principiantes</li>
+                    <li>Funciona en <strong>todos los navegadores</strong> (Chrome, Firefox, Safari, Edge...)</li>
+                    <li>Es <strong>accesible</strong> - funciona incluso sin CSS o JavaScript</li>
+                </ul>
+
+                <h3>¿Qué es una etiqueta HTML?</h3>
+                
+                <div class="concept-explanation">
+                    <div class="concept-title">📌 Concepto de Etiqueta</div>
+                    <p>Una etiqueta (también llamada "tag") es una instrucción que le damos al navegador. Es como una instrucción que dice "el contenido que viene a continuación es un párrafo" o "esto es un encabezado". Las etiquetas se escriben entre símbolos de menor que (<code>&lt;</code>) y mayor que (<code>&gt;</code>). El navegador Lee estas etiquetas y las interpreta, pero <strong>no muestra la etiqueta en pantalla</strong>, solo la usa para entender cómo formatear el contenido.</p>
+                </div>
+
+                <div class="example-box">
+                    <h4>Ejemplo de etiqueta y su estructura:</h4>
+                    <div class="code-block"><code>&lt;p&gt;Esto es un párrafo&lt;/p&gt;</code></div>
+                    <div style="margin-top: 15px;">
+                        <p><strong>&lt;p&gt;</strong> = etiqueta de apertura (inicio) - le dice al navegador "aquí comienza un párrafo"</p>
+                        <p><strong>Esto es un párrafo</strong> = contenido - el texto que queremos mostrar</p>
+                        <p><strong>&lt;/p&gt;</strong> = etiqueta de cierre (fin) - le dice al navegador "aquí termina el párrafo". El / indica cierre</p>
+                    </div>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;p&gt;Esto es un párrafo&lt;/p&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Cómo lo ve el navegador</div>
+                        <div class="comparison-result">
+                            <p>Esto es un párrafo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip">
+                    <strong>Importante:</strong> La mayoría de etiquetas tienen una de apertura (<code>&lt;nombre&gt;</code>) y otra de cierre (<code>&lt;/nombre&gt;</code>). Pero algunos elementos como las imágenes no necesitan cierre, se llaman etiquetas auto-cerrantes: <code>&lt;img ... &gt;</code>
+                </div>
+
+                <h3>Diferencia entre etiqueta y elemento</h3>
+                <div class="concept-explanation">
+                    <div class="concept-title">¿Son lo mismo?</div>
+                    <p><strong>NO.</strong> Una <strong>etiqueta</strong> es solo la instrucción (ejemplo: <code>&lt;p&gt;</code> o <code>&lt;/p&gt;</code>). Un <strong>elemento</strong> es el conjunto completo: la etiqueta de apertura + el contenido + la etiqueta de cierre. Ejemplo: <code>&lt;p&gt;Hola mundo&lt;/p&gt;</code> es un elemento, y contiene dos etiquetas.</p>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: ESTRUCTURA BÁSICA -->
+            <section id="estructura">
+                <h2>2. Estructura Básica de una Página HTML</h2>
+
+                <div class="section-estructura">
+                    <div class="estructura-content">
+                        <p>Toda página HTML debe tener una estructura mínima. Aquí está:</p>
+
+                        <div class="code-block"><code>&lt;!DOCTYPE html&gt;<br>
+&lt;html lang="es"&gt;<br>
+&nbsp;&nbsp;&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Título de la Página&lt;/title&gt;<br>
+&nbsp;&nbsp;&lt;/head&gt;<br>
+&nbsp;&nbsp;&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;Hola Mundo&lt;/h1&gt;<br>
+&nbsp;&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;</code></div>
+
+                        <h3>Explicación línea por línea:</h3>
+
+                        <div class="elemento">
+                            <div class="elemento-titulo">&lt;!DOCTYPE html&gt;</div>
+                            <div class="elemento-desc">
+                                <p>DOCTYPE significa <strong>"Document Type Declaration"</strong> (Declaración de Tipo de Documento).</p>
+                                <p>Le indica al navegador: "Oye, lo que viene a continuación es un documento HTML5". HTML5 es la versión más moderna de HTML. Esto <strong>debe ser la primera línea siempre</strong>, antes de cualquier otra cosa. Si no lo pones, el navegador podría interpretar tu página de forma incorrecta.</p>
+                                <p style="margin-top: 10px;"><a href="#estructura-html" style="color: #667eea; text-decoration: none; font-weight: bold;">→ Ver en estructura</a></p>
+                            </div>
+                        </div>
+
+                        <div class="elemento">
+                            <div class="elemento-titulo">&lt;html&gt;</div>
+                            <div class="elemento-desc">
+                                <p>Es la etiqueta raíz (la más grande). <strong>Todo el contenido HTML va dentro de ella.</strong></p>
+                                <p>El atributo <code>lang="es"</code> indica al navegador que el contenido de la página está en español. Esto es útil para:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Lectores de pantalla (para personas con discapacidad visual)</li>
+                                    <li>Motores de búsqueda (para indexar correctamente - indexar significa que Google y otros buscadores registren tu página y la muestren en resultados de búsqueda)</li>
+                                    <li>Correctores ortográficos</li>
+                                </ul>
+                                <p style="margin-top: 10px;"><a href="#estructura-html" style="color: #667eea; text-decoration: none; font-weight: bold;">→ Ver en estructura</a></p>
+                            </div>
+                        </div>
+
+                        <div class="elemento">
+                            <div class="elemento-titulo">&lt;head&gt;</div>
+                            <div class="elemento-desc">
+                                <p><strong>"Head" significa "cabeza".</strong> Es la parte de información que va en la "cabeza" del documento.</p>
+                                <p>Contiene <strong>metadatos</strong> (información SOBRE la página) que <strong>NO se ven en la página visible.</strong></p>
+                                <p>¿Qué son los metadatos? Son datos que describen otros datos. Piénsalo así: si tu página web fuera un libro, el &lt;head&gt; sería la ficha bibliográfica del libro (autor, año, idioma, etc.), no el contenido del libro en sí.</p>
+                                <p><strong>En el head típicamente va:</strong></p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Título de la página (pestaña del navegador)</li>
+                                    <li>Codificación de caracteres (UTF-8)</li>
+                                    <li>Enlaces a archivos CSS (estilos)</li>
+                                    <li>Meta etiquetas (descripción, keywords para SEO)</li>
+                                    <li>Scripts (código JavaScript)</li>
+                                    <li>Favicon (icono de la pestaña)</li>
+                                </ul>
+                                <p style="margin-top: 10px;"><a href="#estructura-html" style="color: #667eea; text-decoration: none; font-weight: bold;">→ Ver en estructura</a></p>
+                            </div>
+                        </div>
+
+                        <div class="comparison">
+                            <div class="comparison-item">
+                                <div class="comparison-label">📄 Head (invisible)</div>
+                                <div class="comparison-content">
+                                    <div class="comparison-code">&lt;head&gt;<br>
+&nbsp;&lt;title&gt;Mi Web&lt;/title&gt;<br>
+&lt;/head&gt;</div>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <div class="comparison-label">👁️ Resultado en navegador</div>
+                                <div class="comparison-result">
+                                    <p style="text-align: center; color: #999; font-size: 0.9em;">⬆️ Aparece en la pestaña aquí arriba<br><code>Mi Web</code><br>(pero no en la página visible)</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="elemento">
+                            <div class="elemento-titulo">&lt;meta charset="UTF-8"&gt;</div>
+                            <div class="elemento-desc">
+                                <p><strong>Meta</strong> significa "metadato" y <strong>charset</strong> significa "juego de caracteres".</p>
+                                <p>UTF-8 es un estándar internacional que incluye todas las letras del mundo: acentos (á, é, í), caracteres españoles (ñ), chinos, árabes, emojis, etc.</p>
+                                <p>Sin esto, letras como "ñ" o acentos podrían mostrarse de forma extraña: "Espa&ntilde;a" en lugar de "España".</p>
+                                <p style="margin-top: 10px;"><a href="#estructura-html" style="color: #667eea; text-decoration: none; font-weight: bold;">→ Ver en estructura</a></p>
+                            </div>
+                        </div>
+
+                        <div class="elemento">
+                            <div class="elemento-titulo">&lt;title&gt;</div>
+                            <div class="elemento-desc">
+                                <p>Define el <strong>título de la página</strong> que aparece en la pestaña del navegador.</p>
+                                <p>Esto es lo que ves cuando tienes varias pestañas abiertas:</p>
+                                <p style="background: #e8e8e8; padding: 8px; border-radius: 4px; font-family: monospace; text-align: center; margin: 10px 0;">
+                                    [Google] [Gmail] [Mi Web] ✕
+                                </p>
+                                <p>"Mi Web" sería el título. Es muy importante que sea descriptivo porque:</p>
+                                <ul style="margin: 10px 0 0 20px;">
+                                    <li>Los motores de búsqueda lo muestran en resultados</li>
+                                    <li>Aparece en el historial del navegador</li>
+                                    <li>Aparece cuando guardas favoritos</li>
+                                </ul>
+                                <p style="margin-top: 10px;"><a href="#estructura-html" style="color: #667eea; text-decoration: none; font-weight: bold;">→ Ver en estructura</a></p>
+                            </div>
+                        </div>
+
+                        <div class="elemento">
+                            <div class="elemento-titulo">&lt;body&gt;</div>
+                            <div class="elemento-desc">
+                                <p><strong>"Body" significa "cuerpo".</strong> Es el cuerpo de la página.</p>
+                                <p><strong>Contiene TODO el contenido visible:</strong> textos, imágenes, videos, formularios, etc. Todo lo que el usuario ve en pantalla va dentro del &lt;body&gt;.</p>
+                                <p style="margin-top: 10px;"><a href="#estructura-html" style="color: #667eea; text-decoration: none; font-weight: bold;">→ Ver en estructura</a></p>
+                            </div>
+                        </div>
+
+                        <div class="concept-explanation">
+                            <div class="concept-title">📚 Resumen: Head vs Body</div>
+                            <p><strong>Head (Cabeza):</strong> Información sobre la página - metadatos que no ven los usuarios</p>
+                            <p><strong>Body (Cuerpo):</strong> Contenido visible de la página - lo que ven los usuarios</p>
+                        </div>
+
+                        <div class="tip">
+                            Es importante que indentes (espacies) bien tu código. Esto hace que sea mucho más fácil de leer y mantener. Observa cómo &lt;head&gt; y &lt;body&gt; están indentados dentro de &lt;html&gt;, y los elementos dentro de ellos están más indentados aún.
+                        </div>
+                    </div>
+
+                    <div class="estructura-sidebar">
+                        <div class="estructura-box" id="estructura-html">
+                            <div class="estructura-titulo">📋 Estructura HTML</div>
+                            <code>&lt;!DOCTYPE html&gt;</code><br>
+                            <code>&lt;html lang="es"&gt;</code><br><br>
+                            &nbsp;&nbsp;<strong>&lt;head&gt;</strong><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;ℹ️ Metadatos<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;meta charset="UTF-8"&gt;</code><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;title&gt;Título&lt;/title&gt;</code><br>
+                            &nbsp;&nbsp;<strong>&lt;/head&gt;</strong><br><br>
+                            &nbsp;&nbsp;<strong>&lt;body&gt;</strong><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;👁️ Contenido visible<br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;h1&gt;Hola Mundo&lt;/h1&gt;</code><br>
+                            &nbsp;&nbsp;&nbsp;&nbsp;<code>&lt;p&gt;...&lt;/p&gt;</code><br>
+                            &nbsp;&nbsp;<strong>&lt;/body&gt;</strong><br><br>
+                            <code>&lt;/html&gt;</code>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: ELEMENTOS HTML -->
+            <section id="elementos">
+                <h2>3. Elementos HTML Básicos</h2>
+
+                <p>Estos son los elementos que usarás constantemente:</p>
+
+                <h3>Encabezados (Headings)</h3>
+                <div class="concept-explanation">
+                    <div class="concept-title">¿Qué son los encabezados?</div>
+                    <p>Los encabezados son títulos de diferentes niveles de importancia. Son como los títulos y subtítulos de un libro:</p>
+                    <ul>
+                        <li><strong>&lt;h1&gt;</strong> = Título principal del libro</li>
+                        <li><strong>&lt;h2&gt;</strong> = Capítulo</li>
+                        <li><strong>&lt;h3&gt;</strong> = Sección dentro del capítulo</li>
+                        <li>Y así hasta &lt;h6&gt;</li>
+                    </ul>
+                    <p>Los encabezados no son solo para hacer texto más grande. Tienen importancia semántica: decen al navegador "esto es importante". Los motores de búsqueda los usan para entender la estructura de tu página.</p>
+                </div>
+
+                <p><strong>Visualmente, van del &lt;h1&gt; (más grande) al &lt;h6&gt; (más pequeño):</strong></p>
+                
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;h1&gt;Título Principal&lt;/h1&gt;<br>
+&lt;h2&gt;Subtítulo&lt;/h2&gt;<br>
+&lt;h3&gt;Encabezado Menor&lt;/h3&gt;<br>
+&lt;h4&gt;Aún menor&lt;/h4&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Resultado en navegador</div>
+                        <div class="comparison-result">
+                            <h1 style="margin: 0 0 10px 0; font-size: 2em;">Título Principal</h1>
+                            <h2 style="margin: 10px 0; font-size: 1.5em;">Subtítulo</h2>
+                            <h3 style="margin: 10px 0; font-size: 1.17em;">Encabezado Menor</h3>
+                            <h4 style="margin: 10px 0; font-size: 1em;">Aún menor</h4>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning">
+                    <strong>Regla importante:</strong> Usa solo UN &lt;h1&gt; por página. Es como el título principal del libro. Puedes tener varios &lt;h2&gt;, &lt;h3&gt;, etc., pero solo un &lt;h1&gt;. Esto es importante para la accesibilidad y para SEO.
+                </div>
+
+                <h3>Párrafos</h3>
+                <div class="concept-explanation">
+                    <div class="concept-title">¿Qué es un párrafo?</div>
+                    <p>Un párrafo es un bloque de texto. Es como en un documento Word: cuando presionas Enter dos veces, empiezas un párrafo nuevo. En HTML, cada párrafo va dentro de una etiqueta &lt;p&gt;.</p>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;p&gt;Este es el primer párrafo.&lt;/p&gt;<br>
+&lt;p&gt;Este es el segundo párrafo.&lt;/p&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Resultado en navegador</div>
+                        <div class="comparison-result">
+                            <p style="margin-bottom: 15px;">Este es el primer párrafo.</p>
+                            <p style="margin: 0;">Este es el segundo párrafo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Énfasis e Importancia</h3>
+                <div class="concept-explanation">
+                    <div class="concept-title">¿Cuál es la diferencia?</div>
+                    <p><strong>&lt;strong&gt;</strong> y <strong>&lt;b&gt;</strong> hacen negrita. <strong>&lt;em&gt;</strong> y <strong>&lt;i&gt;</strong> hacen cursiva. Pero:</p>
+                    <ul>
+                        <li><strong>&lt;strong&gt;</strong> = "esto es IMPORTANTE" (significado semántico)</li>
+                        <li><strong>&lt;b&gt;</strong> = "ponlo en negrita" (solo aspecto visual)</li>
+                        <li><strong>&lt;em&gt;</strong> = "esto tiene énfasis" (significado semántico)</li>
+                        <li><strong>&lt;i&gt;</strong> = "ponlo en cursiva" (solo aspecto visual)</li>
+                    </ul>
+                    <p>Los lectores de pantalla entienden &lt;strong&gt; y &lt;em&gt;, pero no entienden &lt;b&gt; e &lt;i&gt;. Usa siempre &lt;strong&gt; y &lt;em&gt; si es posible.</p>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;p&gt;Esto es &lt;strong&gt;muy importante&lt;/strong&gt;&lt;/p&gt;<br>
+&lt;p&gt;Esto tiene &lt;em&gt;énfasis&lt;/em&gt;&lt;/p&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Resultado en navegador</div>
+                        <div class="comparison-result">
+                            <p style="margin-bottom: 10px;">Esto es <strong>muy importante</strong></p>
+                            <p style="margin: 0;">Esto tiene <em>énfasis</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Listas</h3>
+                <div class="concept-explanation">
+                    <div class="concept-title">¿Para qué sirven las listas?</div>
+                    <p>Las listas organizan información de forma clara y estructurada. Existen dos tipos:</p>
+                    <ul>
+                        <li><strong>Listas sin orden (UL):</strong> Cuando el orden no importa. Usas viñetas (puntos)</li>
+                        <li><strong>Listas ordenadas (OL):</strong> Cuando el orden SÍ importa. Usas números</li>
+                    </ul>
+                </div>
+
+                <h4>Listas sin orden:</h4>
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;ul&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Manzana&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Plátano&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Naranja&lt;/li&gt;<br>
+&lt;/ul&gt;</code></div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Resultado en navegador</div>
+                        <div class="comparison-result">
+                            <ul style="margin: 0;">
+                                <li>Manzana</li>
+                                <li>Plátano</li>
+                                <li>Naranja</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h4>Listas ordenadas:</h4>
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;ol&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Primero haz click&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Luego escribe&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Finalmente guarda&lt;/li&gt;<br>
+&lt;/ol&gt;</code></div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Resultado en navegador</div>
+                        <div class="comparison-result">
+                            <ol style="margin: 0;">
+                                <li>Primero haz click</li>
+                                <li>Luego escribe</li>
+                                <li>Finalmente guarda</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Enlaces (Links)</h3>
+                <div class="concept-explanation">
+                    <div class="concept-title">¿Qué hace posible la Web?</div>
+                    <p>Los ENLACES. Sin enlaces, cada página web sería una isla aislada. Los enlaces conectan documentos entre sí, creando la "red" que es la World Wide Web.</p>
+                    <p>Un enlace se crea con la etiqueta &lt;a&gt; (de "anchor", ancla). El atributo <code>href</code> (de "hypertext reference") indica a dónde va el enlace.</p>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;a href="https://www.google.com"&gt;<br>
+&nbsp;&nbsp;Haz clic aquí<br>
+&lt;/a&gt;</code></div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Resultado en navegador</div>
+                        <div class="comparison-result">
+                            <a href="https://www.google.com" style="color: #0066cc; text-decoration: underline;">Haz clic aquí</a>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Imágenes</h3>
+                <div class="concept-explanation">
+                    <div class="concept-title">Etiqueta autocierre</div>
+                    <p>Las imágenes son especiales: no tienen contenido entre etiquetas de apertura y cierre. Es una etiqueta autocierre. Se cierra con <code>&gt;</code> directamente.</p>
+                    <ul>
+                        <li><code>src</code> = donde está la imagen (ruta)</li>
+                        <li><code>alt</code> = texto alternativo si la imagen no carga (muy importante para accesibilidad)</li>
+                        <li><code>width</code> y <code>height</code> = tamaño</li>
+                    </ul>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;img src="gato.jpg"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;alt="Un gato gris"&gt;</code></div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Resultado en navegador</div>
+                        <div class="comparison-result">
+                            <div style="background: #e8e8e8; padding: 20px; text-align: center; border-radius: 5px;">
+                                <p style="color: #666; margin: 0;">🖼️ [Imagen: Un gato gris]</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning">
+                    <strong>Importante:</strong> El atributo <code>alt</code> es esencial. Si la imagen no carga, aparece este texto. Además, los lectores de pantalla lo leen para personas con discapacidad visual. Siempre describe qué es la imagen, no escribas "imagen" o "foto".
+                </div>
+
+                <h3>Saltos de línea y líneas horizontales</h3>
+                <p>A veces necesitas hacer un salto de línea sin crear un párrafo nuevo, o una línea divisoria:</p>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">Primera línea&lt;br&gt;<br>
+Segunda línea<br><br>
+&lt;hr&gt;</code></div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Resultado en navegador</div>
+                        <div class="comparison-result">
+                            <p style="margin: 0;">Primera línea<br>Segunda línea</p>
+                            <hr style="margin: 15px 0; border: none; border-top: 2px solid #ccc;">
+                        </div>
+                    </div>
+                </div>
+
+            </section>
+
+            <!-- SECCIÓN 4: ATRIBUTOS -->
+            <section id="atributos">
+                <h2>4. Atributos</h2>
+
+                <div class="concept-explanation">
+                    <div class="concept-title">¿Qué son los atributos?</div>
+                    <p>Los atributos son <strong>información adicional</strong> que damos a una etiqueta. Son como las características de un objeto.</p>
+                    <p>Piénsalo así: una etiqueta es como decir "esto es una imagen". Los atributos son como decir "esta imagen mide 200x100 píxeles, se llama 'gato.jpg' y es un gato gris".</p>
+                    <p>Los atributos se colocan <strong>dentro de la etiqueta de apertura</strong>, separados por espacios.</p>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Estructura de un atributo</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;etiqueta<br>
+&nbsp;&nbsp;atributo1="valor1"<br>
+&nbsp;&nbsp;atributo2="valor2"&gt;<br>
+Contenido<br>
+&lt;/etiqueta&gt;</code></div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">📋 Partes del atributo</div>
+                        <div class="comparison-content">
+                            <p style="margin-bottom: 10px;"><strong>Nombre:</strong> <code style="background: #fff3cd; padding: 2px 6px; border-radius: 3px;">atributo</code></p>
+                            <p style="margin-bottom: 10px;"><strong>Signo igual:</strong> <code style="background: #fff3cd; padding: 2px 6px; border-radius: 3px;">=</code></p>
+                            <p style="margin: 0;"><strong>Valor (entre comillas):</strong> <code style="background: #fff3cd; padding: 2px 6px; border-radius: 3px;">"valor"</code></p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Atributos más comunes:</h3>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">id (Identificador único)</div>
+                    <div class="elemento-desc">
+                        <p>Da un <strong>nombre único</strong> a un elemento. No puede haber dos elementos con el mismo <code>id</code> en la misma página.</p>
+                        <p><strong>Caso de uso:</strong> Enlazar a una sección específica de la página. Ejemplo: <code>&lt;a href="#formulario"&gt;Ir al formulario&lt;/a&gt;</code></p>
+                    </div>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;h2 id="sobre-mi"&gt;<br>
+&nbsp;&nbsp;Acerca de mí<br>
+&lt;/h2&gt;<br><br>
+&lt;a href="#sobre-mi"&gt;<br>
+&nbsp;&nbsp;Ir a sección<br>
+&lt;/a&gt;</code></div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Comportamiento</div>
+                        <div class="comparison-content">
+                            <p style="margin: 10px 0;">Cuando haces clic en el enlace, la página salta directamente a ese elemento con el <code>id</code> "sobre-mi".</p>
+                            <p style="margin: 0; background: #e8f4f8; padding: 10px; border-radius: 4px; color: #0c5460; font-size: 0.9em;">🔗 Los links internos son muy útiles para tablas de contenidos</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">class (Clase para CSS)</div>
+                    <div class="elemento-desc">
+                        <p>Da una o más <strong>categorías</strong> a un elemento. Múltiples elementos <strong>pueden</strong> tener la misma clase.</p>
+                        <p><strong>Caso de uso:</strong> Aplicar estilos CSS. Todos los elementos con <code>class="destacado"</code> se verán iguales.</p>
+                        <p><strong>Ejemplo:</strong> <code>&lt;p class="destacado"&gt;</code> y <code>&lt;p class="destacado"&gt;</code> tendrán el mismo estilo.</p>
+                    </div>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;p class="rojo"&gt;<br>
+&nbsp;&nbsp;Este texto es rojo<br>
+&lt;/p&gt;<br><br>
+&lt;p class="rojo"&gt;<br>
+&nbsp;&nbsp;Este también es rojo<br>
+&lt;/p&gt;</code></div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Resultado (con CSS)</div>
+                        <div class="comparison-result">
+                            <p style="color: red; margin-bottom: 10px;">Este texto es rojo</p>
+                            <p style="color: red; margin: 0;">Este también es rojo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">style (Estilos CSS inline)</div>
+                    <div class="elemento-desc">
+                        <p>Aplica estilos <strong>directamente</strong> en la etiqueta, sin necesidad de CSS separado.</p>
+                        <p><strong>Nota:</strong> No es la forma recomendada para grandes proyectos, pero útil para aprender.</p>
+                    </div>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;p style="color: blue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;font-size: 18px;"&gt;<br>
+&nbsp;&nbsp;Texto azul grande<br>
+&lt;/p&gt;</code></div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Resultado</div>
+                        <div class="comparison-result">
+                            <p style="color: blue; font-size: 18px; margin: 0;">Texto azul grande</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">title (Información adicional)</div>
+                    <div class="elemento-desc">
+                        <p>Muestra un <strong>tooltip</strong> (globo de información) cuando pasas el ratón por encima del elemento.</p>
+                    </div>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;p title="Más información"&gt;<br>
+&nbsp;&nbsp;Pasa el ratón aquí<br>
+&lt;/p&gt;</code></div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Comportamiento</div>
+                        <div class="comparison-content">
+                            <p title="Más información" style="margin: 0; cursor: help;">Pasa el ratón aquí 👈</p>
+                            <p style="margin-top: 15px; background: #e8f4f8; padding: 10px; border-radius: 4px; color: #0c5460; font-size: 0.9em;">💡 Verás un globo que dice "Más información"</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">data-* (Atributos personalizados)</div>
+                    <div class="elemento-desc">
+                        <p>Puedes crear tus propios atributos con el prefijo <code>data-</code>. Estos almacenan información personalizada que puedes usar con JavaScript.</p>
+                        <p><strong>Ejemplo:</strong> <code>&lt;p data-id="123"&gt;</code> o <code>&lt;button data-accion="guardar"&gt;</code></p>
+                    </div>
+                </div>
+
+                <h3>Ejemplo completo con varios atributos:</h3>
+                <div class="example-box">
+                    <h4>Un párrafo con todos los atributos:</h4>
+                    <div class="comparison">
+                        <div class="comparison-item">
+                            <div class="comparison-label">📄 Código HTML</div>
+                            <div class="comparison-content">
+                                <div class="comparison-code">&lt;p id="bienvenida"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;class="destacado"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;title="Texto de bienvenida"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;style="color: blue;"<br>
+&nbsp;&nbsp;&nbsp;&nbsp;data-idioma="es"&gt;<br>
+&nbsp;&nbsp;¡Bienvenido!<br>
+&lt;/p&gt;</code></div>
+                            </div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">👁️ Resultado</div>
+                            <div class="comparison-result">
+                                <p id="bienvenida" style="color: blue; margin: 0;" title="Texto de bienvenida">¡Bienvenido!</p>
+                                <p style="margin-top: 15px; background: #e8f4f8; padding: 10px; border-radius: 4px; color: #0c5460; font-size: 0.85em;">
+                                    ✅ Tiene ID único<br>
+                                    ✅ Tiene clase para estilos<br>
+                                    ✅ Tiene tooltip al pasar ratón<br>
+                                    ✅ Tiene color azul<br>
+                                    ✅ Tiene dato personalizado
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 5: ELEMENTOS SEMÁNTICOS -->
+            <section id="semantica">
+                <h2>5. Elementos Semánticos</h2>
+
+                <div class="concept-explanation">
+                    <div class="concept-title">¿Qué significa "semántico"?</div>
+                    <p>"Semántica" = significado. Los elementos semánticos son etiquetas que <strong>dan significado</strong> al contenido.</p>
+                    <p><strong>Diferencia:</strong></p>
+                    <ul>
+                        <li><strong>&lt;div&gt;:</strong> "Aquí hay un bloque de contenido" (sin significado especial)</li>
+                        <li><strong>&lt;header&gt;:</strong> "Aquí está el encabezado de la página" (tiene significado)</li>
+                    </ul>
+                    <p>Ambos crean un bloque, pero &lt;header&gt; le dice al navegador (y a los buscadores, y a los lectores de pantalla) QUÉ es ese bloque.</p>
+                </div>
+
+                <h3>¿Por qué son importantes?</h3>
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">❌ Sin semántica</div>
+                        <div class="comparison-content">
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li>Código confuso</li>
+                                <li>Difícil de mantener</li>
+                                <li>Motores de búsqueda no lo entienden bien</li>
+                                <li>Lectores de pantalla no saben qué es qué</li>
+                                <li>Accesibilidad pobre</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">✅ Con semántica</div>
+                        <div class="comparison-content">
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li>Código legible y claro</li>
+                                <li>Fácil de mantener y actualizar</li>
+                                <li>Motores de búsqueda entienden la estructura</li>
+                                <li>Lectores de pantalla pueden navegar mejor</li>
+                                <li>Accesibilidad excelente</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Elementos semánticos principales:</h3>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">&lt;header&gt; - Encabezado</div>
+                    <div class="elemento-desc">
+                        <p>Representa el encabezado de la página o de una sección. Típicamente contiene:</p>
+                        <ul>
+                            <li>Logo de la empresa/web</li>
+                            <li>Título de la página</li>
+                            <li>Barra de búsqueda</li>
+                        </ul>
+                        <p><strong>Nota:</strong> Es diferente a &lt;h1&gt;, &lt;h2&gt;, etc. Esos son encabezados de texto. El &lt;header&gt; es una sección.</p>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">&lt;nav&gt; - Navegación</div>
+                    <div class="elemento-desc">
+                        <p>Contiene la barra de navegación. Típicamente tiene enlaces a las secciones principales de la web.</p>
+                        <p>Solo debe haber uno o dos &lt;nav&gt; en una página (uno principal, posiblemente uno secundario).</p>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">&lt;main&gt; - Contenido Principal</div>
+                    <div class="elemento-desc">
+                        <p>Contiene el contenido principal único de la página. <strong>Debe haber exactamente UNO por página.</strong></p>
+                        <p>NO debe estar dentro de &lt;header&gt;, &lt;footer&gt;, &lt;nav&gt;, o &lt;aside&gt;.</p>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">&lt;article&gt; - Artículo</div>
+                    <div class="elemento-desc">
+                        <p>Contenido independiente que podría extraerse y entenderse solo. Ejemplos:</p>
+                        <ul>
+                            <li>Un post de blog</li>
+                            <li>Un artículo de noticias</li>
+                            <li>Un comentario de un usuario</li>
+                            <li>Una tarjeta de producto</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">&lt;section&gt; - Sección</div>
+                    <div class="elemento-desc">
+                        <p>Una sección temática del contenido. Agrupa contenido relacionado.</p>
+                        <p>Diferencia con &lt;article&gt;: una sección es parte de algo mayor. Un artículo es independiente.</p>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">&lt;aside&gt; - Contenido Secundario</div>
+                    <div class="elemento-desc">
+                        <p>Contenido tangencialmente relacionado. Típicamente:</p>
+                        <ul>
+                            <li>Barra lateral</li>
+                            <li>Publicidad</li>
+                            <li>Widgets (cajas de información)</li>
+                            <li>Enlaces relacionados</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">&lt;footer&gt; - Pie de Página</div>
+                    <div class="elemento-desc">
+                        <p>Pie de página. Típicamente contiene:</p>
+                        <ul>
+                            <li>Información de contacto</li>
+                            <li>Copyright</li>
+                            <li>Enlaces a redes sociales</li>
+                            <li>Enlaces legales (política de privacidad, etc.)</li>
+                            <li>Mapa del sitio</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Estructura semántica típica de una página:</h3>
+                <div class="example-box">
+                    <h4>Layout completo:</h4>
+                    <div class="comparison">
+                        <div class="comparison-item">
+                            <div class="comparison-label">📄 Código HTML (simplificado)</div>
+                            <div class="comparison-content">
+                                <div class="comparison-code">&lt;header&gt;<br>
+&nbsp;&nbsp;&lt;h1&gt;Mi Página&lt;/h1&gt;<br>
+&lt;/header&gt;<br><br>
+&lt;nav&gt;<br>
+&nbsp;&nbsp;&lt;a href="#"&gt;Inicio&lt;/a&gt;<br>
+&lt;/nav&gt;<br><br>
+&lt;main&gt;<br>
+&nbsp;&nbsp;&lt;article&gt;...&lt;/article&gt;<br>
+&lt;/main&gt;<br><br>
+&lt;aside&gt;...&lt;/aside&gt;<br><br>
+&lt;footer&gt;...&lt;/footer&gt;</code></div>
+                            </div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">👁️ Representación Visual</div>
+                            <div class="comparison-result" style="display: block; padding: 0;">
+                                <div style="background: #667eea; color: white; padding: 15px; margin-bottom: 10px; border-radius: 4px;">
+                                    <p style="margin: 0; font-weight: bold;">📌 &lt;header&gt;</p>
+                                </div>
+                                <div style="background: #764ba2; color: white; padding: 10px; margin-bottom: 10px; border-radius: 4px;">
+                                    <p style="margin: 0; font-weight: bold;">🔗 &lt;nav&gt;</p>
+                                </div>
+                                <div style="display: grid; grid-template-columns: 1fr 150px; gap: 10px; margin-bottom: 10px;">
+                                    <div style="background: #e8f4f8; padding: 15px; border-radius: 4px; border: 2px dashed #667eea;">
+                                        <p style="margin: 0; font-weight: bold;">📰 &lt;main&gt;</p>
+                                        <p style="margin: 5px 0 0 0; font-size: 0.85em; color: #555;">Contenido principal</p>
+                                    </div>
+                                    <div style="background: #fff3cd; padding: 15px; border-radius: 4px; border: 2px dashed #ffc107;">
+                                        <p style="margin: 0; font-weight: bold; font-size: 0.9em;">📋 &lt;aside&gt;</p>
+                                        <p style="margin: 5px 0 0 0; font-size: 0.75em; color: #555;">Secundario</p>
+                                    </div>
+                                </div>
+                                <div style="background: #6c757d; color: white; padding: 15px; border-radius: 4px;">
+                                    <p style="margin: 0; font-weight: bold;">© &lt;footer&gt;</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip">
+                    <strong>Regla de oro:</strong> Usa siempre la etiqueta semántica más específica. Si sabes que es un artículo, usa &lt;article&gt;. Si es una sección, usa &lt;section&gt;. Solo usa &lt;div&gt; como último recurso.
+                </div>
+            </section>
+
+            <!-- SECCIÓN 6: EJERCICIO PRÁCTICO -->
+            <section id="practica">
+                <h2>6. Ejercicio Práctico</h2>
+
+                <p>Ahora vamos a crear juntos una página web simple. Copia este código en tu editor de texto:</p>
+
+                <div class="code-block"><code>&lt;!DOCTYPE html&gt;<br>
+&lt;html lang="es"&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+&nbsp;&nbsp;&lt;title&gt;Mi Primera Página Web&lt;/title&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&nbsp;&nbsp;&lt;header&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;h1&gt;¡Bienvenido!&lt;/h1&gt;<br>
+&nbsp;&nbsp;&lt;/header&gt;<br><br>
+&nbsp;&nbsp;&lt;nav&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="#inicio"&gt;Inicio&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="#acerca"&gt;Acerca de&lt;/a&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;a href="#contacto"&gt;Contacto&lt;/a&gt;<br>
+&nbsp;&nbsp;&lt;/nav&gt;<br><br>
+&nbsp;&nbsp;&lt;main&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;section id="inicio"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Sección de Inicio&lt;/h2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Este es mi primer párrafo en HTML.&lt;/p&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/section&gt;<br><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;section id="acerca"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;h2&gt;Acerca de Mí&lt;/h2&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Estoy aprendiendo HTML&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Es fácil y divertido&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Quiero crear páginas web increíbles&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/section&gt;<br><br>
+&nbsp;&nbsp;&lt;/main&gt;<br><br>
+&nbsp;&nbsp;&lt;footer&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;&copy; 2026 Mi Página Web. Todos los derechos reservados.&lt;/p&gt;<br>
+&nbsp;&nbsp;&lt;/footer&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;</code></div>
+
+                <h3>Pasos para crear tu primera página:</h3>
+                <ol>
+                    <li>Abre tu editor de texto (Notepad, VS Code, etc.)</li>
+                    <li>Copia el código anterior</li>
+                    <li>Guarda el archivo como <strong>index.html</strong></li>
+                    <li>Abre el archivo con tu navegador (doble clic)</li>
+                    <li>¡Felicidades! Ya tienes una página web</li>
+                </ol>
+
+                <h3>Desafíos para practicar:</h3>
+                <ol>
+                    <li>Cambia el título y los encabezados por tu nombre</li>
+                    <li>Añade más elementos a tu lista</li>
+                    <li>Cambia los enlaces para que vayan a otras web (ejemplo: www.google.com)</li>
+                    <li>Añade un elemento <code>&lt;img&gt;</code> con una imagen</li>
+                    <li>Añade nuevo contenido y secciones</li>
+                </ol>
+
+                <div class="tip">
+                    Guarda tu archivo cada vez que hagas cambios y actualiza la página en el navegador (presiona F5 o Ctrl+R) para ver los cambios.
+                </div>
+            </section>
+
+            <!-- SECCIÓN ADICIONAL: TIPS FINALES -->
+            <section>
+                <h2>📌 Tips Finales Importantes</h2>
+
+                <div class="highlight">
+                    <strong>1. Anidación correcta (nesting):</strong>
+                    <p style="margin-top: 10px;">Todo lo que abre adentro debe cerrarse adentro. Es como los paréntesis en matemáticas:</p>
+                    <div class="code-block" style="margin-top: 10px;"><code>&lt;div&gt; (abre)<br>
+&nbsp;&nbsp;&lt;p&gt; (abre)<br>
+&nbsp;&nbsp;&lt;/p&gt; (cierra)<br>
+&lt;/div&gt; (cierra)</code></div>
+                    <p style="margin: 10px 0 0 0;"><strong>❌ INCORRECTO:</strong></p>
+                    <div class="code-block" style="margin: 5px 0;"><code>&lt;div&gt;<br>
+&nbsp;&nbsp;&lt;p&gt;<br>
+&lt;/div&gt; &lt;!-- p no está cerrada! --&gt;<br>
+&lt;/p&gt;</code></div>
+                </div>
+
+                <div class="highlight">
+                    <strong>2. Indentación (espacios):</strong>
+                    <p style="margin-top: 10px;">Usa consistentemente espacios o tabulaciones. Mejora legibilidad:</p>
+                    <div class="code-block" style="margin-top: 10px;"><code>&lt;html&gt;<br>
+&nbsp;&nbsp;&lt;body&gt; &lt;!-- indentado 1 nivel --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt; &lt;!-- indentado 2 niveles --&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/p&gt;<br>
+&nbsp;&nbsp;&lt;/body&gt;<br>
+&lt;/html&gt;</code></div>
+                </div>
+
+                <div class="highlight">
+                    <strong>3. Convención de nombres:</strong>
+                    <ul>
+                        <li><strong>Archivos:</strong> Usa minúsculas, sin espacios: <code>index.html</code>, <code>contacto.html</code>, <code>mi-pagina.html</code></li>
+                        <li><strong>IDs y clases:</strong> Usa minúsculas, guiones para separar: <code>id="menu-principal"</code>, <code>class="botón-grande"</code></li>
+                        <li><strong>Nombres significativos:</strong> <code>id="sección-noticias"</code> es mejor que <code>id="sec1"</code></li>
+                    </ul>
+                </div>
+
+                <div class="highlight">
+                    <strong>4. Comentarios en HTML:</strong>
+                    <p style="margin-top: 10px;">Los comentarios son notas para ti o para otros desarrolladores. No aparecen en la página:</p>
+                    <div class="code-block" style="margin-top: 10px;"><code>&lt;!-- Esto es un comentario --&gt;<br>
+&lt;p&gt;Este texto sí aparece&lt;/p&gt;<br>
+&lt;!-- Comentarios de múltiples líneas<br>
+&nbsp;&nbsp;&nbsp;&nbsp;son muy útiles<br>
+&nbsp;&nbsp;&nbsp;&nbsp;para explicar código --&gt;</code></div>
+                </div>
+
+                <div class="highlight">
+                    <strong>5. Etiquetas auto-cerrantes comunes:</strong>
+                    <p style="margin-top: 10px;">Algunas etiquetas no tienen contenido interno, se cierran a sí mismas:</p>
+                    <ul>
+                        <li><code>&lt;img ... &gt;</code> - imágenes</li>
+                        <li><code>&lt;br&gt;</code> - salto de línea</li>
+                        <li><code>&lt;hr&gt;</code> - línea horizontal</li>
+                        <li><code>&lt;input ... &gt;</code> - campo de entrada</li>
+                        <li><code>&lt;meta ... &gt;</code> - metadatos</li>
+                    </ul>
+                </div>
+
+                <div class="highlight">
+                    <strong>6. Diferencia entre rutas relativas y absolutas:</strong>
+                    <p style="margin-top: 10px;"><strong>Ruta relativa:</strong> relativa al archivo actual</p>
+                    <ul>
+                        <li><code>&lt;img src="imagen.jpg"&gt;</code> - en la misma carpeta</li>
+                        <li><code>&lt;img src="imagenes/foto.jpg"&gt;</code> - en subcarpeta</li>
+                        <li><code>&lt;a href="../index.html"&gt;</code> - carpeta padre</li>
+                    </ul>
+                    <p style="margin: 10px 0 0 0;"><strong>Ruta absoluta:</strong> dirección completa desde internet</p>
+                    <ul>
+                        <li><code>&lt;img src="https://ejemplo.com/imagen.jpg"&gt;</code></li>
+                        <li><code>&lt;a href="https://www.google.com"&gt;</code></li>
+                    </ul>
+                </div>
+
+                <div class="concept-explanation">
+                    <div class="concept-title">💡 Por qué esto importa</div>
+                    <p>Si usas rutas absolutas a internet, tu página depende de que esos servidores estén activos. Usa rutas relativas para archivos locales.</p>
+                </div>
+
+                <h3>Checklist para validar tu HTML:</h3>
+                <div style="background: #d4edda; border-left: 4px solid #28a745; padding: 15px; margin: 15px 0; border-radius: 5px;">
+                    <ul style="margin: 0; padding-left: 20px;">
+                        <li>✅ Comienza con <code>&lt;!DOCTYPE html&gt;</code></li>
+                        <li>✅ Tiene etiqueta &lt;html&gt; que envuelve todo</li>
+                        <li>✅ Tiene &lt;head&gt; con &lt;meta charset="UTF-8"&gt;</li>
+                        <li>✅ Tiene &lt;title&gt; descriptivo</li>
+                        <li>✅ Tiene &lt;body&gt; con contenido</li>
+                        <li>✅ Todas las etiquetas están correctamente cerradas</li>
+                        <li>✅ La indentación es consistente</li>
+                        <li>✅ Solo hay UN &lt;h1&gt;</li>
+                        <li>✅ Los atributos alt en imágenes están completos</li>
+                        <li>✅ Los enlaces funcionan (o tienen href="#" si son de prueba)</li>
+                    </ul>
+                </div>
+
+                <h3>Recursos para validar tu código:</h3>
+                <ul>
+                    <li><strong>Validador oficial W3C:</strong> <a href="https://validator.w3.org/" target="_blank" style="color: #667eea;">validator.w3.org</a> - Copia tu código y verifica que sea correcto</li>
+                    <li><strong>Navegadores:</strong> Abre tu página en Chrome, Firefox, Safari y Edge para asegurar compatibilidad</li>
+                    <li><strong>DevTools:</strong> Presiona F12 en tu navegador para ver el código mientras exploras tu página</li>
+                </ul>
+
+                <div class="warning">
+                    <strong>Importante:</strong> Los navegadores "perdonan" muchos errores en HTML. Tu página podría verse "bien" aunque el código sea incorrecto. Aprende a escribir HTML bien desde el principio - es más fácil que desaprender malos hábitos.
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>📚 Guía Didáctica de HTML Básico</p>
+            <p>Créate tu primera página web hoy mismo 🚀</p>
+        </footer>
+    </div>
+</body>
+</html>
