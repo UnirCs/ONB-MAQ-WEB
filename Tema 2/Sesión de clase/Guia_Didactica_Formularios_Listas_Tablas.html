@@ -1,0 +1,1451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Didáctica: Formularios, Listas y Tablas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            scroll-margin-top: 20px;
+        }
+
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        p, li {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-radius: 5px;
+            font-size: 0.95em;
+        }
+
+        .code-block code {
+            color: #d63384;
+        }
+
+        .example-box {
+            background: #e8f4f8;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .example-box h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .highlight strong {
+            color: #856404;
+        }
+
+        .tip {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .tip::before {
+            content: "💡 Consejo: ";
+            font-weight: bold;
+            color: #155724;
+        }
+
+        .warning {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .warning::before {
+            content: "⚠️ Importante: ";
+            font-weight: bold;
+            color: #721c24;
+        }
+
+        .nav-menu {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .nav-menu h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-menu li {
+            margin-bottom: 8px;
+        }
+
+        .nav-menu a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+            align-items: start;
+        }
+
+        .comparison-item {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-label {
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .comparison-content {
+            padding: 15px;
+        }
+
+        .comparison-code {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            color: #d63384;
+            border-left: 3px solid #667eea;
+        }
+
+        .comparison-result {
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 5px;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ESTILOS PARA EL PLAYGROUND */
+        .playground-section {
+            margin: 40px 0;
+        }
+
+        .playground-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0;
+            font-weight: bold;
+            font-size: 1.1em;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .playground-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            overflow: hidden;
+            background: white;
+            min-height: 500px;
+        }
+
+        .editor-panel {
+            display: flex;
+            flex-direction: column;
+            border-right: 2px solid #ddd;
+        }
+
+        .editor-label {
+            background: #f8f9fa;
+            padding: 12px 15px;
+            font-weight: bold;
+            color: #667eea;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.95em;
+        }
+
+        .editor-textarea {
+            flex: 1;
+            padding: 15px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            border: none;
+            resize: none;
+            outline: none;
+            background: #f5f5f5;
+            color: #333;
+            line-height: 1.5;
+        }
+
+        .editor-textarea:focus {
+            background: white;
+        }
+
+        .preview-panel {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .preview-label {
+            background: #f8f9fa;
+            padding: 12px 15px;
+            font-weight: bold;
+            color: #667eea;
+            border-bottom: 1px solid #ddd;
+            font-size: 0.95em;
+        }
+
+        .preview-content {
+            flex: 1;
+            padding: 20px;
+            overflow-y: auto;
+            background: white;
+        }
+
+        .preview-content > * {
+            margin-bottom: 10px;
+        }
+
+        .playground-info {
+            background: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .playground-info strong {
+            color: #0c5460;
+        }
+
+        .reset-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 0.9em;
+            transition: background 0.3s;
+        }
+
+        .reset-btn:hover {
+            background: #764ba2;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        table tr:hover {
+            background: #f0f0f0;
+        }
+
+        .concepto-box {
+            background: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .concepto-box strong {
+            color: #0c5460;
+        }
+
+        .elemento {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .elemento-titulo {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 1200px) {
+            .playground-container {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .editor-panel {
+                border-right: none;
+                border-bottom: 2px solid #ddd;
+                min-height: 400px;
+            }
+
+            .preview-panel {
+                min-height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Formularios, Listas y Tablas en HTML</h1>
+            <p>Crea interfaces interactivas con elementos de entrada y visualización de datos</p>
+        </header>
+
+        <main>
+            <nav class="nav-menu">
+                <h3>📑 Contenidos</h3>
+                <ul>
+                    <li><a href="#formularios">1. Formularios</a></li>
+                    <li><a href="#elementos-form">2. Elementos de Formulario</a></li>
+                    <li><a href="#listas">3. Listas en HTML</a></li>
+                    <li><a href="#tablas">4. Tablas</a></li>
+                    <li><a href="#playground-form">5. Playground: Formulario</a></li>
+                    <li><a href="#playground-listas">6. Playground: Listas</a></li>
+                    <li><a href="#playground-tabla">7. Playground: Tabla</a></li>
+                </ul>
+            </nav>
+
+            <!-- SECCIÓN 1: FORMULARIOS -->
+            <section id="formularios">
+                <h2>1. Formularios en HTML</h2>
+
+                <p>Los formularios son la manera que tienen las páginas web para <strong>recopilar información del usuario</strong>. Cuando rellenas datos en un sitio web (como tu nombre, correo, contraseña), estás interactuando con un formulario.</p>
+
+                <h3>Ejemplo visual de un formulario:</h3>
+                <svg viewBox="0 0 400 420" style="max-width: 500px; border: 2px solid #667eea; border-radius: 8px; background: white; display: block; margin: 20px 0;">
+                    <!-- Encabezado -->
+                    <rect width="400" height="50" fill="#667eea"/>
+                    <text x="200" y="35" font-size="20" font-weight="bold" fill="white" text-anchor="middle">Formulario de Contacto</text>
+                    
+                    <!-- Labels e inputs -->
+                    <text x="30" y="90" font-size="12" font-weight="bold" fill="#333">Nombre:</text>
+                    <rect x="30" y="100" width="340" height="30" fill="none" stroke="#ddd" stroke-width="1" rx="4"/>
+                    <text x="40" y="122" font-size="12" fill="#999">Tu nombre completo</text>
+                    
+                    <text x="30" y="160" font-size="12" font-weight="bold" fill="#333">Email:</text>
+                    <rect x="30" y="170" width="340" height="30" fill="none" stroke="#ddd" stroke-width="1" rx="4"/>
+                    <text x="40" y="192" font-size="12" fill="#999">tu@email.com</text>
+                    
+                    <text x="30" y="230" font-size="12" font-weight="bold" fill="#333">País:</text>
+                    <rect x="30" y="240" width="340" height="30" fill="none" stroke="#ddd" stroke-width="1" rx="4"/>
+                    <text x="40" y="262" font-size="12" fill="#999">-- Selecciona un país --</text>
+                    
+                    <!-- Checkbox -->
+                    <rect x="30" y="300" width="15" height="15" fill="none" stroke="#ddd" stroke-width="1" rx="2"/>
+                    <text x="55" y="312" font-size="12" fill="#333">Acepto términos y condiciones</text>
+                    
+                    <!-- Botones -->
+                    <rect x="30" y="350" width="100" height="35" fill="#667eea" rx="4"/>
+                    <text x="80" y="373" font-size="12" font-weight="bold" fill="white" text-anchor="middle">Enviar</text>
+                    
+                    <rect x="150" y="350" width="100" height="35" fill="#ccc" rx="4"/>
+                    <text x="200" y="373" font-size="12" font-weight="bold" fill="#fff" text-anchor="middle">Limpiar</text>
+                </svg>
+
+                <h3>¿Qué es un formulario?</h3>
+
+                <div class="concepto-box">
+                    <strong>Un formulario HTML es un contenedor que agrupa distintos campos de entrada</strong> (cajas de texto, botones, selecciones, etc.) donde el usuario puede escribir o seleccionar información que luego se envía a un servidor.
+                </div>
+
+                <h3>¿Dónde van los datos del formulario?</h3>
+
+                <p>Cuando haces clic en el botón "Enviar" de un formulario, los datos que escribiste viajan a través de internet hasta un <strong>servidor web</strong> (una computadora remota que procesa tu información). Ese servidor ejecuta un programa (escrito en PHP, Python, Node.js, etc.) que:</p>
+
+                <ol>
+                    <li><strong>Recibe los datos</strong> que enviaste desde el formulario</li>
+                    <li><strong>Valida la información</strong> (verifica que sea correcta)</li>
+                    <li><strong>La guarda en una base de datos</strong> (como si fuera un archivo gigante con información ordenada)</li>
+                    <li><strong>Realiza acciones</strong> basadas en esos datos</li>
+                    <li><strong>Envía una respuesta</strong> de vuelta a tu navegador</li>
+                </ol>
+
+                <h3>Ejemplos reales de formularios:</h3>
+
+                <div class="ejemplo-box">
+                    <h4>📝 Registro en una web</h4>
+                    <p><strong>Qué rellenas:</strong> nombre, email, contraseña</p>
+                    <p><strong>Dónde va:</strong> A la base de datos de la web. Se crea una cuenta con tu información</p>
+                    <p><strong>Qué pasa después:</strong> Recibes un email de confirmación, puedes iniciar sesión, tu perfil se guarda</p>
+                </div>
+
+                <div class="ejemplo-box">
+                    <h4>🛒 Compra en una tienda online</h4>
+                    <p><strong>Qué rellenas:</strong> datos personales, dirección de envío, método de pago</p>
+                    <p><strong>Dónde va:</strong> A los servidores de la tienda y al sistema de pagos (procesador de tarjetas)</p>
+                    <p><strong>Qué pasa después:</strong> Se procesa el pago, se genera una orden, se prepara el envío, recibes un email de confirmación</p>
+                </div>
+
+                <div class="ejemplo-box">
+                    <h4>💬 Formulario de contacto</h4>
+                    <p><strong>Qué rellenas:</strong> tu nombre, email, asunto, mensaje</p>
+                    <p><strong>Dónde va:</strong> A la base de datos de la empresa, le llega un email al equipo de atención al cliente</p>
+                    <p><strong>Qué pasa después:</strong> El equipo de soporte lo revisa y te responde por email</p>
+                </div>
+
+                <div class="ejemplo-box">
+                    <h4>🔍 Buscador de Google</h4>
+                    <p><strong>Qué rellenas:</strong> tu búsqueda (una palabra o frase)</p>
+                    <p><strong>Dónde va:</strong> A los servidores de Google</p>
+                    <p><strong>Qué pasa después:</strong> Google busca en su índice de internet y te devuelve resultados relevantes</p>
+                </div>
+
+                <div class="tip">
+                    <strong>IMPORTANTE sobre seguridad:</strong> Nunca escribas información sensible (contraseñas) en formularios que no sean de un sitio web de confianza. Verifica que la URL comience con <code>https://</code> (con la "s" de seguro) antes de enviar datos importantes.
+                </div>
+
+                <p>La etiqueta fundamental es <code>&lt;form&gt;</code>, que actúa como contenedor:</p>
+
+                <div class="code-block"><code>&lt;form action="procesar.php" method="POST"&gt;<br>
+&nbsp;&nbsp;&lt;!-- Los campos van aquí --&gt;<br>
+&lt;/form&gt;</code></div>
+
+                <h3>Atributos importantes de form:</h3>
+
+                <table>
+                    <tr>
+                        <th>Atributo</th>
+                        <th>Descripción</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                    <tr>
+                        <td><strong>action</strong></td>
+                        <td>URL donde se envían los datos del formulario</td>
+                        <td>action="enviar.php"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>method</strong></td>
+                        <td>Forma de enviar los datos: GET o POST</td>
+                        <td>method="POST"</td>
+                    </tr>
+                    <tr>
+                        <td><strong>name</strong></td>
+                        <td>Nombre identificador del formulario</td>
+                        <td>name="contacto"</td>
+                    </tr>
+                </table>
+
+                <div class="tip">
+                    <strong>GET vs POST:</strong> GET envía datos visibles en la URL (menos seguro), POST los envía ocultos (más seguro). Usa POST para datos sensibles.
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: ELEMENTOS DE FORMULARIO -->
+            <section id="elementos-form">
+                <h2>2. Elementos de Formulario</h2>
+
+                <p>Los formularios están compuestos por varios tipos de campos. Veamos los principales:</p>
+
+                <h3>2.1 Input - Campo de Texto</h3>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">&lt;input type="text"&gt;</div>
+                    <p>Es el campo más básico. Permite que el usuario escriba texto de una sola línea.</p>
+                    <div class="comparison">
+                        <div class="comparison-item">
+                            <div class="comparison-label">📝 Código HTML</div>
+                            <div class="comparison-content">
+                                <div class="comparison-code">&lt;input type="text" name="nombre" placeholder="Tu nombre"&gt;</div>
+                            </div>
+                        </div>
+                        <div class="comparison-item">
+                            <div class="comparison-label">👁️ Cómo se ve</div>
+                            <div class="comparison-result">
+                                <input type="text" name="nombre" placeholder="Tu nombre">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>2.2 Input - Otros tipos</h3>
+
+                <table>
+                    <tr>
+                        <th>type</th>
+                        <th>Descripción</th>
+                        <th>Ejemplo</th>
+                    </tr>
+                    <tr>
+                        <td><strong>password</strong></td>
+                        <td>Texto oculto (para contraseñas)</td>
+                        <td>&lt;input type="password"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td><strong>email</strong></td>
+                        <td>Valida formato de correo</td>
+                        <td>&lt;input type="email"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td><strong>number</strong></td>
+                        <td>Solo números</td>
+                        <td>&lt;input type="number"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td><strong>date</strong></td>
+                        <td>Selector de fecha</td>
+                        <td>&lt;input type="date"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td><strong>checkbox</strong></td>
+                        <td>Casilla seleccionable</td>
+                        <td>&lt;input type="checkbox"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td><strong>radio</strong></td>
+                        <td>Opción excluyente (solo una)</td>
+                        <td>&lt;input type="radio"&gt;</td>
+                    </tr>
+                    <tr>
+                        <td><strong>submit</strong></td>
+                        <td>Botón para enviar</td>
+                        <td>&lt;input type="submit"&gt;</td>
+                    </tr>
+                </table>
+
+                <h3>2.3 Label - Etiqueta</h3>
+
+                <p>La etiqueta <code>&lt;label&gt;</code> permite asociar texto descriptivo a un campo de entrada. Es muy importante para la accesibilidad:</p>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📝 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;label for="email"&gt;Tu correo:&lt;/label&gt;<br>&lt;input type="email" id="email" name="email"&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Cómo se ve</div>
+                        <div class="comparison-result">
+                            <label for="email">Tu correo:</label><br>
+                            <input type="email" id="email" name="email" placeholder="ejemplo@email.com">
+                        </div>
+                    </div>
+                </div>
+
+                <p>El atributo <code>for</code> del label debe coincidir con el <code>id</code> del input.</p>
+
+                <h3>2.4 Textarea - Área de Texto</h3>
+
+                <p>Para textos más largos, usamos textarea:</p>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📝 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;textarea name="mensaje" rows="5"&gt;&lt;/textarea&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Cómo se ve</div>
+                        <div class="comparison-result">
+                            <textarea name="mensaje" rows="5" style="width: 100%; font-family: inherit;"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>2.5 Select - Menú Desplegable</h3>
+
+                <p>Para elegir entre varias opciones predefinidas:</p>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📝 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;select name="pais"&gt;<br>&nbsp;&nbsp;&lt;option value="es"&gt;España&lt;/option&gt;<br>&nbsp;&nbsp;&lt;option value="mx"&gt;México&lt;/option&gt;<br>&nbsp;&nbsp;&lt;option value="ar"&gt;Argentina&lt;/option&gt;<br>&lt;/select&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Cómo se ve</div>
+                        <div class="comparison-result">
+                            <select name="pais" style="padding: 8px; border: 1px solid #ddd; border-radius: 4px; font-size: 1em;">
+                                <option value="es">España</option>
+                                <option value="mx">México</option>
+                                <option value="ar">Argentina</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>2.6 Button - Botón</h3>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📝 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;button type="submit"&gt;Enviar&lt;/button&gt;<br>&lt;button type="reset"&gt;Limpiar&lt;/button&gt;<br>&lt;button type="button"&gt;Más info&lt;/button&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Cómo se ve</div>
+                        <div class="comparison-result">
+                            <button type="submit" style="padding: 10px 20px; background: #667eea; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 5px;">Enviar</button>
+                            <button type="reset" style="padding: 10px 20px; background: #6c757d; color: white; border: none; border-radius: 4px; cursor: pointer; margin-right: 5px;">Limpiar</button>
+                            <button type="button" style="padding: 10px 20px; background: #764ba2; color: white; border: none; border-radius: 4px; cursor: pointer;">Más info</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: LISTAS -->
+            <section id="listas">
+                <h2>3. Listas en HTML</h2>
+
+                <p>Las listas se usan para agrupar elementos relacionados. Hay tres tipos principales:</p>
+
+                <h3>3.1 Listas Desordenadas (ul)</h3>
+
+                <p>Se usan cuando el orden NO importa. Los elementos aparecen con viñetas:</p>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📝 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;ul&gt;<br>&nbsp;&nbsp;&lt;li&gt;Primer elemento&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Segundo elemento&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Tercer elemento&lt;/li&gt;<br>&lt;/ul&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Cómo se ve</div>
+                        <div class="comparison-result">
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li>Primer elemento</li>
+                                <li>Segundo elemento</li>
+                                <li>Tercer elemento</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>3.2 Listas Ordenadas (ol)</h3>
+
+                <p>Se usan cuando el orden SÍ importa. Los elementos aparecen numerados:</p>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📝 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;ol&gt;<br>&nbsp;&nbsp;&lt;li&gt;Primer paso&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Segundo paso&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Tercer paso&lt;/li&gt;<br>&lt;/ol&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Cómo se ve</div>
+                        <div class="comparison-result">
+                            <ol style="margin: 0; padding-left: 20px;">
+                                <li>Primer paso</li>
+                                <li>Segundo paso</li>
+                                <li>Tercer paso</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>3.3 Listas de Definición (dl)</h3>
+
+                <p>Para términos y sus definiciones:</p>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📝 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;dl&gt;<br>&nbsp;&nbsp;&lt;dt&gt;HTML&lt;/dt&gt;<br>&nbsp;&nbsp;&lt;dd&gt;Lenguaje de marcado para crear páginas web&lt;/dd&gt;<br>&nbsp;&nbsp;&lt;dt&gt;CSS&lt;/dt&gt;<br>&nbsp;&nbsp;&lt;dd&gt;Lenguaje para dar estilos a páginas web&lt;/dd&gt;<br>&lt;/dl&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Cómo se ve</div>
+                        <div class="comparison-result">
+                            <dl style="margin: 0;">
+                                <dt style="font-weight: bold; margin-top: 10px;">HTML</dt>
+                                <dd style="margin-left: 20px; margin-bottom: 10px;">Lenguaje de marcado para crear páginas web</dd>
+                                <dt style="font-weight: bold; margin-top: 10px;">CSS</dt>
+                                <dd style="margin-left: 20px; margin-bottom: 10px;">Lenguaje para dar estilos a páginas web</dd>
+                            </dl>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>3.4 Listas Anidadas</h3>
+
+                <p>Puedes poner listas dentro de otras listas:</p>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📝 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">&lt;ul&gt;<br>&nbsp;&nbsp;&lt;li&gt;Frutas<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;ul&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Manzana&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;Plátano&lt;/li&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/ul&gt;<br>&nbsp;&nbsp;&lt;/li&gt;<br>&nbsp;&nbsp;&lt;li&gt;Verduras&lt;/li&gt;<br>&lt;/ul&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Cómo se ve</div>
+                        <div class="comparison-result">
+                            <ul style="margin: 0; padding-left: 20px;">
+                                <li>Frutas
+                                    <ul style="margin-top: 5px; margin-bottom: 5px;">
+                                        <li>Manzana</li>
+                                        <li>Plátano</li>
+                                    </ul>
+                                </li>
+                                <li>Verduras</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4: TABLAS -->
+            <section id="tablas">
+                <h2>4. Tablas en HTML</h2>
+
+                <p>Las tablas se usan para mostrar datos organizados en filas y columnas.</p>
+
+                <h3>Estructura de una tabla</h3>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📝 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code" style="font-size: 0.85em;">&lt;table&gt;<br>&nbsp;&nbsp;&lt;thead&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Encabezado 1&lt;/th&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Encabezado 2&lt;/th&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&lt;/thead&gt;<br>&nbsp;&nbsp;&lt;tbody&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Dato 1&lt;/td&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;td&gt;Dato 2&lt;/td&gt;<br>&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>&nbsp;&nbsp;&lt;/tbody&gt;<br>&lt;/table&gt;</div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Cómo se ve</div>
+                        <div class="comparison-result" style="padding: 10px;">
+                            <table style="width: 100%; border-collapse: collapse;">
+                                <thead>
+                                    <tr>
+                                        <th style="background: #667eea; color: white; padding: 8px; text-align: left;">Encabezado 1</th>
+                                        <th style="background: #667eea; color: white; padding: 8px; text-align: left;">Encabezado 2</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Dato 1</td>
+                                        <td style="border: 1px solid #ddd; padding: 8px;">Dato 2</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Elementos de tabla:</h3>
+
+                <table>
+                    <tr>
+                        <th>Etiqueta</th>
+                        <th>Descripción</th>
+                    </tr>
+                    <tr>
+                        <td><strong>&lt;table&gt;</strong></td>
+                        <td>Contenedor principal de la tabla</td>
+                    </tr>
+                    <tr>
+                        <td><strong>&lt;thead&gt;</strong></td>
+                        <td>Encabezado de la tabla (generalmente con th)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>&lt;tbody&gt;</strong></td>
+                        <td>Cuerpo de la tabla (datos)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>&lt;tfoot&gt;</strong></td>
+                        <td>Pie de la tabla (totales, resumen)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>&lt;tr&gt;</strong></td>
+                        <td>Fila de la tabla</td>
+                    </tr>
+                    <tr>
+                        <td><strong>&lt;th&gt;</strong></td>
+                        <td>Celda de encabezado</td>
+                    </tr>
+                    <tr>
+                        <td><strong>&lt;td&gt;</strong></td>
+                        <td>Celda de datos normal</td>
+                    </tr>
+                </table>
+
+                <h3>Atributos útiles:</h3>
+
+                <p><strong>colspan:</strong> Hace que una celda ocupe varias columnas</p>
+                <div class="code-block"><code>&lt;td colspan="2"&gt;Esta celda ocupa 2 columnas&lt;/td&gt;</code></div>
+
+                <p><strong>rowspan:</strong> Hace que una celda ocupe varias filas</p>
+                <div class="code-block"><code>&lt;td rowspan="3"&gt;Esta celda ocupa 3 filas&lt;/td&gt;</code></div>
+            </section>
+
+            <!-- PLAYGROUND 1: FORMULARIO -->
+            <section id="playground-form" class="playground-section">
+                <h2>5. Playground Interactivo: Crear un Formulario</h2>
+
+                <div class="playground-info">
+                    <strong>ℹ️ Cómo funciona:</strong> Modifica el código HTML en el panel izquierdo y ve los cambios en tiempo real en el panel derecho. ¡Experimenta, añade campos, cambia etiquetas!
+                </div>
+
+                <div class="playground-header">
+                    <span>⚙️ Editor de Formulario</span>
+                    <button class="reset-btn" onclick="resetPlayground('form')">↻ Restaurar</button>
+                </div>
+
+                <div class="playground-container">
+                    <div class="editor-panel">
+                        <div class="editor-label">📝 Código HTML</div>
+                        <textarea id="editor-form" class="editor-textarea"><form action="procesar.php" method="POST">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="edad">Edad:</label>
+  <input type="number" id="edad" name="edad" min="18" max="100">
+
+  <label for="pais">País:</label>
+  <select id="pais" name="pais">
+    <option value="">-- Selecciona un país --</option>
+    <option value="es">España</option>
+    <option value="mx">México</option>
+    <option value="ar">Argentina</option>
+  </select>
+
+  <label>
+    <input type="checkbox" name="terminos" required>
+    Acepto los términos y condiciones
+  </label>
+
+  <button type="submit">Enviar</button>
+  <button type="reset">Limpiar</button>
+</form></textarea>
+                    </div>
+
+                    <div class="preview-panel">
+                        <div class="preview-label">👁️ Vista Previa</div>
+                        <div class="preview-content" id="preview-form">
+                            <!-- Se actualiza con JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight" style="margin-top: 20px;">
+                    <strong>Ejercicios para practicar:</strong>
+                    <ul style="margin-top: 10px; margin-bottom: 0;">
+                        <li>Añade un campo para "teléfono"</li>
+                        <li>Añade un área de texto para "comentarios" (textarea)</li>
+                        <li>Añade más opciones al select de país</li>
+                        <li>Cambia el tipo de un campo para probar date, time, etc.</li>
+                        <li>Añade radio buttons para seleccionar género</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- PLAYGROUND 2: LISTAS -->
+            <section id="playground-listas" class="playground-section">
+                <h2>6. Playground Interactivo: Crear Listas</h2>
+
+                <div class="playground-info">
+                    <strong>ℹ️ Cómo funciona:</strong> Experimenta con listas desordenadas, ordenadas y anidadas. Prueba a cambiar &lt;ul&gt; por &lt;ol&gt; para ver la diferencia.
+                </div>
+
+                <div class="playground-header">
+                    <span>⚙️ Editor de Listas</span>
+                    <button class="reset-btn" onclick="resetPlayground('listas')">↻ Restaurar</button>
+                </div>
+
+                <div class="playground-container">
+                    <div class="editor-panel">
+                        <div class="editor-label">📝 Código HTML</div>
+                        <textarea id="editor-listas" class="editor-textarea"><h2>Mis Valores</h2>
+<ul>
+  <li>Integridad</li>
+  <li>Compromiso</li>
+  <li>Innovación</li>
+</ul>
+
+<h2>Pasos para Aprender a Programar</h2>
+<ol>
+  <li>Aprende HTML</li>
+  <li>Aprende CSS</li>
+  <li>Aprende JavaScript</li>
+  <li>Practica con proyectos</li>
+</ol>
+
+<h2>Categorías de Productos</h2>
+<ul>
+  <li>Electrónica
+    <ul>
+      <li>Teléfonos</li>
+      <li>Laptops</li>
+      <li>Tablets</li>
+    </ul>
+  </li>
+  <li>Ropa
+    <ul>
+      <li>Camisetas</li>
+      <li>Pantalones</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Glosario</h2>
+<dl>
+  <dt>HTML</dt>
+  <dd>Lenguaje de marcado para crear páginas web</dd>
+  <dt>CSS</dt>
+  <dd>Lenguaje para estilar y dar forma a páginas web</dd>
+</dl></textarea>
+                    </div>
+
+                    <div class="preview-panel">
+                        <div class="preview-label">👁️ Vista Previa</div>
+                        <div class="preview-content" id="preview-listas">
+                            <!-- Se actualiza con JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight" style="margin-top: 20px;">
+                    <strong>Ejercicios para practicar:</strong>
+                    <ul style="margin-top: 10px; margin-bottom: 0;">
+                        <li>Cambia &lt;ul&gt; por &lt;ol&gt; para ver cómo cambia la numeración</li>
+                        <li>Añade más elementos anidados bajo "Electrónica"</li>
+                        <li>Crea tu propia lista de "Habilidades" o "Hobbies"</li>
+                        <li>Mezcla listas ordenadas y desordenadas</li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- PLAYGROUND 3: TABLA -->
+            <section id="playground-tabla" class="playground-section">
+                <h2>7. Playground Interactivo: Crear Tablas</h2>
+
+                <div class="playground-info">
+                    <strong>ℹ️ Cómo funciona:</strong> Crea tablas con datos. Prueba a añadir más filas, cambia el contenido, experimenta con colspan y rowspan.
+                </div>
+
+                <div class="playground-header">
+                    <span>⚙️ Editor de Tablas</span>
+                    <button class="reset-btn" onclick="resetPlayground('tabla')">↻ Restaurar</button>
+                </div>
+
+                <div class="playground-container">
+                    <div class="editor-panel">
+                        <div class="editor-label">📝 Código HTML</div>
+                        <textarea id="editor-tabla" class="editor-textarea"><table border="1" cellpadding="10" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Categoría</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Laptop HP</td>
+      <td>$599</td>
+      <td>15</td>
+      <td>Electrónica</td>
+    </tr>
+    <tr>
+      <td>Mouse Inalámbrico</td>
+      <td>$25</td>
+      <td>45</td>
+      <td>Accesorios</td>
+    </tr>
+    <tr>
+      <td>Teclado Mecánico</td>
+      <td>$120</td>
+      <td>22</td>
+      <td>Accesorios</td>
+    </tr>
+    <tr>
+      <td>Monitor 27"</td>
+      <td>$320</td>
+      <td>8</td>
+      <td>Electrónica</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3"><strong>Total productos</strong></td>
+      <td>4 items</td>
+    </tr>
+  </tfoot>
+</table></textarea>
+                    </div>
+
+                    <div class="preview-panel">
+                        <div class="preview-label">👁️ Vista Previa</div>
+                        <div class="preview-content" id="preview-tabla">
+                            <!-- Se actualiza con JavaScript -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight" style="margin-top: 20px;">
+                    <strong>Ejercicios para practicar:</strong>
+                    <ul style="margin-top: 10px; margin-bottom: 0;">
+                        <li>Añade más filas con más productos</li>
+                        <li>Cambia los encabezados (thead) por otros datos</li>
+                        <li>Prueba a quitar border="1" para ver la diferencia</li>
+                        <li>Crea una tabla de horarios o calificaciones</li>
+                        <li>Experimenta con colspan en la fila de totales</li>
+                    </ul>
+                </div>
+            </section>
+
+            <section>
+                <h2>💡 Consejos Finales</h2>
+
+                <div class="tip">
+                    <strong>Accesibilidad:</strong> Siempre usa &lt;label&gt; en formularios y proporciona encabezados claros en tablas. Ayuda a usuarios con discapacidades visuales.
+                </div>
+
+                <div class="tip">
+                    <strong>Semántica:</strong> Usa &lt;thead&gt;, &lt;tbody&gt; y &lt;tfoot&gt; en tablas. Usa &lt;ol&gt; cuando el orden importa.
+                </div>
+
+                <div class="warning">
+                    <strong>No uses tablas para layouts:</strong> Las tablas son SOLO para datos tabulares. Para diseño, usa CSS Grid o Flexbox.
+                </div>
+
+                <div class="tip">
+                    <strong>Validación en HTML:</strong> Usa atributos como "required", "type="email"", "min", "max" para hacer validaciones básicas antes de enviar.
+                </div>
+            </section>
+        </main>
+
+        <footer class="footer">
+            <p>📚 Guía Didáctica de Formularios, Listas y Tablas</p>
+            <p>¡Practica en los playgrounds y domina estos elementos! 🚀</p>
+        </footer>
+    </div>
+
+    <script>
+        // Sígueme: aquí está el contenido HTML de los playgrounds
+        // Se guarda como strings con escaped HTML para poder mostrarlos en el código
+        const playgroundDefaults = {
+            form: `<form action="procesar.php" method="POST">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" name="nombre" placeholder="Tu nombre completo" required>
+
+  <label for="email">Email:</label>
+  <input type="email" id="email" name="email" required>
+
+  <label for="edad">Edad:</label>
+  <input type="number" id="edad" name="edad" min="18" max="100">
+
+  <label for="pais">País:</label>
+  <select id="pais" name="pais">
+    <option value="">-- Selecciona un país --</option>
+    <option value="es">España</option>
+    <option value="mx">México</option>
+    <option value="ar">Argentina</option>
+  </select>
+
+  <label>
+    <input type="checkbox" name="terminos" required>
+    Acepto los términos y condiciones
+  </label>
+
+  <button type="submit">Enviar</button>
+  <button type="reset">Limpiar</button>
+</form>`,
+            listas: `<h2>Mis Valores</h2>
+<ul>
+  <li>Integridad</li>
+  <li>Compromiso</li>
+  <li>Innovación</li>
+</ul>
+
+<h2>Pasos para Aprender a Programar</h2>
+<ol>
+  <li>Aprende HTML</li>
+  <li>Aprende CSS</li>
+  <li>Aprende JavaScript</li>
+  <li>Practica con proyectos</li>
+</ol>
+
+<h2>Categorías de Productos</h2>
+<ul>
+  <li>Electrónica
+    <ul>
+      <li>Teléfonos</li>
+      <li>Laptops</li>
+      <li>Tablets</li>
+    </ul>
+  </li>
+  <li>Ropa
+    <ul>
+      <li>Camisetas</li>
+      <li>Pantalones</li>
+    </ul>
+  </li>
+</ul>
+
+<h2>Glosario</h2>
+<dl>
+  <dt>HTML</dt>
+  <dd>Lenguaje de marcado para crear páginas web</dd>
+  <dt>CSS</dt>
+  <dd>Lenguaje para estilar y dar forma a páginas web</dd>
+</dl>`,
+            tabla: `<table border="1" cellpadding="10" cellspacing="0">
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Stock</th>
+      <th>Categoría</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Laptop HP</td>
+      <td>$599</td>
+      <td>15</td>
+      <td>Electrónica</td>
+    </tr>
+    <tr>
+      <td>Mouse Inalámbrico</td>
+      <td>$25</td>
+      <td>45</td>
+      <td>Accesorios</td>
+    </tr>
+    <tr>
+      <td>Teclado Mecánico</td>
+      <td>$120</td>
+      <td>22</td>
+      <td>Accesorios</td>
+    </tr>
+    <tr>
+      <td>Monitor 27"</td>
+      <td>$320</td>
+      <td>8</td>
+      <td>Electrónica</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <td colspan="3"><strong>Total productos</strong></td>
+      <td>4 items</td>
+    </tr>
+  </tfoot>
+</table>`
+        };
+
+        // Playgrounds interactivos
+        const playgrounds = {
+            form: {
+                editor: 'editor-form',
+                preview: 'preview-form'
+            },
+            listas: {
+                editor: 'editor-listas',
+                preview: 'preview-listas'
+            },
+            tabla: {
+                editor: 'editor-tabla',
+                preview: 'preview-tabla'
+            }
+        };
+
+        function updatePreview(name) {
+            const playground = playgrounds[name];
+            const editor = document.getElementById(playground.editor);
+            const preview = document.getElementById(playground.preview);
+            
+            try {
+                // Limpiar el preview
+                preview.innerHTML = '';
+                
+                // Crear un contenedor temporal para parsear el HTML
+                const temp = document.createElement('div');
+                temp.innerHTML = editor.value;
+                
+                // Copiar el contenido al preview
+                while (temp.firstChild) {
+                    preview.appendChild(temp.firstChild);
+                }
+            } catch (error) {
+                preview.innerHTML = '<p style="color: red;">❌ Error en el código HTML</p>';
+            }
+        }
+
+        function resetPlayground(name) {
+            const editor = document.getElementById(playgrounds[name].editor);
+            editor.value = playgroundDefaults[name];
+            updatePreview(name);
+        }
+
+        // Agregar event listeners a todos los editores
+        Object.keys(playgrounds).forEach(name => {
+            const editor = document.getElementById(playgrounds[name].editor);
+            editor.addEventListener('input', () => updatePreview(name));
+            editor.addEventListener('keydown', (e) => {
+                if (e.key === 'Tab') {
+                    e.preventDefault();
+                    const start = editor.selectionStart;
+                    const end = editor.selectionEnd;
+                    editor.value = editor.value.substring(0, start) + '\t' + editor.value.substring(end);
+                    editor.selectionStart = editor.selectionEnd = start + 1;
+                }
+            });
+        });
+
+        // Inicializar todos los playgrounds al cargar
+        window.addEventListener('load', () => {
+            Object.keys(playgrounds).forEach(name => {
+                updatePreview(name);
+            });
+        });
+    </script>
+
+    <style>
+        /* Estilos adicionales para los elementos interactivos */
+        .preview-content form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .preview-content label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
+        }
+
+        .preview-content input[type="text"],
+        .preview-content input[type="email"],
+        .preview-content input[type="number"],
+        .preview-content input[type="password"],
+        .preview-content input[type="date"],
+        .preview-content textarea,
+        .preview-content select {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 1em;
+            font-family: inherit;
+        }
+
+        .preview-content button {
+            padding: 10px 20px;
+            background: #667eea;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .preview-content button:hover {
+            background: #764ba2;
+        }
+
+        .preview-content ul, 
+        .preview-content ol {
+            margin-left: 40px;
+        }
+
+        .preview-content ul ul,
+        .preview-content ol ol {
+            margin-top: 10px;
+        }
+
+        .preview-content dl {
+            margin-left: 20px;
+        }
+
+        .preview-content dt {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .preview-content dd {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .preview-content table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .preview-content table th,
+        .preview-content table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .preview-content table th {
+            background: #f0f0f0;
+            font-weight: bold;
+        }
+
+        .preview-content table tr:nth-child(even) {
+            background: #fafafa;
+        }
+
+        .preview-content h2 {
+            color: #667eea;
+            margin-top: 20px;
+            margin-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+            padding-bottom: 5px;
+        }
+    </style>
+</body>
+</html>
