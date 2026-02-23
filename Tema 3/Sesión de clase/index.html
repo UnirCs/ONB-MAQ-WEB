@@ -1,0 +1,1421 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Didáctica: CSS Básico</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            scroll-margin-top: 20px;
+        }
+
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        h4 {
+            color: #667eea;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        p, li {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+
+        .code-block code {
+            color: #d63384;
+            font-size: 0.95em;
+        }
+
+        .example-box {
+            background: #e8f4f8;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .example-box h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .highlight strong {
+            color: #856404;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        table tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+
+        table tr:hover {
+            background: #f0f0f0;
+        }
+
+        .tip {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .tip::before {
+            content: "💡 Consejo: ";
+            font-weight: bold;
+            color: #155724;
+        }
+
+        .warning {
+            background: #f8d7da;
+            border-left: 4px solid #dc3545;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .warning::before {
+            content: "⚠️ Importante: ";
+            font-weight: bold;
+            color: #721c24;
+        }
+
+        .nav-menu {
+            background: #f8f9fa;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .nav-menu h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-menu li {
+            margin-bottom: 8px;
+        }
+
+        .nav-menu a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+
+        .elemento {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .elemento-titulo {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .elemento-desc {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .elemento code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #d63384;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+            align-items: start;
+        }
+
+        .comparison-item {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-label {
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .comparison-content {
+            padding: 15px;
+        }
+
+        .comparison-code {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            color: #d63384;
+            border-left: 3px solid #667eea;
+        }
+
+        .comparison-result {
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 5px;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .concept-explanation {
+            background: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .concept-explanation strong {
+            color: #0c5460;
+        }
+
+        .concept-title {
+            color: #0c5460;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .css-rule-structure {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 10px;
+            padding: 25px;
+            color: white;
+            font-family: 'Courier New', monospace;
+            font-size: 0.95em;
+            line-height: 1.8;
+            overflow-x: hidden;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            margin: 20px 0;
+        }
+
+        .css-rule-structure code {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .css-rule-structure strong {
+            color: #fff;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 2px 6px;
+            border-radius: 3px;
+        }
+
+        .practice-section {
+            background: #f0f8ff;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .practice-section h4 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .demo-box {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .demo-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .selector-example {
+            background: #fff9e6;
+            border: 1px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .selector-example code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #d63384;
+        }
+
+        @media (max-width: 1200px) {
+            main {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            main {
+                padding: 20px;
+            }
+        }
+
+        .toggle-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 15px 0;
+            display: inline-block;
+        }
+
+        .toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .toggle-btn:active {
+            transform: translateY(0);
+        }
+
+        .toggle-btn.visible::after {
+            content: " ▲";
+        }
+
+        .toggle-btn.hidden::after {
+            content: " ▼";
+        }
+
+        .solution-content {
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .solution-content.hidden {
+            max-height: 0;
+            opacity: 0;
+        }
+    </style>
+    <script>
+        function toggleSolution(buttonId, contentId) {
+            const button = document.getElementById(buttonId);
+            const content = document.getElementById(contentId);
+            
+            button.classList.toggle('visible');
+            button.classList.toggle('hidden');
+            content.classList.toggle('hidden');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎨 CSS Básico</h1>
+            <p>Aprende a dar estilo a tus páginas web desde cero</p>
+        </header>
+
+        <main>
+            <nav class="nav-menu">
+                <h3>📋 Contenidos</h3>
+                <ul>
+                    <li><a href="#intro">1. ¿Qué es CSS?</a></li>
+                    <li><a href="#estructura">2. Estructura de una Regla CSS</a></li>
+                    <li><a href="#formas">3. Formas de Agregar CSS</a></li>
+                    <li><a href="#selectores">4. Selectores Simples</a></li>
+                    <li><a href="#propiedades">5. Propiedades CSS Básicas</a></li>
+                    <li><a href="#ejercicios">6. Ejercicios Prácticos</a></li>
+                </ul>
+            </nav>
+
+            <!-- SECCIÓN 1: ¿QUÉ ES CSS? -->
+            <section id="intro">
+                <h2>1. ¿Qué es CSS?</h2>
+
+                <p><strong>CSS</strong> significa <strong>"Cascading Style Sheets"</strong> (Hojas de Estilo en Cascada) en inglés.</p>
+
+                <div class="concept-explanation">
+                    <div class="concept-title">📚 Desglosemos el término:</div>
+                    <ul>
+                        <li><strong>Cascading (en cascada):</strong> Las reglas se aplican en orden, y las más específicas pueden anular las generales. Es como una cascada de agua donde el último nivel es el que ves.</li>
+                        <li><strong>Style (estilo):</strong> Son las instrucciones sobre cómo debe verse algo: colores, tamaños, posiciones, fuentes, etc.</li>
+                        <li><strong>Sheets (hojas):</strong> Son archivos de texto que contienen todas esas reglas de estilo.</li>
+                    </ul>
+                </div>
+
+                <h3>¿Cuál es la diferencia entre HTML y CSS?</h3>
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">🏗️ HTML</div>
+                        <div class="comparison-content">
+                            <p><strong>¿QUÉ?</strong></p>
+                            <p>Proporciona la <strong>estructura</strong> del contenido.</p>
+                            <p>Define qué es cada cosa: "esto es un párrafo", "esto es un título", "esto es una imagen".</p>
+                            <p style="margin-top: 10px; color: #666;"><em>Ejemplo: Los "huesos" de un esqueleto.</em></p>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">🎨 CSS</div>
+                        <div class="comparison-content">
+                            <p><strong>CÓMO SE VE</strong></p>
+                            <p>Proporciona el <strong>estilo</strong> visual.</p>
+                            <p>Define cómo se debe verse: "este párrafo es azul", "este título es grande", "esta imagen tiene un borde".</p>
+                            <p style="margin-top: 10px; color: #666;"><em>Ejemplo: La "piel" y el "vestuario" que cubren los huesos.</em></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip">
+                    <strong>Una página sin CSS es perfectamente funcional</strong>. El navegador la mostrará con estilos por defecto (texto negro, fondo blanco). Pero sin CSS, todas las páginas se verían iguales. CSS es lo que hace que cada página tenga su propia "personalidad".
+                </div>
+
+                <h3>¿Por qué es importante CSS?</h3>
+                <ul>
+                    <li>Hace que las páginas web sean <strong>bonitas y atractivas</strong></li>
+                    <li>Mejora la <strong>experiencia del usuario</strong></li>
+                    <li>Permite que el diseño se vea <strong>bien en diferentes dispositivos</strong> (celulares, tablets, computadoras)</li>
+                    <li>Separa la <strong>estructura (HTML) del estilo (CSS)</strong>, haciendo el código más limpio y fácil de mantener</li>
+                    <li>Muchos sitios web usan CSS para crear <strong>animaciones e interacciones</strong></li>
+                </ul>
+            </section>
+
+            <!-- SECCIÓN 2: ESTRUCTURA DE UNA REGLA CSS -->
+            <section id="estructura">
+                <h2>2. Estructura de una Regla CSS</h2>
+
+                <p>Una regla CSS es una instrucción que le dice al navegador cómo debe verse un elemento. Tiene tres partes principales:</p>
+
+                <div class="css-rule-structure">
+                    <div style="text-align: center; font-size: 1.2em; margin-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 15px;">ESTRUCTURA BÁSICA</div>
+                    
+                    <div style="margin-bottom: 30px;">
+                        <code>p {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;color: blue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;font-size: 18px;<br>
+}</code>
+                    </div>
+
+                    <div style="background: rgba(255,255,255,0.1); padding: 15px; border-radius: 5px; margin-top: 20px;">
+                        <div style="margin-bottom: 15px;">
+                            <strong>p</strong> = <strong>SELECTOR</strong> (a qué elemento aplicar el estilo)
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <strong>{ }</strong> = <strong>BLOQUE DE DECLARACIÓN</strong> (abre y cierra el conjunto de estilos)
+                        </div>
+                        <div style="margin-bottom: 15px;">
+                            <strong>color: blue;</strong> = <strong>PROPIEDAD: VALOR</strong> (qué cambiar y a qué valor)
+                        </div>
+                        <div>
+                            <strong>;</strong> = <strong>PUNTO Y COMA</strong> (finaliza cada declaración, muy importante no olvidarlo)
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Desglose detallado:</h3>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">📍 Selector</div>
+                    <div class="elemento-desc">
+                        <p>Es lo primero, antes de las llaves. Le dice al navegador: "A qué elemento HTML voy a aplicar estos estilos".</p>
+                        <p>Ejemplo: <code>p</code> significa "a todos los párrafos".</p>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">🎨 Propiedad</div>
+                    <div class="elemento-desc">
+                        <p>Es el "qué" queremos cambiar. Son palabras específicas en CSS que representan características visuales.</p>
+                        <p>Ejemplos: <code>color</code> (color del texto), <code>background</code> (fondo), <code>font-size</code> (tamaño de la letra).</p>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">💎 Valor</div>
+                    <div class="elemento-desc">
+                        <p>Es el "a qué" queremos cambiarla. Es lo que va después de los dos puntos.</p>
+                        <p>Ejemplos: <code>blue</code> (azul para color), <code>18px</code> (18 píxeles para tamaño), <code>red</code> (rojo).</p>
+                    </div>
+                </div>
+
+                <h3>Ejemplo práctico completo:</h3>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código CSS</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">
+h1 {<br>
+&nbsp;&nbsp;color: purple;<br>
+&nbsp;&nbsp;font-size: 32px;<br>
+}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Resultado en navegador</div>
+                        <div class="comparison-result">
+                            <h1 style="color: purple; font-size: 32px; margin: 0;">Este es un título púrpura</h1>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip">
+                    Lee los dos puntos como "=". Entonces <code>color: blue</code> significa "color es igual a azul". Esto hace que sea más fácil recordar la sintaxis.
+                </div>
+
+                <div class="warning">
+                    No olvides el <strong>punto y coma (;)</strong> al final de cada declaración. Si lo olvidas, la siguiente propiedad no se aplicará. ¡Es uno de los errores más comunes!
+                </div>
+            </section>
+
+            <!-- SECCIÓN 3: FORMAS DE AGREGAR CSS -->
+            <section id="formas">
+                <h2>3. Formas de Agregar CSS a HTML</h2>
+
+                <p>Existen tres maneras de agregar CSS a un documento HTML. Vamos a verlas todas:</p>
+
+                <h3>A. CSS Inline (en línea)</h3>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">¿Qué es?</div>
+                    <div class="elemento-desc">
+                        <p>Escribes el CSS directamente en la etiqueta HTML, usando el atributo <code>style</code>.</p>
+                    </div>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 Código HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">
+&lt;p style="color: red; font-size: 20px;"&gt;<br>
+&nbsp;Este párrafo es rojo<br>
+&lt;/p&gt;
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ Resultado</div>
+                        <div class="comparison-result">
+                            <p style="color: red; font-size: 20px; margin: 0;">Este párrafo es rojo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning">
+                    <strong>Evita usar CSS inline como tu método principal.</strong> Funciona, pero es difícil de mantener si tienes muchos elementos. Si cambias el color, tienes que hacerlo en cada elemento individualmente.
+                </div>
+
+                <h3>B. CSS Interno (en la etiqueta &lt;style&gt;)</h3>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">¿Qué es?</div>
+                    <div class="elemento-desc">
+                        <p>Escribes una etiqueta <code>&lt;style&gt;</code> dentro del <code>&lt;head&gt;</code> de tu HTML. Todo el CSS va allí.</p>
+                    </div>
+                </div>
+
+                <div class="code-block"><code>&lt;!DOCTYPE html&gt;<br>
+&lt;html lang="es"&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Mi Página&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;style&gt;  <span style="background: #ffeb3b; padding: 2px 4px; border-radius: 2px;">&lt;-- CSS AQUÍ</span><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;p {<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;color: blue;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/style&gt;<br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Este párrafo es azul&lt;/p&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;</code></div>
+
+                <div class="tip">
+                    Este método es mejor que inline porque puedes tener un solo lugar donde defines todos los estilos. Es útil para páginas pequeñas o cuando solo tienes una página.
+                </div>
+
+                <h3>C. CSS Externo (en un archivo separado) - RECOMENDADO</h3>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">¿Qué es?</div>
+                    <div class="elemento-desc">
+                        <p>Creas un archivo separado (por ejemplo, <code>styles.css</code>) y lo enlazas en el HTML usando la etiqueta <code>&lt;link&gt;</code>.</p>
+                    </div>
+                </div>
+
+                <h4>Archivo HTML (index.html):</h4>
+                <div class="code-block"><code>&lt;!DOCTYPE html&gt;<br>
+&lt;html lang="es"&gt;<br>
+&lt;head&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;title&gt;Mi Página&lt;/title&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;link rel="stylesheet" href="styles.css"&gt;  <span style="background: #ffeb3b; padding: 2px 4px; border-radius: 2px;">&lt;-- ENLACE AL CSS</span><br>
+&lt;/head&gt;<br>
+&lt;body&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Este párrafo es azul&lt;/p&gt;<br>
+&lt;/body&gt;<br>
+&lt;/html&gt;</code></div>
+
+                <h4>Archivo CSS (styles.css):</h4>
+                <div class="code-block"><code>p {<br>
+&nbsp;&nbsp;color: blue;<br>
+}</code></div>
+
+                <div class="highlight">
+                    <strong>¡Este es el método profesional!</strong> Separar HTML del CSS es la mejor práctica porque: 
+                    <ul style="margin-top: 10px;">
+                        <li>El código está más organizado</li>
+                        <li>Puedes reutilizar el mismo CSS en múltiples páginas</li>
+                        <li>El HTML es más limpio y fácil de leer</li>
+                        <li>Es más fácil cambiar estilos (solo editas el CSS, no tocas el HTML)</li>
+                    </ul>
+                </div>
+
+                <h3>Comparativa Visual: Sin CSS vs Con CSS</h3>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">❌ SIN CSS</div>
+                        <div class="comparison-content" style="padding: 0;">
+                            <div style="background: white; padding: 15px; border: 1px solid #ddd; font-size: 0.9em; line-height: 1.4;">
+                                <div style="color: #000; font-weight: normal;">Bienvenido a Mi Página</div>
+                                <p style="margin: 5px 0; color: #000;">Este es un párrafo de introducción. Sin CSS, todo se ve muy simple y sin estilo.</p>
+                                <div style="color: #000; font-weight: normal; margin-top: 10px;">Otra sección</div>
+                                <p style="margin: 5px 0; color: #000;">Aquí hay más contenido. El navegador usa sus estilos por defecto.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">✅ CON CSS</div>
+                        <div class="comparison-content" style="padding: 0;">
+                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 15px; border-radius: 8px; color: white;">
+                                <div style="font-size: 1.5em; font-weight: bold; margin-bottom: 10px; text-align: center;">¡Bienvenido a Mi Página!</div>
+                                <p style="margin: 10px 0; background: rgba(255,255,255,0.1); padding: 10px; border-left: 3px solid #FFD700; border-radius: 4px;">Este es un párrafo de introducción. ¡Con CSS se ve bonito, colorido y profesional!</p>
+                                <div style="font-size: 1.2em; font-weight: bold; margin-top: 15px; margin-bottom: 10px; color: #FFD700;">🎨 Otra sección</div>
+                                <p style="margin: 10px 0; background: rgba(255,255,255,0.05); padding: 10px; border-radius: 4px;">Aquí hay más contenido bien organizado. ¡El CSS hace que la página sea atractiva!</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tip">
+                    <strong>¿Ves la diferencia?</strong> HTML proporciona la estructura, pero CSS es lo que hace que se vea hermoso y profesional. Sin CSS, todas las páginas verían prácticamente igual.
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">❌ NO recomendado</div>
+                        <div class="comparison-content">
+                            <p><strong>CSS Inline</strong> - Difícil de mantener</p>
+                            <p style="font-size: 0.9em; color: #666;">Usa solo en casos especiales</p>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">✅ RECOMENDADO</div>
+                        <div class="comparison-content">
+                            <p><strong>CSS Externo</strong> - Mejor práctica</p>
+                            <p style="font-size: 0.9em; color: #666;">Usa siempre que sea posible</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 4: SELECTORES SIMPLES -->
+            <section id="selectores">
+                <h2>4. Selectores Simples</h2>
+
+                <p>Un selector es la parte de la regla CSS que dice "a qué elemento HTML voy a estilar". Hay varios tipos, vamos a ver los más simples:</p>
+
+                <h3>1️⃣ Selector de Elemento</h3>
+
+                <div class="concepto-explanation">
+                    <p>Selecciona todos los elementos de un tipo específico (etiqueta).</p>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 CSS</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">
+p {<br>
+&nbsp;&nbsp;color: green;<br>
+}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👁️ HTML y Resultado</div>
+                        <div class="comparison-result">
+                            <div class="comparison-code" style="background: white; color: #d63384; border: none; padding: 0; margin-bottom: 10px;">
+&lt;p&gt;Párrafo 1&lt;/p&gt;<br>
+&lt;p&gt;Párrafo 2&lt;/p&gt;
+                            </div>
+                            <div style="border-top: 1px solid #ddd; padding-top: 10px;">
+                                <p style="color: green; margin: 5px 0;">Párrafo 1</p>
+                                <p style="color: green; margin: 5px 0;">Párrafo 2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="selector-example">
+                    <strong>Resultado:</strong> Ambos párrafos son verdes porque el selector <code>p</code> los selecciona a todos.
+                </div>
+
+                <h3>2️⃣ Selector de Clase</h3>
+
+                <div class="concepto-explanation">
+                    <p>Selecciona elementos que tienen una clase específica. Las clases se definen con un punto (.) en CSS y se usan en HTML con el atributo <code>class</code>.</p>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 CSS</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">
+.especial {<br>
+&nbsp;&nbsp;color: orange;<br>
+&nbsp;&nbsp;font-weight: bold;<br>
+}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">
+&lt;p&gt;Párrafo normal&lt;/p&gt;<br>
+&lt;p class="especial"&gt;Párrafo especial&lt;/p&gt;<br>
+&lt;p&gt;Párrafo normal&lt;/p&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-box">
+                    <div class="demo-title">👁️ Resultado:</div>
+                    <p style="margin: 5px 0;">Párrafo normal</p>
+                    <p style="color: orange; font-weight: bold; margin: 5px 0;">Párrafo especial</p>
+                    <p style="margin: 5px 0;">Párrafo normal</p>
+                </div>
+
+                <div class="selector-example">
+                    <strong>Ventaja de las clases:</strong> Puedes aplicar el mismo estilo a múltiples elementos sin importar si son párrafos, títulos, etc. Solo necesitas agregarles <code>class="especial"</code>.
+                </div>
+
+                <h3>3️⃣ Selector de ID</h3>
+
+                <div class="concepto-explanation">
+                    <p>Selecciona un elemento específico que tiene un ID único. Los IDs se definen con # en CSS y se usan en HTML con el atributo <code>id</code>.</p>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 CSS</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">
+#titulo-principal {<br>
+&nbsp;&nbsp;color: purple;<br>
+&nbsp;&nbsp;font-size: 28px;<br>
+}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">📄 HTML</div>
+                        <div class="comparison-content">
+                            <div class="comparison-code">
+&lt;h1 id="titulo-principal"&gt;<br>
+&nbsp;&nbsp;Mi Título<br>
+&lt;/h1&gt;
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="demo-box">
+                    <div class="demo-title">👁️ Resultado:</div>
+                    <h1 style="color: purple; font-size: 28px; margin: 0;">Mi Título</h1>
+                </div>
+
+                <div class="selector-example">
+                    <strong>Importante con IDs:</strong> El ID debe ser <strong>único</strong> en la página. No uses el mismo ID en dos elementos diferentes. Los IDs son para elementos especiales que aparecen una sola vez.
+                </div>
+
+                <h3>4️⃣ Selector Universal (*)</h3>
+
+                <div class="concepto-explanation">
+                    <p>El asterisco (*) selecciona TODOS los elementos de la página.</p>
+                </div>
+
+                <div class="code-block"><code>* {<br>
+&nbsp;&nbsp;margin: 0;<br>
+&nbsp;&nbsp;padding: 0;<br>
+}</code></div>
+
+                <div class="selector-example">
+                    <strong>¿Para qué sirve?</strong> Se usa generalmente al inicio para "resetear" estilos por defecto del navegador. Por ejemplo, eliminar márgenes y espacios internos de todos los elementos.
+                </div>
+
+                <h3>Tabla resumen de selectores:</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Selector</th>
+                            <th>Sintaxis CSS</th>
+                            <th>Sintaxis HTML</th>
+                            <th>Se usa para</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Elemento</strong></td>
+                            <td><code>p { }</code></td>
+                            <td><code>&lt;p&gt;&lt;/p&gt;</code></td>
+                            <td>Todos los elementos de un tipo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Clase</strong></td>
+                            <td><code>.nombre { }</code></td>
+                            <td><code>class="nombre"</code></td>
+                            <td>Múltiples elementos con el mismo estilo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>ID</strong></td>
+                            <td><code>#nombre { }</code></td>
+                            <td><code>id="nombre"</code></td>
+                            <td>Un elemento único y especial</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Universal</strong></td>
+                            <td><code>* { }</code></td>
+                            <td>N/A</td>
+                            <td>Todos los elementos de la página</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="tip">
+                    M<strong>nemotécnica fácil:</strong> Punto (.) para clases, gato (#) para IDs. En inglés, # se llama "hash" o "pound sign", pero en diseño web la gente lo llama "gato".
+                </div>
+            </section>
+
+            <!-- SECCIÓN 5: PROPIEDADES CSS BÁSICAS -->
+            <section id="propiedades">
+                <h2>5. Propiedades CSS Básicas</h2>
+
+                <p>Aquí están algunas de las propiedades CSS más importantes y fáciles de usar:</p>
+
+                <h3>🎨 Propiedades de Color</h3>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">color</div>
+                    <div class="elemento-desc">
+                        <p>Cambia el color del <strong>texto</strong>.</p>
+                        <div class="demo-box" style="margin-top: 10px;">
+                            <div class="comparison-code">p { color: red; }</div>
+                            <p style="margin: 10px 0; color: red;">Ejemplo: este texto es rojo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">background o background-color</div>
+                    <div class="elemento-desc">
+                        <p>Cambia el <strong>color de fondo</strong> del elemento.</p>
+                        <div class="demo-box" style="margin-top: 10px;">
+                            <div class="comparison-code">p { background-color: yellow; }</div>
+                            <p style="margin: 10px 0; background-color: yellow; padding: 10px;">Ejemplo: este párrafo tiene fondo amarillo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>📝 Propiedades de Texto y Fuente</h3>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">font-size</div>
+                    <div class="elemento-desc">
+                        <p>Cambia el <strong>tamaño del texto</strong>. Se puede medir en píxeles (px) o otras unidades.</p>
+                        <div class="demo-box" style="margin-top: 10px;">
+                            <div class="comparison-code">p { font-size: 24px; }</div>
+                            <p style="margin: 10px 0; font-size: 24px;">Ejemplo: este texto es más grande</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">font-family</div>
+                    <div class="elemento-desc">
+                        <p>Cambia el <strong>tipo de fuente</strong> (Arial, Verdana, Times New Roman, etc.).</p>
+                        <div class="demo-box" style="margin-top: 10px;">
+                            <div class="comparison-code">p { font-family: 'Times New Roman'; }</div>
+                            <p style="margin: 10px 0; font-family: 'Times New Roman';">Ejemplo: esta es una fuente diferente</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">font-weight</div>
+                    <div class="elemento-desc">
+                        <p>Cambia el <strong>grosor del texto</strong>. Valores comunes: <code>normal</code>, <code>bold</code> (negrita), <code>lighter</code> (más fino).</p>
+                        <div class="demo-box" style="margin-top: 10px;">
+                            <div class="comparison-code">p { font-weight: bold; }</div>
+                            <p style="margin: 10px 0; font-weight: bold;">Ejemplo: este texto es negrita</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">text-align</div>
+                    <div class="elemento-desc">
+                        <p>Alinea el texto. Valores: <code>left</code> (izquierda), <code>center</code> (centro), <code>right</code> (derecha), <code>justify</code> (justificado).</p>
+                        <div class="demo-box" style="margin-top: 10px;">
+                            <div class="comparison-code">p { text-align: center; }</div>
+                            <p style="margin: 10px 0; text-align: center;">Ejemplo: este texto está centrado</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>📏 Propiedades de Espaciado (MARGIN y PADDING)</h3>
+
+                <p>Esta es una de las partes más importantes de CSS. Entenderla bien te ahorrará muchos dolores de cabeza:</p>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">🔴 MARGIN = Espacio Exterior (FUERA)</div>
+                    <div class="elemento-desc">
+                        <p><strong>El margin es el espacio que está AFUERA del elemento.</strong> Crea distancia entre tu elemento y otros elementos alrededor.</p>
+                        <p>Piénsalo como el "aire" que rodea una caja: si una caja tiene margin, hay espacio vacío alrededor de ella.</p>
+                        <div class="demo-box" style="margin-top: 10px;">
+                            <div style="background: #FFE4E1; border: 2px solid red; padding: 20px; text-align: center;">
+                                <p style="margin: 0; color: red; font-weight: bold; font-size: 0.9em;">← MARGIN (aire separador) →</p>
+                                <div style="background: white; border: 2px solid red; padding: 15px; margin: 15px 0;">
+                                    <p style="margin: 0; color: #333;">El elemento está aquí</p>
+                                </div>
+                                <p style="margin: 0; color: red; font-weight: bold; font-size: 0.9em;">← MARGIN (aire separador) →</p>
+                            </div>
+                        </div>
+                        <div style="background: #f5f5f5; padding: 10px; margin-top: 10px; border-radius: 5px;">
+                            <div class="comparison-code" style="margin: 0;">p { margin: 20px; }</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">🔵 PADDING = Espacio Interior (DENTRO)</div>
+                    <div class="elemento-desc">
+                        <p><strong>El padding es el espacio que está ADENTRO del elemento.</strong> Crea distancia entre el contenido y el borde del elemento.</p>
+                        <p>Piénsalo como el "relleno" de una almohada: el relleno está DENTRO de la almohada, empujando desde adentro.</p>
+                        <div class="demo-box" style="margin-top: 10px;">
+                            <div style="background: white; text-align: center;">
+                                <div style="background: #E0F0FF; border: 3px solid blue; padding: 20px;">
+                                    <p style="margin: 0; color: blue; font-weight: bold; font-size: 0.9em;">↑ PADDING (relleno interior) ↓</p>
+                                    <div style="background: white; border: 1px solid blue; padding: 10px; margin: 10px 0;">
+                                        <p style="margin: 0; color: #333;"><strong>El contenido está aquí</strong></p>
+                                    </div>
+                                    <p style="margin: 0; color: blue; font-weight: bold; font-size: 0.9em;">↑ PADDING (relleno interior) ↓</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="background: #f5f5f5; padding: 10px; margin-top: 10px; border-radius: 5px;">
+                            <div class="comparison-code" style="margin: 0;">p { padding: 20px; }</div>
+                        </div>\n                    </div>\n                </div>\n\n                <h4 style="margin-top: 30px; color: #667eea;">🎯 Comparación Visual Lado a Lado</h4>\n\n                <div class="comparison">\n                    <div class="comparison-item">\n                        <div class="comparison-label">🔴 MARGIN (exterior)</div>\n                        <div class="comparison-content" style="padding: 0;">\n                            <div style="text-align: center;">\n                                <div style="background: #FFE4E1; padding: 30px;">\n                                    <p style="margin: 0; color: red; font-size: 0.8em; font-weight: bold;">MARGIN</p>\n                                    <div style="background: white; border: 2px solid red; padding: 15px; margin: 20px; text-align: center;">\n                                        <p style="margin: 0; color: #333;"><strong>Contenido</strong></p>\n                                    </div>\n                                    <p style="margin: 0; color: red; font-size: 0.8em; font-weight: bold;">MARGIN</p>\n                                </div>\n                            </div>\n                            <div style="background: #f5f5f5; padding: 10px; margin: 15px; border-radius: 5px; text-align: center;">\n                                <p style="margin: 0; font-size: 0.85em; color: red;"><strong>Separa este elemento de otros elementos</strong></p>\n                            </div>\n                        </div>\n                    </div>\n                    <div class="comparison-item">\n                        <div class="comparison-label">🔵 PADDING (interior)</div>\n                        <div class="comparison-content" style="padding: 0;">\n                            <div style="text-align: center;">\n                                <div style="background: white; padding: 30px;">\n                                    <div style="background: #E0F0FF; border: 2px solid blue; padding: 20px;">\n                                        <p style="margin: 0; color: blue; font-size: 0.8em; font-weight: bold;">PADDING</p>\n                                        <div style="background: white; border: 1px solid blue; padding: 10px; margin: 10px 0; text-align: center;">\n                                            <p style="margin: 0; color: #333;"><strong>Contenido</strong></p>\n                                        </div>\n                                        <p style="margin: 0; color: blue; font-size: 0.8em; font-weight: bold;">PADDING</p>\n                                    </div>\n                                </div>\n                            </div>\n                            <div style="background: #f5f5f5; padding: 10px; margin: 15px; border-radius: 5px; text-align: center;">\n                                <p style="margin: 0; font-size: 0.85em; color: blue;"><strong>Separa el contenido del borde del elemento</strong></p>\n                            </div>\n                        </div>\n                    </div>\n                </div>\n\n                <div class="warning" style="margin-top: 20px;">\n                    <strong>Regla fácil de recordar:</strong>\n                    <ul style="margin-top: 10px; margin-bottom: 0;">\n                        <li>SI quieres espacio AFUERA para separar este elemento de otros → usa <strong>MARGIN</strong></li>\n                        <li>SI quieres espacio ADENTRO para separar el contenido del borde → usa <strong>PADDING</strong></li>\n                    </ul>\n                </div>\n\n                <div class="tip" style="margin-top: 15px;">\n                    <strong>Ejemplo real:</strong> Imagina un póster en la pared. El padding es el espacio entre el marco y la imagen (adentro del marco). El margin es el espacio entre el marco y la pared, o entre dos marcos colgados (afuera del marco).\n                </div>
+
+                <h3>🎁 Propiedades de Bordes</h3>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">border</div>
+                    <div class="elemento-desc">
+                        <p>Agrega un <strong>borde</strong> alrededor del elemento.</p>
+                        <p>Sintaxis:<code>border: GROSOR ESTILO COLOR;</code></p>
+                        <ul style="margin-top: 10px;">
+                            <li><strong>GROSOR:</strong> píxeles (px). Ej: 2px</li>
+                            <li><strong>ESTILO:</strong> solid (línea), dashed (rayada), dotted (punteada), etc.</li>
+                            <li><strong>COLOR:</strong> nombre o código. Ej: red, #FF0000</li>
+                        </ul>
+                        <div class="demo-box" style="margin-top: 10px;">
+                            <div class="comparison-code">p { border: 2px solid blue; }</div>
+                            <p style="margin: 10px 0; border: 2px solid blue; padding: 10px;">Ejemplo: este párrafo tiene un borde azul</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>🔄 Más Propiedades Útiles</h3>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Propiedad</th>
+                            <th>Descripción</th>
+                            <th>Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><code>width</code></td>
+                            <td>Ancho del elemento</td>
+                            <td><code>width: 200px;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>height</code></td>
+                            <td>Alto del elemento</td>
+                            <td><code>height: 100px;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>background-image</code></td>
+                            <td>Imagen de fondo</td>
+                            <td><code>background-image: url('imagen.jpg');</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>opacity</code></td>
+                            <td>Transparencia (0 = invisible, 1 = opaco)</td>
+                            <td><code>opacity: 0.5;</code></td>
+                        </tr>
+                        <tr>
+                            <td><code>text-decoration</code></td>
+                            <td>Subrayado, tachado, etc</td>
+                            <td><code>text-decoration: underline;</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="tip">
+                    Los <strong>colores</strong> en CSS se pueden especificar de varias formas: nombres en inglés (<code>red</code>, <code>blue</code>), códigos hexadecimales (<code>#FF0000</code>), o <code>rgb(255, 0, 0)</code>. Todas significan rojo.
+                </div>
+            </section>
+
+            <!-- SECCIÓN 6: EJERCICIOS -->
+            <section id="ejercicios">
+                <h2>6. Ejercicios Prácticos</h2>
+
+                <p>Es hora de practicar. Aquí hay ejercicios sencillos para que apliques lo que has aprendido.</p>
+
+                <h3>Ejercicio 1: Estilizar Párrafos</h3>
+
+                <div class="practice-section">
+                    <h4>📝 Descripción</h4>
+                    <p>Crea una página HTML con dos párrafos. El primero debe ser azul, y el segundo debe ser verde con fondo amarillo.</p>
+
+                    <h4>💡 Pistas</h4>
+                    <ul>
+                        <li>Usa selectores de elemento (<code>p</code>)</li>
+                        <li>O usa clases para diferenciar los párrafos</li>
+                        <li>Usa las propiedades: <code>color</code>, <code>background-color</code></li>
+                    </ul>
+
+                    <button class="toggle-btn hidden" id="btn-ejercicio1" onclick="toggleSolution('btn-ejercicio1', 'sol-ejercicio1')">Ver Solución</button>
+
+                    <div class="solution-content hidden" id="sol-ejercicio1">
+                        <h4>📝 Solución</h4>
+                        <div class="comparison">
+                            <div class="comparison-item">
+                                <div class="comparison-label">📄 HTML</div>
+                                <div class="comparison-content">
+                                    <div class="comparison-code">
+&lt;p class="primero"&gt;<br>
+&nbsp;&nbsp;Este es el primer párrafo<br>
+&lt;/p&gt;<br>
+&lt;p class="segundo"&gt;<br>
+&nbsp;&nbsp;Este es el segundo párrafo<br>
+&lt;/p&gt;
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <div class="comparison-label">🎨 CSS</div>
+                                <div class="comparison-content">
+                                    <div class="comparison-code">
+.primero {<br>
+&nbsp;&nbsp;color: blue;<br>
+}<br>
+<br>
+.segundo {<br>
+&nbsp;&nbsp;color: green;<br>
+&nbsp;&nbsp;background-color: yellow;<br>
+&nbsp;&nbsp;padding: 10px;<br>
+}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="demo-box">
+                            <div class="demo-title">👁️ Resultado esperado:</div>
+                            <p style="color: blue; margin: 5px 0;">Este es el primer párrafo</p>
+                            <p style="color: green; background-color: yellow; padding: 10px; margin: 5px 0;">Este es el segundo párrafo</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Ejercicio 2: Estilizar un Título</h3>
+
+                <div class="practice-section">
+                    <h4>📝 Descripción</h4>
+                    <p>Crea un título (h1) que sea:</p>
+                    <ul>
+                        <li>Color púrpura</li>
+                        <li>Tamaño de 32 píxeles</li>
+                        <li>Centrado</li>
+                        <li>Con un borde inferior de 3 píxeles sólido en azul</li>
+                    </ul>
+
+                    <h4>💡 Pistas</h4>
+                    <ul>
+                        <li>Usa un ID o una clase para el h1</li>
+                        <li>Propiedades: <code>color</code>, <code>font-size</code>, <code>text-align</code>, <code>border-bottom</code></li>
+                    </ul>
+
+                    <button class="toggle-btn hidden" id="btn-ejercicio2" onclick="toggleSolution('btn-ejercicio2', 'sol-ejercicio2')">Ver Solución</button>
+
+                    <div class="solution-content hidden" id="sol-ejercicio2">
+                        <h4>📝 Solución</h4>
+                        <div class="comparison">
+                            <div class="comparison-item">
+                                <div class="comparison-label">🎨 CSS</div>
+                                <div class="comparison-content">
+                                    <div class="comparison-code">
+h1 {<br>
+&nbsp;&nbsp;color: purple;<br>
+&nbsp;&nbsp;font-size: 32px;<br>
+&nbsp;&nbsp;text-align: center;<br>
+&nbsp;&nbsp;border-bottom: 3px solid blue;<br>
+}</code>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <div class="comparison-label">👁️ Resultado</div>
+                                <div class="comparison-result">
+                                    <h1 style="color: purple; font-size: 32px; text-align: center; border-bottom: 3px solid blue; margin: 0;">Mi Título</h1>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Ejercicio 3: Crear una Tarjeta</h3>
+
+                <div class="practice-section">
+                    <h4>📝 Descripción</h4>
+                    <p>Crea una "tarjeta" (un div o caja) que contenga:</p>
+                    <ul>
+                        <li>Un título "Mi Tarjeta"</li>
+                        <li>Un párrafo con descripción</li>
+                        <li>La tarjeta debe tener:</li>
+                        <ul>
+                            <li>Ancho de 300px</li>
+                            <li>Fondo gris claro (#e8e8e8)</li>
+                            <li>Borde de 2px sólido gris oscuro</li>
+                            <li>Espacio interior (padding) de 20px</li>
+                            <li>Espacio exterior (margin) de 20px</li>
+                        </ul>
+                    </ul>
+
+                    <h4>💡 Pistas</h4>
+                    <ul>
+                        <li>Usa un <code>div</code> con la clase "tarjeta"</li>
+                        <li>Propiedades: <code>width</code>, <code>background-color</code>, <code>border</code>, <code>padding</code>, <code>margin</code></li>
+                    </ul>
+
+                    <button class="toggle-btn hidden" id="btn-ejercicio3" onclick="toggleSolution('btn-ejercicio3', 'sol-ejercicio3')">Ver Solución</button>
+
+                    <div class="solution-content hidden" id="sol-ejercicio3">
+                        <h4>📝 Solución</h4>
+                        <div class="comparison">
+                            <div class="comparison-item">
+                                <div class="comparison-label">📄 HTML</div>
+                                <div class="comparison-content">
+                                    <div class="comparison-code">
+&lt;div class="tarjeta"&gt;<br>
+&nbsp;&nbsp;&lt;h2&gt;Mi Tarjeta&lt;/h2&gt;<br>
+&nbsp;&nbsp;&lt;p&gt;Esta es una tarjeta<br>
+&nbsp;&nbsp;de ejemplo&lt;/p&gt;<br>
+&lt;/div&gt;
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="comparison-item">
+                                <div class="comparison-label">🎨 CSS</div>
+                                <div class="comparison-content">
+                                    <div class="comparison-code">
+.tarjeta {<br>
+&nbsp;&nbsp;width: 300px;<br>
+&nbsp;&nbsp;background-color: #e8e8e8;<br>
+&nbsp;&nbsp;border: 2px solid #333;<br>
+&nbsp;&nbsp;padding: 20px;<br>
+&nbsp;&nbsp;margin: 20px;<br>
+}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="demo-box">
+                            <div class="demo-title">👁️ Resultado esperado:</div>
+                            <div style="width: 300px; background-color: #e8e8e8; border: 2px solid #333; padding: 20px; margin: 20px 0;">
+                                <h3 style="margin: 0 0 10px 0; font-size: 1.1em;">Mi Tarjeta</h3>
+                                <p style="margin: 0;">Esta es una tarjeta de ejemplo</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Ejercicio 4: Desafío - Página de Presentación Personal</h3>
+
+                <div class="practice-section">
+                    <h4>📝 Descripción</h4>
+                    <p>Crea una página de presentación personal con:</p>
+                    <ul>
+                        <li>Un título principal (h1) con tu nombre</li>
+                        <li>Un subtítulo (h2) con tu profesión/descripción</li>
+                        <li>Un párrafo de introducción</li>
+                        <li>Una lista de tus habilidades</li>
+                        <li>Estiliza todo como más te guste usando lo que aprendiste</li>
+                    </ul>
+
+                    <h4>💡 Pistas</h4>
+                    <ul>
+                        <li>Usa diferentes colores para cada elemento</li>
+                        <li>Diferentes tamaños de fuente</li>
+                        <li>Márgenes y padding para separar elementos</li>
+                        <li>Añade bordes, fondos, etc.</li>
+                        <li>¡Sé creativo!</li>
+                    </ul>
+
+                    <h4>📝 Estructura básica</h4>
+                    <div class="code-block"><code>&lt;body&gt;<br>
+&nbsp;&nbsp;&lt;h1 id="nombre"&gt;Mi Nombre&lt;/h1&gt;<br>
+&nbsp;&nbsp;&lt;h2 id="profesion"&gt;Desarrollador Web&lt;/h2&gt;<br>
+&nbsp;&nbsp;&lt;p&gt;Hola, soy un desarrollador web apasionado...&lt;/p&gt;<br>
+&nbsp;&nbsp;&lt;h3&gt;Mis Habilidades&lt;/h3&gt;<br>
+&nbsp;&nbsp;&lt;ul&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;HTML&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;CSS&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;JavaScript&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;/ul&gt;<br>
+&lt;/body&gt;</code></div>
+
+                    <button class="toggle-btn hidden" id="btn-ejercicio4" onclick="toggleSolution('btn-ejercicio4', 'sol-ejercicio4')">Ver Ejemplo de Solución</button>
+
+                    <div class="solution-content hidden" id="sol-ejercicio4">
+                        <h4>📝 Ejemplo de Solución con Estilo</h4>
+                        <div class="demo-box">
+                            <div class="demo-title">👁️ Resultado esperado:</div>
+                            <div style="max-width: 600px;">
+                                <h1 style="color: #667eea; text-align: center; font-size: 2.5em; margin: 20px 0; border-bottom: 3px solid #667eea; padding-bottom: 15px;">Juan García</h1>
+                                <h2 style="color: #764ba2; text-align: center; font-size: 1.3em; margin-bottom: 30px;">Desarrollador Web Full Stack</h2>
+                                <p style="text-align: center; line-height: 1.8; color: #555; margin-bottom: 30px;">Soy un desarrollador web apasionado por crear experiencias digitales hermosas y funcionales. Con experiencia en HTML, CSS y JavaScript.</p>
+                                <h3 style="color: #667eea; margin-top: 30px; margin-bottom: 15px;">Mis Habilidades</h3>
+                                <ul style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; list-style: none; padding: 0;">
+                                    <li style="background: #e8f4f8; padding: 10px; border-radius: 5px; border-left: 3px solid #667eea;">✓ HTML5</li>
+                                    <li style="background: #e8f4f8; padding: 10px; border-radius: 5px; border-left: 3px solid #667eea;">✓ CSS3</li>
+                                    <li style="background: #e8f4f8; padding: 10px; border-radius: 5px; border-left: 3px solid #667eea;">✓ JavaScript</li>
+                                    <li style="background: #e8f4f8; padding: 10px; border-radius: 5px; border-left: 3px solid #667eea;">✓ Responsive Design</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="highlight" style="margin-top: 20px;">
+                            <strong>CSS sugerido:</strong>
+                            <div class="code-block" style="margin-top: 10px;"><code>
+h1 {<br>
+&nbsp;&nbsp;color: #667eea;<br>
+&nbsp;&nbsp;text-align: center;<br>
+&nbsp;&nbsp;font-size: 2.5em;<br>
+&nbsp;&nbsp;border-bottom: 3px solid #667eea;<br>
+&nbsp;&nbsp;padding-bottom: 15px;<br>
+}<br>
+<br>
+h2 {<br>
+&nbsp;&nbsp;color: #764ba2;<br>
+&nbsp;&nbsp;text-align: center;<br>
+&nbsp;&nbsp;font-size: 1.3em;<br>
+}<br>
+<br>
+p {<br>
+&nbsp;&nbsp;text-align: center;<br>
+&nbsp;&nbsp;line-height: 1.8;<br>
+&nbsp;&nbsp;color: #555;<br>
+}
+                            </code></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="highlight">
+                    <strong>¡Ahora es tu turno!</strong> Intenta hacer todos estos ejercicios. Si algo no te sale, revisa la solución haciendo clic en "Ver Solución" y trata de entender por qué funciona así. ¡La práctica es lo más importante para aprender CSS!
+                </div>
+            </section>
+        </main>
+
+        <div class="footer">
+            <p>© 2024 Guía Didáctica de CSS Básico. Creada para aprender desarrollo web.</p>
+            <p style="margin-top: 10px; font-size: 0.9em;">Recuerda: La mejor forma de aprender es practicando. ¡Abre tu editor de código y comienza a crear!</p>
+        </div>
+    </div>
+</body>
+</html>
