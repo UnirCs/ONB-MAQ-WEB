@@ -504,8 +504,7 @@
                     <li><a href="#intro">1. Introducción</a></li>
                     <li><a href="#selectores-combinados">2. Selectores Combinados</a></li>
                     <li><a href="#posicionamiento">3. Posicionamiento CSS</a></li>
-                    <li><a href="#ejemplos">4. Ejemplos Prácticos</a></li>
-                    <li><a href="#ejercicios">5. Ejercicios Prácticos</a></li>
+                    <li><a href="#ejercicios">4. Ejercicios Prácticos</a></li>
                 </ul>
             </nav>
 
@@ -931,156 +930,44 @@
 
                 <h3>La propiedad Z-Index</h3>
                 <p>Cuando elementos se superponen, <code>z-index</code> controla cuál está encima. Mayor número = más arriba.</p>
-                <div class="code-block"><code>.elemento1 {<br>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin: 20px 0;">
+                    <div class="example-box" style="margin: 0;">
+                        <h4>Código CSS:</h4>
+                        <div class="code-block"><code>.caja1 {<br>
 &nbsp;&nbsp;position: absolute;<br>
 &nbsp;&nbsp;z-index: 10;<br>
-}<br>
-<br>
-.elemento2 {<br>
-&nbsp;&nbsp;position: absolute;<br>
-&nbsp;&nbsp;z-index: 5; &lt;!-- Esto estará detrás de elemento1 --&gt;<br>
-}
-</code></div>
-            </section>
-
-            <!-- SECCIÓN 4: EJEMPLOS PRÁCTICOS -->
-            <section id="ejemplos">
-                <h2>4. Ejemplos Prácticos</h2>
-
-                <h3>Ejemplo 1: Menú de Navegación con Selectores Combinados</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
-                    <div>
-                        <h4>HTML y CSS:</h4>
-                        <div class="code-block"><code>&lt;nav class="menu"&gt;<br>
-&nbsp;&nbsp;&lt;ul&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Acerca de&lt;/a&gt;&lt;/li&gt;<br>
-&nbsp;&nbsp;&lt;/ul&gt;<br>
-&lt;/nav&gt;
-</code></div>
-                        <div class="code-block"><code>.menu li > a {<br>
-&nbsp;&nbsp;color: #667eea;<br>
-&nbsp;&nbsp;text-decoration: none;<br>
-&nbsp;&nbsp;padding: 10px 15px;<br>
-}<br>
-<br>
-.menu li > a:hover {<br>
 &nbsp;&nbsp;background: #667eea;<br>
-&nbsp;&nbsp;color: white;<br>
-}
-</code></div>
-                    </div>
-                    <div>
-                        <h4>Resultado Visual:</h4>
-                        <div class="demo-box" style="margin-top: 0;">
-                            <nav style="background: #f8f9fa; padding: 10px; border-radius: 5px;">
-                                <ul style="list-style: none; padding: 0; margin: 0; display: flex;">
-                                    <li style="margin-right: 30px;"><a href="#" style="color: #667eea; text-decoration: none; padding: 10px 15px; display: block; transition: 0.3s;">Inicio</a></li>
-                                    <li style="margin-right: 30px;"><a href="#" style="color: #667eea; text-decoration: none; padding: 10px 15px; display: block; transition: 0.3s;">Acerca de</a></li>
-                                </ul>
-                            </nav>
-                            <p style="color: #666; font-size: 0.9em; margin-top: 10px; margin-bottom: 0;">Pasa el ratón sobre los links para ver el efecto hover</p>
-                        </div>
-                    </div>
-                </div>
-
-                <h3>Ejemplo 2: Tarjeta con Posicionamiento Absolute</h3>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
-                    <div>
-                        <h4>HTML y CSS:</h4>
-                    <div class="code-block"><code>&lt;div class="card"&gt;<br>
-&nbsp;&nbsp;&lt;img src="imagen.jpg" alt="Producto"&gt;<br>
-&nbsp;&nbsp;&lt;div class="badge"&gt;Oferta&lt;/div&gt;<br>
-&nbsp;&nbsp;&lt;h3&gt;Producto&lt;/h3&gt;<br>
-&nbsp;&nbsp;&lt;p class="precio"&gt;$99&lt;/p&gt;<br>
-&lt;/div&gt;
-</code></div>
-                    <h4>CSS</h4>
-                    <div class="code-block"><code>>.card {<br>
-&nbsp;&nbsp;position: relative;<br>
-&nbsp;&nbsp;width: 250px;<br>
-&nbsp;&nbsp;background: white;<br>
-&nbsp;&nbsp;border-radius: 10px;<br>
-&nbsp;&nbsp;box-shadow: 0 4px 10px rgba(0,0,0,0.1);<br>
 }<br>
 <br>
-.badge {<br>
+.caja2 {<br>
 &nbsp;&nbsp;position: absolute;<br>
-&nbsp;&nbsp;top: 10px;<br>
-&nbsp;&nbsp;right: 10px;<br>
+&nbsp;&nbsp;z-index: 5;<br>
 &nbsp;&nbsp;background: #e74c3c;<br>
-&nbsp;&nbsp;color: white;<br>
-&nbsp;&nbsp;padding: 5px 10px;<br>
-&nbsp;&nbsp;border-radius: 20px;<br>
-&nbsp;&nbsp;font-size: 0.8em;<br>
+}<br>
+<br>
+.caja3 {<br>
+&nbsp;&nbsp;position: absolute;<br>
+&nbsp;&nbsp;z-index: 1;<br>
+&nbsp;&nbsp;background: #27ae60;<br>
 }
 </code></div>
-                    <h4>Resultado Visual:</h4>
-                    <div class="demo-box">
-                        <div style="position: relative; width: 250px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden;">
-                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 120px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Imagen del Producto</div>
-                            <div style="position: absolute; top: 10px; right: 10px; background: #e74c3c; color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.8em; font-weight: bold;">Oferta</div>
-                            <div style="padding: 15px;">
-                                <h3 style="margin: 0 0 10px 0; color: #333; font-size: 1em;">Producto</h3>
-                                <p style="margin: 0; color: #667eea; font-weight: bold; font-size: 1.2em;">$99</p>
-                            </div>
-                        </div>
                     </div>
-                </div>
-
-                <h3>Ejemplo 3: Tabla con Encabezado Sticky</h3>
-                <div class="example-box">
-                    <h4>HTML</h4>
-                    <div class="code-block"><code>&lt;table&gt;<br>
-&nbsp;&nbsp;&lt;thead&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Nombre&lt;/th&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Edad&lt;/th&gt;<br>
-&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
-&nbsp;&nbsp;&lt;/thead&gt;<br>
-&lt;/table&gt;
-</code></div>
-                    <h4>CSS</h4>
-                    <div class="code-block"><code>table th {<br>
-&nbsp;&nbsp;position: sticky;<br>
-&nbsp;&nbsp;top: 0;<br>
-&nbsp;&nbsp;background: #667eea;<br>
-&nbsp;&nbsp;color: white;<br>
-&nbsp;&nbsp;z-index: 10;<br>
-}
-</code></div>
-                    <h4>Resultado Visual:</h4>
                     <div class="demo-box">
-                        <table style="width: 100%; border-collapse: collapse; margin-top: 0;">
-                            <thead>
-                                <tr>
-                                    <th style="position: sticky; top: 0; background: #667eea; color: white; padding: 10px; text-align: left; z-index: 10; border: 1px solid #ddd;">Nombre</th>
-                                    <th style="position: sticky; top: 0; background: #667eea; color: white; padding: 10px; text-align: left; z-index: 10; border: 1px solid #ddd;">Edad</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="padding: 10px; border: 1px solid #ddd;">Juan</td>
-                                    <td style="padding: 10px; border: 1px solid #ddd;">25</td>
-                                </tr>
-                                <tr style="background: #f9f9f9;">
-                                    <td style="padding: 10px; border: 1px solid #ddd;">María</td>
-                                    <td style="padding: 10px; border: 1px solid #ddd;">28</td>
-                                </tr>
-                                <tr>
-                                    <td style="padding: 10px; border: 1px solid #ddd;">Carlos</td>
-                                    <td style="padding: 10px; border: 1px solid #ddd;">32</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <p style="color: #666; font-size: 0.9em; margin-top: 10px; margin-bottom: 0;">El encabezado (fondo azul) permanecerá visible al desplazarse</p>
+                        <h4>Resultado Visual:</h4>
+                        <div style="position: relative; height: 180px; background: #f9f9f9; border-radius: 5px; border: 2px dashed #667eea;">
+                            <div style="position: absolute; top: 20px; left: 20px; width: 120px; height: 80px; background: #27ae60; color: white; display: flex; align-items: center; justify-content: center; border-radius: 5px; font-weight: bold; z-index: 1;">z-index: 1</div>
+                            <div style="position: absolute; top: 50px; left: 50px; width: 120px; height: 80px; background: #e74c3c; color: white; display: flex; align-items: center; justify-content: center; border-radius: 5px; font-weight: bold; z-index: 5;">z-index: 5</div>
+                            <div style="position: absolute; top: 80px; left: 80px; width: 120px; height: 80px; background: #667eea; color: white; display: flex; align-items: center; justify-content: center; border-radius: 5px; font-weight: bold; z-index: 10;">z-index: 10</div>
+                        </div>
+                        <p style="color: #666; font-size: 0.9em; margin-top: 10px;">Mayor z-index = elemento más adelante. El azul (10) tapa al rojo (5) que tapa al verde (1)</p>
                     </div>
                 </div>
             </section>
 
-            <!-- SECCIÓN 5: EJERCICIOS -->
+            <!-- SECCIÓN 4: EJERCICIOS -->
             <section id="ejercicios">
-                <h2>5. Ejercicios Prácticos</h2>
+                <h2>4. Ejercicios Prácticos</h2>
 
                 <p>A continuación encontrarás ejemplos para practicar selectores combinados y posicionamiento. Intenta resolver cada uno antes de ver la solución.</p>
 
