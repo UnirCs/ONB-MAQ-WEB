@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Didáctica: Selectores Combinados y Posicionamiento CSS</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        main {
+            padding: 40px;
+        }
+
+        section {
+            margin-bottom: 40px;
+            scroll-margin-top: 20px;
+        }
+
+        h2 {
+            color: #667eea;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+
+        h3 {
+            color: #764ba2;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            font-size: 1.3em;
+        }
+
+        h4 {
+            color: #667eea;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        p, li {
+            margin-bottom: 15px;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        ul, ol {
+            margin-left: 30px;
+            margin-bottom: 20px;
+        }
+
+        li {
+            margin-bottom: 10px;
+        }
+
+        .code-block {
+            background: #f5f5f5;
+            border-left: 4px solid #667eea;
+            padding: 15px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-radius: 5px;
+        }
+
+        .code-block code {
+            color: #d63384;
+            font-size: 0.95em;
+        }
+
+        .example-box {
+            background: #e8f4f8;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .example-box h4 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .highlight {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 20px 0;
+            border-left: 4px solid #ffc107;
+        }
+
+        .highlight strong {
+            color: #856404;
+        }
+
+        .concept-explanation {
+            background: #e8f4f8;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .concept-explanation strong {
+            color: #0c5460;
+        }
+
+        .concept-title {
+            color: #0c5460;
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
+
+        .elemento {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .elemento-titulo {
+            color: #667eea;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .elemento-desc {
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .elemento code {
+            background: #f5f5f5;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #d63384;
+        }
+
+        .comparison {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+            align-items: start;
+        }
+
+        .comparison-item {
+            background: white;
+            border: 2px solid #667eea;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .comparison-label {
+            background: #667eea;
+            color: white;
+            padding: 10px 15px;
+            font-weight: bold;
+            font-size: 0.95em;
+        }
+
+        .comparison-content {
+            padding: 15px;
+        }
+
+        .comparison-code {
+            background: #f5f5f5;
+            padding: 12px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            overflow-x: auto;
+            color: #d63384;
+            border-left: 3px solid #667eea;
+        }
+
+        .comparison-result {
+            padding: 20px;
+            background: #fafafa;
+            border-radius: 5px;
+            min-height: 100px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        @media (max-width: 768px) {
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .nav-menu {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border-left: 4px solid #667eea;
+        }
+
+        .nav-menu h3 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            margin: 0;
+        }
+
+        .nav-menu li {
+            margin-bottom: 8px;
+        }
+
+        .nav-menu a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-menu a:hover {
+            color: #764ba2;
+            text-decoration: underline;
+        }
+
+        .demo-box {
+            background: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+
+        .demo-title {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+        }
+
+        .practice-section {
+            background: #f0f8ff;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+
+        .practice-section h4 {
+            color: #667eea;
+            margin-top: 0;
+        }
+
+        .ejercicio-card {
+            background: white;
+            border: 2px solid #667eea;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .ejercicio-titulo {
+            color: #764ba2;
+            font-weight: bold;
+            font-size: 1.1em;
+            margin-bottom: 10px;
+        }
+
+        .ejercicio-enunciado {
+            background: #f9f9f9;
+            padding: 15px;
+            border-left: 3px solid #667eea;
+            margin: 10px 0;
+        }
+
+        .toggle-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.95em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin: 15px 0;
+            display: inline-block;
+        }
+
+        .toggle-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .toggle-btn:active {
+            transform: translateY(0);
+        }
+
+        .toggle-btn.visible::after {
+            content: " ▲";
+        }
+
+        .toggle-btn.hidden::after {
+            content: " ▼";
+        }
+
+        .solution-content {
+            max-height: 1000px;
+            overflow: hidden;
+            transition: max-height 0.3s ease, opacity 0.3s ease;
+            opacity: 1;
+        }
+
+        .solution-content.hidden {
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .positioning-demo {
+            position: relative;
+            background: #f0f0f0;
+            height: 300px;
+            margin: 20px 0;
+            border: 2px dashed #667eea;
+            border-radius: 5px;
+        }
+
+        .position-element {
+            text-align: center;
+            line-height: 60px;
+            color: white;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .static-box {
+            background: #667eea;
+        }
+
+        .relative-box {
+            background: #764ba2;
+            position: relative;
+            top: 20px;
+            left: 30px;
+        }
+
+        .absolute-box {
+            background: #e74c3c;
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        .sticky-demo {
+            position: relative;
+            height: 400px;
+            background: #f9f9f9;
+            border: 2px solid #667eea;
+            overflow-y: auto;
+            margin: 20px 0;
+        }
+
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            background: #667eea;
+            color: white;
+            padding: 10px;
+            z-index: 10;
+            font-weight: bold;
+        }
+
+        .sticky-content {
+            padding: 15px;
+        }
+
+        .selector-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+
+        .selector-table th {
+            background: #667eea;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        .selector-table td {
+            border-bottom: 1px solid #ddd;
+            padding: 12px;
+        }
+
+        .selector-table tr:hover {
+            background: #f5f5f5;
+        }
+
+        .selector-table code {
+            background: #e8f4f8;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #d63384;
+        }
+
+        .footer {
+            background: #f8f9fa;
+            padding: 30px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+
+        @media (max-width: 1200px) {
+            main {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            h2 {
+                font-size: 1.4em;
+            }
+
+            main {
+                padding: 20px;
+            }
+
+            .comparison {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <script>
+        function toggleSolution(buttonId, contentId) {
+            const button = document.getElementById(buttonId);
+            const content = document.getElementById(contentId);
+            
+            button.classList.toggle('visible');
+            button.classList.toggle('hidden');
+            content.classList.toggle('hidden');
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Selectores Combinados y Posicionamiento CSS</h1>
+            <p>Domina cómo llegar a específicamente los elementos que deseas y colócalos dónde quieras</p>
+        </header>
+
+        <main>
+            <nav class="nav-menu">
+                <h3>📋 Contenidos</h3>
+                <ul>
+                    <li><a href="#intro">1. Introducción</a></li>
+                    <li><a href="#selectores-combinados">2. Selectores Combinados</a></li>
+                    <li><a href="#posicionamiento">3. Posicionamiento CSS</a></li>
+                    <li><a href="#ejemplos">4. Ejemplos Prácticos</a></li>
+                    <li><a href="#ejercicios">5. Ejercicios Prácticos</a></li>
+                </ul>
+            </nav>
+
+            <!-- SECCIÓN 1: INTRODUCCIÓN -->
+            <section id="intro">
+                <h2>1. Introducción</h2>
+
+                <p>Hasta ahora hemos aprendido a seleccionar elementos usando selectores simples como clases, IDs y etiquetas. Pero ¿qué pasa cuando queremos seleccionar un elemento específico que está dentro de otro? ¿O cuando queremos ser muy precisos sobre qué elementos modificar?</p>
+
+                <p>En esta sección aprenderemos dos cosas importantes:</p>
+
+                <div class="concept-explanation">
+                    <div class="concept-title">📚 Lo que aprenderemos:</div>
+                    <ul>
+                        <li><strong>Selectores Combinados:</strong> Cómo seleccionar elementos basándonos en su relación con otros elementos</li>
+                        <li><strong>Posicionamiento:</strong> Cómo decidir exactamente dónde debe aparecer un elemento en la página</li>
+                    </ul>
+                </div>
+
+                <p>Imagina que tienes una casa (tu página HTML) con varias habitaciones (divs), muebles (elementos) y decoraciones (estilos). Los selectores combinados te permiten decir "quiero cambiar todos los cuadros que están en la sala", y el posicionamiento te permite decir "quiero que este cuadro esté exactamente aquí, en esta esquina".</p>
+            </section>
+
+            <!-- SECCIÓN 2: SELECTORES COMBINADOS -->
+            <section id="selectores-combinados">
+                <h2>2. Selectores Combinados</h2>
+
+                <p>Los selectores combinados nos permiten apuntar a elementos que tienen una relación específica con otros elementos. Hay cuatro tipos principales:</p>
+
+                <h3>2.1 Selector Descendente (Espacio)</h3>
+                <p>Selecciona <strong>todos</strong> los elementos que están dentro (a cualquier nivel de profundidad) de otro elemento.</p>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">📍 Sintaxis</div>
+                    <div class="elemento-desc">
+                        <div class="code-block"><code>padre descendiente { }</code></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin: 20px 0;">
+                    <div class="example-box" style="margin: 0;">
+                        <h4>Código CSS y HTML:</h4>
+                        <div class="code-block"><code>article p {<br>
+&nbsp;&nbsp;color: blue;<br>
+}
+</code></div>
+                        <div class="code-block"><code>&lt;article&gt;<br>
+&nbsp;&nbsp;&lt;p&gt;Párrafo 1&lt;/p&gt;<br>
+&nbsp;&nbsp;&lt;div&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;p&gt;Párrafo 2&lt;/p&gt;<br>
+&nbsp;&nbsp;&lt;/div&gt;<br>
+&lt;/article&gt;
+</code></div>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Resultado Visual:</h4>
+                        <article style="background: #f9f9f9; padding: 15px; border-radius: 5px; border: 2px dashed #667eea;">
+                            <p style="color: blue;">Párrafo 1 ✓</p>
+                            <div style="background: #eee; padding: 10px; margin: 10px 0; border-radius: 3px;">
+                                <p style="color: blue;">Párrafo 2 (dentro de div) ✓</p>
+                            </div>
+                        </article>
+                        <p style="color: #666; font-size: 0.9em; margin-top: 10px;">Ambos párrafos son azules porque son descendientes del article</p>
+                    </div>
+                </div>
+
+                <h3>2.2 Selector Hijo (>)</h3>
+                <p>Selecciona <strong>solo</strong> los elementos que son hijos directos de otro elemento (no nietos, bisnietos, etc.).</p>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">📍 Sintaxis</div>
+                    <div class="elemento-desc">
+                        <div class="code-block"><code>padre > hijo { }</code></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin: 20px 0;">
+                    <div class="example-box" style="margin: 0;">
+                        <h4>Código CSS y HTML:</h4>
+                        <div class="code-block"><code>ul > li {<br>
+&nbsp;&nbsp;color: green;<br>
+}
+</code></div>
+                        <div class="code-block"><code>&lt;ul&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Elemento 1&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;li&gt;Elemento 2&lt;/li&gt;<br>
+&lt;/ul&gt;
+</code></div>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Resultado Visual:</h4>
+                        <ul style="background: #f9f9f9; padding: 15px 15px 15px 35px; border-radius: 5px; border: 2px dashed #667eea; list-style: disc;">
+                            <li style="color: green;">Elemento 1 ✓ (hijo directo)</li>
+                            <li style="color: green;">Elemento 2 ✓ (hijo directo)</li>
+                        </ul>
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; border: 2px dashed #e74c3c; margin-top: 10px;">
+                            <ul style="padding-left: 20px;">
+                                <div style="background: #eee; padding: 5px;">
+                                    <li style="color: #333;">Elemento 3 ✗ (nieto, NO se aplica)</li>
+                                </div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="comparison">
+                    <div class="comparison-item">
+                        <div class="comparison-label">📍 Descendente: article p</div>
+                        <div class="comparison-content">
+                            <p>Selecciona TODOS los párrafos dentro del article.</p>
+                            <p>Incluye párrafos en cualquier nivel de profundidad.</p>
+                            <p>Más general y amplio.</p>
+                        </div>
+                    </div>
+                    <div class="comparison-item">
+                        <div class="comparison-label">👆 Hijo: article > p</div>
+                        <div class="comparison-content">
+                            <p>Selecciona SOLO párrafos directamente dentro del article.</p>
+                            <p>Los párrafos que estén dentro de otros elementos no se seleccionan.</p>
+                            <p>Más específico y restrictivo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>2.3 Selector Adyacente (+)</h3>
+                <p>Selecciona un elemento que está **inmediatamente después** de otro elemento al mismo nivel (hermano).</p>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">📍 Sintaxis</div>
+                    <div class="elemento-desc">
+                        <div class="code-block"><code>elemento1 + elemento2 { }</code></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin: 20px 0;">
+                    <div class="example-box" style="margin: 0;">
+                        <h4>Código CSS y HTML:</h4>
+                        <div class="code-block"><code>h2 + p {<br>
+&nbsp;&nbsp;font-weight: bold;<br>
+&nbsp;&nbsp;color: red;<br>
+}
+</code></div>
+                        <div class="code-block"><code>&lt;h2&gt;Mi Título&lt;/h2&gt;<br>
+&lt;p&gt;Primer párrafo&lt;/p&gt;<br>
+&lt;p&gt;Segundo párrafo&lt;/p&gt;
+</code></div>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Resultado Visual:</h4>
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; border: 2px dashed #667eea;">
+                            <h2 style="font-size: 1.2em; margin-bottom: 10px; color: #764ba2;">Mi Título</h2>
+                            <p style="font-weight: bold; color: red; margin-bottom: 8px;">Primer párrafo ✓ (inmediatamente después)</p>
+                            <p style="margin-bottom: 0;">Segundo párrafo ✗ (no es adyacente al h2)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>2.4 Selector Hermano General (~)</h3>
+                <p>Selecciona <strong>todos</strong> los elementos que vienen después de otro elemento y están al mismo nivel (hermanos).</p>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">📍 Sintaxis</div>
+                    <div class="elemento-desc">
+                        <div class="code-block"><code>elemento1 ~ elemento2 { }</code></div>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin: 20px 0;">
+                    <div class="example-box" style="margin: 0;">
+                        <h4>Código CSS y HTML:</h4>
+                        <div class="code-block"><code>h2 ~ p {<br>
+&nbsp;&nbsp;background: yellow;<br>
+}
+</code></div>
+                        <div class="code-block"><code>&lt;h2&gt;Mi Título&lt;/h2&gt;<br>
+&lt;p&gt;Primer párrafo&lt;/p&gt;<br>
+&lt;p&gt;Segundo párrafo&lt;/p&gt;<br>
+&lt;p&gt;Tercer párrafo&lt;/p&gt;
+</code></div>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Resultado Visual:</h4>
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; border: 2px dashed #667eea;">
+                            <h2 style="font-size: 1.2em; margin-bottom: 10px; color: #764ba2;">Mi Título</h2>
+                            <p style="background: yellow; padding: 5px; margin-bottom: 8px;">Primer párrafo ✓</p>
+                            <p style="background: yellow; padding: 5px; margin-bottom: 8px;">Segundo párrafo ✓</p>
+                            <p style="background: yellow; padding: 5px; margin-bottom: 0;">Tercer párrafo ✓</p>
+                        </div>
+                        <p style="color: #666; font-size: 0.9em; margin-top: 10px;">Todos los párrafos hermanos después del h2 tienen fondo amarillo</p>
+                    </div>
+                </div>
+
+                <h3>Tabla Resumen de Selectores Combinados</h3>
+                <table class="selector-table">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Sintaxis</th>
+                            <th>¿Qué selecciona?</th>
+                            <th>Ejemplo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Descendente</strong></td>
+                            <td><code>A B</code></td>
+                            <td>Todos los B dentro de A (a cualquier profundidad)</td>
+                            <td><code>article p</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hijo</strong></td>
+                            <td><code>A > B</code></td>
+                            <td>Solo los B que son hijos directos de A</td>
+                            <td><code>div > span</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Adyacente</strong></td>
+                            <td><code>A + B</code></td>
+                            <td>El B que está inmediatamente después de A</td>
+                            <td><code>h2 + p</code></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Hermano General</strong></td>
+                            <td><code>A ~ B</code></td>
+                            <td>Todos los B que vienen después de A al mismo nivel</td>
+                            <td><code>h2 ~ p</code></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- SECCIÓN 3: POSICIONAMIENTO -->
+            <section id="posicionamiento">
+                <h2>3. Posicionamiento CSS</h2>
+
+                <p>El posicionamiento controla exactamente dónde se coloca un elemento en la página. La propiedad CSS es <code>position</code>.</p>
+
+                <h3>3.1 Position: Static (Estático) - El valor por defecto</h3>
+                <p>Los elementos con <code>position: static</code> se colocan en el flujo normal del documento, uno después de otro. Este es el comportamiento por defecto.</p>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">📍 Características de Static</div>
+                    <div class="elemento-desc">
+                        <ul>
+                            <li>Es el posicionamiento por defecto</li>
+                            <li>Los elementos se colocan en el orden que aparecen en el HTML</li>
+                            <li>Las propiedades <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code> no funcionan</li>
+                            <li>Las propiedades <code>z-index</code> no funcionan</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>3.2 Position: Relative (Relativo)</h3>
+                <p>Con <code>position: relative</code>, el elemento se coloca relativamente a su posición normal. El espacio original del elemento se mantiene.</p>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">📍 Características de Relative</div>
+                    <div class="elemento-desc">
+                        <ul>
+                            <li>Se desplaza de su posición normal usando <code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code></li>
+                            <li>El espacio original que ocupaba el elemento sigue "reservado" (otros elementos no lo ocupan)</li>
+                            <li><code>z-index</code> funciona con relative</li>
+                            <li>Es útil para pequeños ajustes de posición</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin: 20px 0;">
+                    <div class="example-box" style="margin: 0;">
+                        <h4>Código CSS:</h4>
+                        <div class="code-block"><code>.caja {<br>
+&nbsp;&nbsp;position: relative;<br>
+&nbsp;&nbsp;top: 20px;<br>
+&nbsp;&nbsp;left: 30px;<br>
+&nbsp;&nbsp;background: #764ba2;<br>
+&nbsp;&nbsp;width: 200px;<br>
+&nbsp;&nbsp;height: 100px;<br>
+}
+</code></div>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Resultado Visual:</h4>
+                        <div style="background: #f9f9f9; padding: 15px; border-radius: 5px; height: 180px; position: relative;">
+                            <div style="border: 2px dashed #ccc; width: 200px; height: 100px; position: absolute;"></div>
+                            <div style="position: relative; top: 20px; left: 30px; background: #764ba2; width: 200px; height: 100px; color: white; display: flex; align-items: center; justify-content: center; border-radius: 5px;">Caja desplazada</div>
+                        </div>
+                        <p style="color: #666; font-size: 0.9em; margin-top: 10px;">El borde punteado muestra la posición original. La caja se mueve pero su espacio se reserva.</p>
+                    </div>
+                </div>
+
+                <h3>3.3 Position: Absolute (Absoluto)</h3>
+                <p>Con <code>position: absolute</code>, el elemento se coloca relativamente a su contenedor padre más cercano que tenga un posicionamiento <code>relative</code>, <code>absolute</code>, o <code>fixed</code>. Se saca del flujo normal.</p>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">📍 Características de Absolute</div>
+                    <div class="elemento-desc">
+                        <ul>
+                            <li>Se saca completamente del flujo normal del documento</li>
+                            <li>Se posiciona relativamente a su contenedor padre posicionado más cercano</li>
+                            <li>Si no hay padre posicionado, se posiciona relativamente a la ventana del navegador</li>
+                            <li>El espacio que ocupaba NO se reserva (otros elementos pueden ocuparlo)</li>
+                            <li><code>z-index</code> funciona con absolute</li>
+                            <li>Muy útil para superponer elementos</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin: 20px 0;">
+                    <div class="example-box" style="margin: 0;">
+                        <h4>Código CSS:</h4>
+                        <div class="code-block"><code>.contenedor {<br>
+&nbsp;&nbsp;position: relative;<br>
+&nbsp;&nbsp;width: 400px;<br>
+&nbsp;&nbsp;height: 300px;<br>
+&nbsp;&nbsp;background: #f0f0f0;<br>
+}<br>
+<br>
+.elemento {<br>
+&nbsp;&nbsp;position: absolute;<br>
+&nbsp;&nbsp;bottom: 20px;<br>
+&nbsp;&nbsp;right: 20px;<br>
+&nbsp;&nbsp;background: #e74c3c;<br>
+&nbsp;&nbsp;width: 150px;<br>
+&nbsp;&nbsp;height: 60px;<br>
+}
+</code></div>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Resultado Visual:</h4>
+                        <div style="position: relative; width: 100%; height: 200px; background: #f0f0f0; border-radius: 5px; border: 2px dashed #667eea;">
+                            <span style="position: absolute; top: 5px; left: 5px; color: #667eea; font-size: 0.8em;">Contenedor (relative)</span>
+                            <div style="position: absolute; bottom: 20px; right: 20px; background: #e74c3c; width: 150px; height: 60px; color: white; display: flex; align-items: center; justify-content: center; border-radius: 5px; font-size: 0.9em;">Elemento (absolute)</div>
+                        </div>
+                        <p style="color: #666; font-size: 0.9em; margin-top: 10px;">El elemento rojo está posicionado a 20px del borde inferior y derecho del contenedor</p>
+                    </div>
+                </div>
+
+                <div class="highlight">
+                    <strong>⚠️ Importante:</strong> Para usar <code>position: absolute</code> correctamente, casi siempre necesitas poner <code>position: relative</code> en el padre. Si no lo haces, el elemento absolute se posicionará relativamente a la ventana del navegador (muy probablemente no es lo que quieres).
+                </div>
+
+                <h3>3.4 Position: Sticky (Pegajoso)</h3>
+                <p>Con <code>position: sticky</code>, el elemento se comporta como <code>static</code> hasta que alcanza una posición especificada en la ventana. Entonces se "pega" a esa posición.</p>
+
+                <div class="elemento">
+                    <div class="elemento-titulo">📍 Características de Sticky</div>
+                    <div class="elemento-desc">
+                        <ul>
+                            <li>El elemento se comporta como <code>static</code> mientras se desplaza normalmente</li>
+                            <li>Cuando alcanza la posición especificada (ej: <code>top: 0</code>), se "pega" a la ventana</li>
+                            <li>Se mantiene pegado hasta que su padre sale de la vista</li>
+                            <li>Muy útil para encabezados de tabla o menús de navegación</li>
+                            <li>Requiere especificar <code>top</code>, <code>bottom</code>, <code>left</code>, o <code>right</code></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start; margin: 20px 0;">
+                    <div class="example-box" style="margin: 0;">
+                        <h4>Código CSS:</h4>
+                        <div class="code-block"><code>.header {<br>
+&nbsp;&nbsp;position: sticky;<br>
+&nbsp;&nbsp;top: 0;<br>
+&nbsp;&nbsp;background: #667eea;<br>
+&nbsp;&nbsp;color: white;<br>
+&nbsp;&nbsp;padding: 20px;<br>
+&nbsp;&nbsp;z-index: 10;<br>
+}
+</code></div>
+                    </div>
+                    <div class="demo-box">
+                        <h4>Resultado Visual:</h4>
+                        <div style="height: 150px; overflow-y: scroll; background: #f9f9f9; border-radius: 5px; border: 2px dashed #667eea;">
+                            <div style="position: sticky; top: 0; background: #667eea; color: white; padding: 10px; text-align: center; font-weight: bold; z-index: 10;">Header Sticky (desplaza para ver)</div>
+                            <div style="padding: 15px;">
+                                <p style="margin-bottom: 10px;">Contenido 1...</p>
+                                <p style="margin-bottom: 10px;">Contenido 2...</p>
+                                <p style="margin-bottom: 10px;">Contenido 3...</p>
+                                <p style="margin-bottom: 10px;">Contenido 4...</p>
+                                <p style="margin-bottom: 10px;">Contenido 5...</p>
+                            </div>
+                        </div>
+                        <p style="color: #666; font-size: 0.9em; margin-top: 10px;">El header se pega arriba mientras haces scroll</p>
+                    </div>
+                </div>
+
+                <h3>Tabla Resumen de Posicionamiento</h3>
+                <table class="selector-table">
+                    <thead>
+                        <tr>
+                            <th>Position</th>
+                            <th>Flujo Normal</th>
+                            <th>Respecto a...</th>
+                            <th>Use Case (Caso de uso)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Static</strong></td>
+                            <td>Sí (defecto)</td>
+                            <td>N/A</td>
+                            <td>Elemento normal en la página</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Relative</strong></td>
+                            <td>Sí</td>
+                            <td>Su posición normal</td>
+                            <td>Pequeños ajustes de posición</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Absolute</strong></td>
+                            <td>No</td>
+                            <td>Padre posicionado más cercano</td>
+                            <td>Superponer elementos, fondos decorativos</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Sticky</strong></td>
+                            <td>Hasta cierto punto</td>
+                            <td>Ventana hasta que el padre sale</td>
+                            <td>Encabezados fijos, menús flotantes</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>La propiedad Z-Index</h3>
+                <p>Cuando elementos se superponen, <code>z-index</code> controla cuál está encima. Mayor número = más arriba.</p>
+                <div class="code-block"><code>.elemento1 {<br>
+&nbsp;&nbsp;position: absolute;<br>
+&nbsp;&nbsp;z-index: 10;<br>
+}<br>
+<br>
+.elemento2 {<br>
+&nbsp;&nbsp;position: absolute;<br>
+&nbsp;&nbsp;z-index: 5; &lt;!-- Esto estará detrás de elemento1 --&gt;<br>
+}
+</code></div>
+            </section>
+
+            <!-- SECCIÓN 4: EJEMPLOS PRÁCTICOS -->
+            <section id="ejemplos">
+                <h2>4. Ejemplos Prácticos</h2>
+
+                <h3>Ejemplo 1: Menú de Navegación con Selectores Combinados</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
+                    <div>
+                        <h4>HTML y CSS:</h4>
+                        <div class="code-block"><code>&lt;nav class="menu"&gt;<br>
+&nbsp;&nbsp;&lt;ul&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Acerca de&lt;/a&gt;&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;/ul&gt;<br>
+&lt;/nav&gt;
+</code></div>
+                        <div class="code-block"><code>.menu li > a {<br>
+&nbsp;&nbsp;color: #667eea;<br>
+&nbsp;&nbsp;text-decoration: none;<br>
+&nbsp;&nbsp;padding: 10px 15px;<br>
+}<br>
+<br>
+.menu li > a:hover {<br>
+&nbsp;&nbsp;background: #667eea;<br>
+&nbsp;&nbsp;color: white;<br>
+}
+</code></div>
+                    </div>
+                    <div>
+                        <h4>Resultado Visual:</h4>
+                        <div class="demo-box" style="margin-top: 0;">
+                            <nav style="background: #f8f9fa; padding: 10px; border-radius: 5px;">
+                                <ul style="list-style: none; padding: 0; margin: 0; display: flex;">
+                                    <li style="margin-right: 30px;"><a href="#" style="color: #667eea; text-decoration: none; padding: 10px 15px; display: block; transition: 0.3s;">Inicio</a></li>
+                                    <li style="margin-right: 30px;"><a href="#" style="color: #667eea; text-decoration: none; padding: 10px 15px; display: block; transition: 0.3s;">Acerca de</a></li>
+                                </ul>
+                            </nav>
+                            <p style="color: #666; font-size: 0.9em; margin-top: 10px; margin-bottom: 0;">Pasa el ratón sobre los links para ver el efecto hover</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Ejemplo 2: Tarjeta con Posicionamiento Absolute</h3>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; align-items: start;">
+                    <div>
+                        <h4>HTML y CSS:</h4>
+                    <div class="code-block"><code>&lt;div class="card"&gt;<br>
+&nbsp;&nbsp;&lt;img src="imagen.jpg" alt="Producto"&gt;<br>
+&nbsp;&nbsp;&lt;div class="badge"&gt;Oferta&lt;/div&gt;<br>
+&nbsp;&nbsp;&lt;h3&gt;Producto&lt;/h3&gt;<br>
+&nbsp;&nbsp;&lt;p class="precio"&gt;$99&lt;/p&gt;<br>
+&lt;/div&gt;
+</code></div>
+                    <h4>CSS</h4>
+                    <div class="code-block"><code>>.card {<br>
+&nbsp;&nbsp;position: relative;<br>
+&nbsp;&nbsp;width: 250px;<br>
+&nbsp;&nbsp;background: white;<br>
+&nbsp;&nbsp;border-radius: 10px;<br>
+&nbsp;&nbsp;box-shadow: 0 4px 10px rgba(0,0,0,0.1);<br>
+}<br>
+<br>
+.badge {<br>
+&nbsp;&nbsp;position: absolute;<br>
+&nbsp;&nbsp;top: 10px;<br>
+&nbsp;&nbsp;right: 10px;<br>
+&nbsp;&nbsp;background: #e74c3c;<br>
+&nbsp;&nbsp;color: white;<br>
+&nbsp;&nbsp;padding: 5px 10px;<br>
+&nbsp;&nbsp;border-radius: 20px;<br>
+&nbsp;&nbsp;font-size: 0.8em;<br>
+}
+</code></div>
+                    <h4>Resultado Visual:</h4>
+                    <div class="demo-box">
+                        <div style="position: relative; width: 250px; background: white; border-radius: 10px; box-shadow: 0 4px 10px rgba(0,0,0,0.1); overflow: hidden;">
+                            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); height: 120px; display: flex; align-items: center; justify-content: center; color: white; font-weight: bold;">Imagen del Producto</div>
+                            <div style="position: absolute; top: 10px; right: 10px; background: #e74c3c; color: white; padding: 5px 10px; border-radius: 20px; font-size: 0.8em; font-weight: bold;">Oferta</div>
+                            <div style="padding: 15px;">
+                                <h3 style="margin: 0 0 10px 0; color: #333; font-size: 1em;">Producto</h3>
+                                <p style="margin: 0; color: #667eea; font-weight: bold; font-size: 1.2em;">$99</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Ejemplo 3: Tabla con Encabezado Sticky</h3>
+                <div class="example-box">
+                    <h4>HTML</h4>
+                    <div class="code-block"><code>&lt;table&gt;<br>
+&nbsp;&nbsp;&lt;thead&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;tr&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Nombre&lt;/th&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;th&gt;Edad&lt;/th&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;/tr&gt;<br>
+&nbsp;&nbsp;&lt;/thead&gt;<br>
+&lt;/table&gt;
+</code></div>
+                    <h4>CSS</h4>
+                    <div class="code-block"><code>table th {<br>
+&nbsp;&nbsp;position: sticky;<br>
+&nbsp;&nbsp;top: 0;<br>
+&nbsp;&nbsp;background: #667eea;<br>
+&nbsp;&nbsp;color: white;<br>
+&nbsp;&nbsp;z-index: 10;<br>
+}
+</code></div>
+                    <h4>Resultado Visual:</h4>
+                    <div class="demo-box">
+                        <table style="width: 100%; border-collapse: collapse; margin-top: 0;">
+                            <thead>
+                                <tr>
+                                    <th style="position: sticky; top: 0; background: #667eea; color: white; padding: 10px; text-align: left; z-index: 10; border: 1px solid #ddd;">Nombre</th>
+                                    <th style="position: sticky; top: 0; background: #667eea; color: white; padding: 10px; text-align: left; z-index: 10; border: 1px solid #ddd;">Edad</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Juan</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">25</td>
+                                </tr>
+                                <tr style="background: #f9f9f9;">
+                                    <td style="padding: 10px; border: 1px solid #ddd;">María</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">28</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">Carlos</td>
+                                    <td style="padding: 10px; border: 1px solid #ddd;">32</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="color: #666; font-size: 0.9em; margin-top: 10px; margin-bottom: 0;">El encabezado (fondo azul) permanecerá visible al desplazarse</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 5: EJERCICIOS -->
+            <section id="ejercicios">
+                <h2>5. Ejercicios Prácticos</h2>
+
+                <p>A continuación encontrarás ejemplos para practicar selectores combinados y posicionamiento. Intenta resolver cada uno antes de ver la solución.</p>
+
+                <!-- EJERCICIO 1 -->
+                <div class="ejercicio-card">
+                    <div class="ejercicio-titulo">✏️ Ejercicio 1: Selectores Combinados - Menú</div>
+                    <div class="ejercicio-enunciado">
+                        <p><strong>Objetivo:</strong> Cambia el color de los links en un menú usando selectores combinados.</p>
+                        <p><strong>HTML:</strong></p>
+                        <div class="code-block"><code>&lt;nav class="menu"&gt;<br>
+&nbsp;&nbsp;&lt;ul&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Inicio&lt;/a&gt;&lt;/li&gt;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&lt;li&gt;&lt;a href="#"&gt;Acerca&lt;/a&gt;&lt;/li&gt;<br>
+&nbsp;&nbsp;&lt;/ul&gt;<br>
+&lt;/nav&gt;
+</code></div>
+                        <p><strong>Requisitos:</strong></p>
+                        <ul>
+                            <li>Los links deben ser azules (#667eea)</li>
+                            <li>En hover cambiar a blanco con fondo azul</li>
+                            <li>Usa selector hijo (>)</li>
+                        </ul>
+                    </div>
+
+                    <button class="toggle-btn hidden" id="btn-ej1" onclick="toggleSolution('btn-ej1', 'sol-ej1')">Ver solución</button>
+                    <div class="solution-content hidden" id="sol-ej1">
+                        <h4>Solución:</h4>
+                        <div class="code-block"><code>.menu ul > li > a {<br>
+&nbsp;&nbsp;color: #667eea;<br>
+&nbsp;&nbsp;text-decoration: none;<br>
+&nbsp;&nbsp;padding: 10px 15px;<br>
+}<br>
+<br>
+.menu ul > li > a:hover {<br>
+&nbsp;&nbsp;background: #667eea;<br>
+&nbsp;&nbsp;color: white;<br>
+}
+</code></div>
+                        <p><strong>Explicación:</strong> El selector <code>.menu ul > li > a</code> accede directamente a los links que son hijos de los items de lista. El <code>></code> asegura que solo afectes los elementos directos.</p>
+                    </div>
+                </div>
+
+                <!-- EJERCICIO 2 -->
+                <div class="ejercicio-card">
+                    <div class="ejercicio-titulo">✏️ Ejercicio 2: Position Absolute - Tarjeta con Badge</div>
+                    <div class="ejercicio-enunciado">
+                        <p><strong>Objetivo:</strong> Crea una tarjeta con un badge "Oferta" en la esquina superior derecha.</p>
+                        <p><strong>HTML:</strong></p>
+                        <div class="code-block"><code>&lt;div class="card"&gt;<br>
+&nbsp;&nbsp;&lt;div class="badge"&gt;Oferta&lt;/div&gt;<br>
+&nbsp;&nbsp;&lt;h3&gt;Producto&lt;/h3&gt;<br>
+&nbsp;&nbsp;&lt;p&gt;Descripción&lt;/p&gt;<br>
+&lt;/div&gt;
+</code></div>
+                        <p><strong>Requisitos:</strong></p>
+                        <ul>
+                            <li>.card: width 300px, position relative, background blanco</li>
+                            <li>.badge: position absolute, top 10px, right 10px, background rojo (#e74c3c)</li>
+                            <li>El badge debe tener texto blanco y redondeado</li>
+                        </ul>
+                    </div>
+
+                    <button class="toggle-btn hidden" id="btn-ej2" onclick="toggleSolution('btn-ej2', 'sol-ej2')">Ver solución</button>
+                    <div class="solution-content hidden" id="sol-ej2">
+                        <h4>Solución:</h4>
+                        <div class="code-block"><code>.card {<br>
+&nbsp;&nbsp;position: relative;<br>
+&nbsp;&nbsp;width: 300px;<br>
+&nbsp;&nbsp;background: white;<br>
+&nbsp;&nbsp;padding: 20px;<br>
+&nbsp;&nbsp;border: 1px solid #ddd;<br>
+&nbsp;&nbsp;border-radius: 8px;<br>
+}<br>
+<br>
+.badge {<br>
+&nbsp;&nbsp;position: absolute;<br>
+&nbsp;&nbsp;top: 10px;<br>
+&nbsp;&nbsp;right: 10px;<br>
+&nbsp;&nbsp;background: #e74c3c;<br>
+&nbsp;&nbsp;color: white;<br>
+&nbsp;&nbsp;padding: 5px 10px;<br>
+&nbsp;&nbsp;border-radius: 20px;<br>
+&nbsp;&nbsp;font-weight: bold;<br>
+}
+</code></div>
+                        <p><strong>Explicación:</strong> El padre (.card) debe ser <code>position: relative</code> para que el badge absolute se posicione dentro de él. Sin esto, se posicionaría relativamente a la ventana.</p>
+                    </div>
+                </div>
+
+                <!-- EJERCICIO 3 -->
+                <div class="ejercicio-card">
+                    <div class="ejercicio-titulo">✏️ Ejercicio 3: Position Sticky - Header Flotante</div>
+                    <div class="ejercicio-enunciado">
+                        <p><strong>Objetivo:</strong> Crea un header que se queda en la parte superior al desplazar.</p>
+                        <p><strong>HTML:</strong></p>
+                        <div class="code-block"><code>&lt;header class="sticky-header"&gt;<br>
+&nbsp;&nbsp;&lt;h1&gt;Mi Sitio Web&lt;/h1&gt;<br>
+&lt;/header&gt;<br>
+&lt;!-- Contenido largo aquí --&gt;
+</code></div>
+                        <p><strong>Requisitos:</strong></p>
+                        <ul>
+                            <li>position: sticky</li>
+                            <li>top: 0</li>
+                            <li>background azul (#667eea), texto blanco</li>
+                            <li>z-index: 10</li>
+                        </ul>
+                    </div>
+
+                    <button class="toggle-btn hidden" id="btn-ej3" onclick="toggleSolution('btn-ej3', 'sol-ej3')">Ver solución</button>
+                    <div class="solution-content hidden" id="sol-ej3">
+                        <h4>Solución:</h4>
+                        <div class="code-block"><code>.sticky-header {<br>
+&nbsp;&nbsp;position: sticky;<br>
+&nbsp;&nbsp;top: 0;<br>
+&nbsp;&nbsp;background: #667eea;<br>
+&nbsp;&nbsp;color: white;<br>
+&nbsp;&nbsp;padding: 20px;<br>
+&nbsp;&nbsp;z-index: 10;<br>
+&nbsp;&nbsp;box-shadow: 0 2px 5px rgba(0,0,0,0.1);<br>
+}
+</code></div>
+                        <p><strong>Explicación:</strong> Con <code>position: sticky</code> y <code>top: 0</code>, el header se comporta normalmente hasta que alcanza la parte superior. Entonces se "pega" a la ventana. El <code>z-index: 10</code> lo mantiene encima de otros elementos.</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer">
+                <p>📚 Guía Didáctica - Selectores Combinados y Posicionamiento CSS</p>
+                <p>Aprende, practica y domina estos conceptos fundamentales de CSS</p>
+            </footer>
+        </main>
+    </div>
+</body>
+</html>
