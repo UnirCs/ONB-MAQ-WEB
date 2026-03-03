@@ -1,0 +1,72 @@
+/* Estilos base */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #eef3f6;
+    margin: 0;
+    color: #333;
+}
+
+/* Encabezado */
+.reservation__header {
+    text-align: center;
+    padding: 20px;
+    background-color: #002b5e;
+    color: white;
+}
+
+/* Sección del formulario */
+.reservation__section {
+    padding: 30px;
+}
+
+/* Formulario */
+.reservation__form {
+    background-color: white;
+    padding: 25px;
+    max-width: 500px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Etiquetas */
+form > label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+/* Inputs */
+label + input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+    border: 1px solid #999;
+}
+
+/* Botón de envío */
+.reservation__submit-btn {
+    margin-top: 20px;
+    background-color: #004a99;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+/* Esto es un selector de pseudoclase para el botón. Selecciona el boton submit-btn cuando el ratón está sobre el */
+.reservation__submit-btn:hover {
+    background-color: #002f5f;
+}
+
+.reservation__text {
+    font-size:0.8rem;
+    color: gray;
+}
+
+.reservation__text--warning {
+    font-size:0.8rem;
+    color: orange;
+}
